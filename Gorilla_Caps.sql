@@ -2,7 +2,7 @@ USE gorilla_caps;
 
 -- Creación de la tabla 'user'
 CREATE TABLE [user] (
-    id INT IDENTITY(1,1) PRIMARY KEY,
+    id INT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE roles_users (
 
 -- Creación de la tabla 'Proveedor'
 CREATE TABLE Proveedor (
-    id INT IDENTITY(1,1) PRIMARY KEY,
+    id INT PRIMARY KEY IDENTITY,
     nombre VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     telefono VARCHAR(20),
@@ -39,7 +39,7 @@ CREATE TABLE Proveedor (
 
 -- Creación de la tabla 'Producto'
 CREATE TABLE Producto (
-    id INT IDENTITY(1,1) PRIMARY KEY,
+    id INT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
     descripcion TEXT,
     talla VARCHAR(50) NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE Producto (
 
 -- Creación de la tabla 'Pedido'
 CREATE TABLE Pedido (
-    id INT IDENTITY(1,1) PRIMARY KEY,
+    id INT PRIMARY KEY,
     user_id INT NOT NULL,
     fecha DATETIME DEFAULT GETDATE(),
     estatus VARCHAR(50) NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE Pedido (
 
 -- Creación de la tabla 'DetPedido'
 CREATE TABLE DetPedido (
-    id INT IDENTITY(1,1) PRIMARY KEY,
+    id INT PRIMARY KEY IDENTITY,
     pedido_id INT NOT NULL,
     producto_id INT NOT NULL,
     cantidad INT NOT NULL,
@@ -71,8 +71,8 @@ CREATE TABLE DetPedido (
 );
 
 -- Creación de la tabla 'inventario_materia_prima'
-CREATE TABLE inventarioMateriaPrima (
-    id INT IDENTITY(1,1) PRIMARY KEY,
+CREATE TABLE inventario_materia_prima (
+    id INT PRIMARY KEY,
     nombre VARCHAR(255) NOT NULL,
     descripcion TEXT,
     cantidad FLOAT NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE inventarioMateriaPrima (
 
 -- Creación de la tabla 'Venta'
 CREATE TABLE Venta (
-    id INT IDENTITY(1,1) PRIMARY KEY,
+    id INT PRIMARY KEY IDENTITY,
     user_id INT NOT NULL,
     fecha DATE NOT NULL DEFAULT GETDATE(),
     estatus BIT DEFAULT 0,
@@ -91,7 +91,7 @@ CREATE TABLE Venta (
 
 -- Creación de la tabla 'DetVenta'
 CREATE TABLE DetVenta (
-    id INT PRIMARY KEY IDENTITY(1,1),
+    id INT PRIMARY KEY IDENTITY,
     venta_id INT NOT NULL,
     producto_id INT NOT NULL,
     cantidad INT NOT NULL,
@@ -102,18 +102,18 @@ CREATE TABLE DetVenta (
 
 -- Creación de la tabla 'explotacion_material'
 CREATE TABLE explotacion_material (
-    id INT IDENTITY(1,1) PRIMARY KEY,
+    id INT PRIMARY KEY IDENTITY,
     producto_id INT NOT NULL,
     material_id INT NOT NULL,
     cantidad_usada FLOAT NOT NULL,
     cantidadIndividual FLOAT NOT NULL,
     FOREIGN KEY (producto_id) REFERENCES Producto(id),
-    FOREIGN KEY (material_id) REFERENCES inventarioMateriaPrima(id)
+    FOREIGN KEY (material_id) REFERENCES inventario_materia_prima(id)
 );
 
 -- Creación de la tabla 'Compra'
 CREATE TABLE Compra (
-    id INT IDENTITY(1,1) PRIMARY KEY,
+    id INT PRIMARY KEY,
     proveedor_id INT NOT NULL,
     fecha DATE NOT NULL,
     estatus BIT DEFAULT 1,
@@ -122,11 +122,11 @@ CREATE TABLE Compra (
 
 -- Creación de la tabla 'DetCompra'
 CREATE TABLE DetCompra (
-    id INT IDENTITY(1,1) PRIMARY KEY,
+    id INT PRIMARY KEY,
     compra_id INT NOT NULL,
     material_id INT NOT NULL,
     cantidad INT NOT NULL,
     precio FLOAT NOT NULL,
     FOREIGN KEY (compra_id) REFERENCES Compra(id),
-    FOREIGN KEY (material_id) REFERENCES inventarioMateriaPrima(id)
+    FOREIGN KEY (material_id) REFERENCES inventario_materia_prima(id)
 );
