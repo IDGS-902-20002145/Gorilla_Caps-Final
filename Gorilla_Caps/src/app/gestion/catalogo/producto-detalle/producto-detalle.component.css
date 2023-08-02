@@ -1,0 +1,124 @@
+/* Estilo para el contenedor principal del detalle del producto */
+.product-detail {
+    display: flex;
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+  }
+  
+  /* Estilo para la columna izquierda con la imagen del producto */
+  .left-column {
+    flex: 2; /* La columna ocupa el 66.67% del ancho del contenedor */
+    padding: 10px; /* Espaciado interno para separar la imagen del borde */
+  }
+  
+  .left-column img {
+    width: 75%; /* La imagen ocupará todo el ancho de la columna izquierda */
+    height: auto;
+    display: block;
+    border-radius: 10px; /* Bordes redondeados para la imagen */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  /* Estilo para la columna derecha con los detalles del producto */
+  .right-column {
+    flex: 1; /* La columna ocupa el 33.33% del ancho del contenedor */
+    padding: 10px; /* Espaciado interno para separar los detalles del borde */
+  }
+  
+  .right-column div {
+    margin-bottom: 15px; /* Espacio entre los detalles */
+  }
+  
+  .right-column label {
+    font-weight: bold;
+  }
+  
+  /* Estilo para los detalles del producto */
+  .right-column span {
+    display: block;
+    margin-top: 5px;
+  }
+  /* Estilo para el contenedor principal del input de cantidad */
+.quantity-input {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Estilo para los botones de más y menos */
+  .quantity-input button {
+    background-color: #6db6ff; /* Color de fondo azul claro */
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Efecto de transición al cambiar el color de fondo */
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 5px;
+  }
+  
+  .quantity-input button:focus {
+    outline: none; /* Elimina el borde de enfoque al hacer clic */
+  }
+  
+  /* Efecto de activación al presionar los botones */
+  .quantity-input button:active {
+    background-color: #4190ed; /* Color de fondo azul más oscuro al estar activado */
+  }
+  
+  /* Estilo para el input */
+  .quantity-input input {
+    width: 50%; /* Ancho del 50% */
+    height: 32px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0; /* Color de fondo gris claro */
+    margin: 5px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Estilo para el input cuando está deshabilitado (readonly) */
+  .quantity-input input[readonly] {
+    background-color: #ccc; /* Color de fondo gris más oscuro cuando está deshabilitado */
+    cursor: not-allowed; /* Cambia el cursor a 'no permitido' cuando está deshabilitado */
+  }
+  /* Estilo para el contenedor del botón */
+div {
+  text-align: left; /* Centra el botón horizontalmente dentro del contenedor */
+}
+
+/* Estilo para el botón */
+.btn-agregar {
+  background-color: #007bff; /* Color de fondo del botón (azul) */
+  color: white; /* Color del texto (blanco) */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Espaciado interno del botón */
+  font-size: 16px; /* Tamaño de fuente */
+  cursor: pointer; /* Cambia el cursor al puntero cuando se pasa sobre el botón */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  display: flex; /* Hace que el contenido dentro del botón sea flexbox */
+  align-items: center; /* Alinea verticalmente el contenido en el centro */
+  justify-content: center; /* Alinea horizontalmente el contenido en el centro */
+}
+
+/* Estilo para el icono dentro del botón */
+.btn-agregar mat-icon {
+  margin-right: 5px; /* Espacio entre el icono y el texto */
+}
+.img-relacionados{
+  margin-left: -100px;
+  margin-top: 5%;
+  box-shadow: lightsteelblue 0px 0px 20px 0px;
+  border-radius: 10px;
+}
+/* Estilo para que .img-relacionados se sombree cuando le pasamos el mouse */
+.img-relacionados:hover{
+  box-shadow: black 0px 0px 10px 0px;
+}

@@ -1,0 +1,9 @@
+<h2 style="text-align: center;">Registro GorillaCaps</h2>
+<hr>
+<form (ngSubmit)="verificarCont()">
+  <input type="text" name="nombre" [(ngModel)]="usuarioNuevo.name" placeholder="Nombre">
+  <input type="text" name="apellido" [(ngModel)]="usuarioNuevo.email" placeholder="Correo electrónico">
+  <input type="password" name="verificar" [(ngModel)]="verificarPassword" placeholder="Contraseña">
+  <input type="password" name="email" [(ngModel)]="usuarioNuevo.password" placeholder="Repita la contraseña">
+  <button type="submit" class="btn btn-primary">Agregar</button>
+</form>

@@ -1,0 +1,38 @@
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.card.active {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.form-container {
+  padding: 20px;
+}
+
+.compras-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.compras-table th, .compras-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.compras-table th {
+  background-color: #f2f2f2;
+}

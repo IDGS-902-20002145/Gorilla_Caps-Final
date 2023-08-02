@@ -1,0 +1,91 @@
+<div class="card-container">
+    <div class="card" (click)="mostrarComprasConfirmadas()" [ngClass]="{ 'active': comprasConfirmadasActivas }">
+      <h3>Compras Confirmadas</h3>
+    </div>
+    <div class="card" (click)="mostrarComprasNoConfirmadas()" [ngClass]="{ 'active': comprasNoConfirmadasActivas }">
+      <h3>Compras No Confirmadas</h3>
+    </div>
+  </div>
+  
+  <div class="form-container">
+    <ng-container *ngIf="comprasConfirmadasActivas">
+      <h2>Compras Confirmadas</h2>
+      <table class="compras-table">
+        <thead>
+          <tr>
+            <th>ID Compra</th>
+            <th>Fecha</th>
+            <th>Proveedor</th>
+            <th>Detalles de Compra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let compra of comprasConfirmadas">
+            <td>{{ compra.id }}</td>
+            <td>{{ compra.fecha }}</td>
+            <td>{{ compra.proveedor.nombre }}</td>
+            <td>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Material</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let detalle of compra.detCompra">
+                    <td>{{ detalle.material.nombre }}</td>
+                    <td>{{ detalle.cantidad }}</td>
+                    <td>{{ detalle.precio }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+  
+    <ng-container *ngIf="comprasNoConfirmadasActivas">
+      <h2>Compras No Confirmadas</h2>
+      <table class="compras-table">
+        <thead>
+          <tr>
+            <th>ID Compra</th>
+            <th>Fecha</th>
+            <th>Proveedor</th>
+            <th>Detalles de Compra</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let compra of comprasNoConfirmadas">
+            <td>{{ compra.id }}</td>
+            <td>{{ compra.fecha }}</td>
+            <td>{{ compra.proveedor.nombre }}</td>
+            <td>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Material</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let detalle of compra.detCompra">
+                    <td>{{ detalle.material.nombre }}</td>
+                    <td>{{ detalle.cantidad }}</td>
+                    <td>{{ detalle.precio }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td><button mat-flat-button color="primary" [routerLink]="['/ConfirmarCompra',compra.id]">Confirmar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+  </div>
+  

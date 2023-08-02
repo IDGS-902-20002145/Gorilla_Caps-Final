@@ -1,0 +1,94 @@
+/* product-list.component.css */
+
+/* Estilos generales para la lista de productos */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* Estilos para la vista en forma de cards */
+  .product-list-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .product-card {
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .product-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .product-description {
+    font-size: 14px;
+    color: #444;
+    margin-top: 5px;
+  }
+  
+  .product-price {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+  .product-stock {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  /* Estilos para la vista en forma de tabla */
+  .product-list-table {
+    margin-top: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  /* Estilos para el botón de cambiar vista */
+  .view-toggle {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .view-toggle button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .view-toggle button:hover {
+    background-color: #0056b3;
+  }
+  

@@ -1,0 +1,56 @@
+<div class="product-detail">
+    <!-- Columna izquierda para la imagen -->
+    <div class="left-column">
+      <img [src]="getImageUrl(producto.imagen)" alt="Imagen del producto">
+    </div>
+    <div class="scrollable-div">
+      <a *ngFor="let pr of productosRelacionados" [href]="['/Catalogo/ProductoDetalle/'+pr.id]"> 
+        <img [src]="getImageUrl(pr.imagen)" width="90" height="90" class="img-relacionados">
+        <br>
+      </a>
+    </div>
+  
+    <!-- Columna derecha para las propiedades -->
+    <div class="right-column" style="background-color: aliceblue; box-shadow: 0 0 5px gray;">
+      <div>
+        <label>Nombre:</label>
+        <span>{{ producto.nombre }}</span>
+      </div>
+  
+      <div>
+        <label>Descripción:</label>
+        <p>{{ producto.descripcion }}</p>
+      </div>
+  
+      <div>
+        <label>Color:</label>
+        <span>{{ producto.color }}</span>
+      </div>
+  
+      <div>
+        <label>Modelo:</label>
+        <span>{{ producto.modelo }}</span>
+      </div>
+  
+      <div>
+        <label>Precio:</label>
+        <span>{{ producto.precio }}</span>
+      </div>
+  
+      <div>
+        <label>Stock en existencia:</label>
+        <span>{{ producto.stock_existencia }}</span>
+      </div>
+      <div class="quantity-input">
+        <label>Unidades:</label>
+        <button class="btn-menos" (click)="decrement()"><mat-icon>remove</mat-icon></button>
+        <input class="cant" type="number" readonly [(ngModel)]="cantidad" min="1">
+        <button class="btn-mas" (click)="increment()"><mat-icon>add</mat-icon></button>
+      </div>      
+      <div>
+        <button class="btn-agregar" (click)="agregarC(producto.id)"><mat-icon>shopping_cart</mat-icon>
+          Agregar</button>
+      </div>
+    </div>
+  </div>
+  

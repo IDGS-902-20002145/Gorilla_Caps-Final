@@ -1,0 +1,74 @@
+<div class="charts-container">
+  <div class="chart-group">
+    <div class="chart-container" style="width: 200px; height: 400px;">
+      <h1><mat-icon color="black">euro_symbol</mat-icon> Ventas totales por mes</h1>
+      <ngx-charts-bar-vertical class="custom-chart" [results]="ventasData" [xAxis]="true" [yAxis]="true"
+        [showXAxisLabel]="true" [showYAxisLabel]="true" xAxisLabel="Mes" yAxisLabel="Cantidad en Pesos ($)"
+        [legend]="false"></ngx-charts-bar-vertical>
+
+    </div>
+
+
+    <div class="chart-container" style="width: 200px; height: 400px;">
+      <h1><mat-icon color="black">euro_symbol</mat-icon> Compras totales por mes
+      </h1>
+      <ngx-charts-bar-vertical class="compras-chart" [results]="comprasData" [xAxis]="true" [yAxis]="true"
+        [showXAxisLabel]="true" [showYAxisLabel]="true" xAxisLabel="Mes" yAxisLabel="Cantidad en Pesos ($)"
+        [legend]="false"></ngx-charts-bar-vertical>
+    </div>
+
+    <div class="chart-container" style="width: 200px; height: 400px;">
+      <h1><i class="fas fa-hand-holding-usd"></i> Utilidad total por mes
+      </h1>
+      <ngx-charts-bar-vertical [results]="utilidadData" [xAxis]="true" [yAxis]="true" [showXAxisLabel]="true"
+        [showYAxisLabel]="true" xAxisLabel="Mes" yAxisLabel="Cantidad en Pesos ($)"
+        [legend]="false"></ngx-charts-bar-vertical>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-lg-8">
+          <div class="card card-sm">
+              <div class="card-header">
+                  <h3 class="card-title">Reportes de Finanzas</h3>
+              </div>
+              <div class="card-body">
+                      <div class="form-group">
+                          <label for="fecha_inicio">Fecha de inicio:</label>
+                          <input type="date" [(ngModel)]="fechaInicio" name="fecha_inicio" id="fecha_inicio" class="form-control">
+                      </div>
+                      <div class="form-group">
+                          <label for="fecha_fin">Fecha de fin:</label>
+                          <input type="date" [(ngModel)]="fechaFin" name="fecha_fin" id="fecha_fin" class="form-control">
+                      </div>
+                      <div class="form-group">
+                          <label for="radio_btn">Tipo de reporte:</label>
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" name="radio_btn" id="ventas"
+                                  value="ventas">
+                              <label class="form-check-label" for="ventas">
+                                  Ventas
+                              </label>
+                          </div>
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" name="radio_btn" id="compras"
+                                  value="compras">
+                              <label class="form-check-label" for="compras">
+                                  Compras
+                              </label>
+                          </div>
+
+                      </div>
+
+                      <button type="submit" class="btn btn-primary" name="pdf" (click)="reporteFinanzas()" title="Descarga PDF"><img
+                              src="../../../../assets/pdf.jpg" alt="Descarga PDF"
+                              style="height: 30px; width: 30px;"></button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
