@@ -1,25 +1,25 @@
-USE gorilla_caps;
+ï»¿USE gorilla_caps;
 
--- Creación de la tabla 'user'
+-- Creaciï¿½n de la tabla 'user'
 CREATE TABLE [user] (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY IDENTITY(1,1),
     name VARCHAR(50) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     active BIT,
-    confirmed_at DATETIME,
+    confirmedAt DATETIME,
     admin BIT,
     empleado BIT
 );
 
--- Creación de la tabla 'role'
+-- Creaciï¿½n de la tabla 'role'
 CREATE TABLE role (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY IDENTITY(1,1),
     name VARCHAR(50) NOT NULL,
     description VARCHAR(255)
 );
 
--- Creación de la tabla 'roles_users'
+-- Creaciï¿½n de la tabla 'roles_users'
 CREATE TABLE roles_users (
     user_id INT,
     role_id INT,
@@ -27,9 +27,9 @@ CREATE TABLE roles_users (
     FOREIGN KEY (role_id) REFERENCES role(id)
 );
 
--- Creación de la tabla 'Proveedor'
+-- Creaciï¿½n de la tabla 'Proveedor'
 CREATE TABLE Proveedor (
-    id INT PRIMARY KEY IDENTITY,
+    id INT PRIMARY KEY IDENTITY(1,1),
     nombre VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     telefono VARCHAR(20),
@@ -37,32 +37,31 @@ CREATE TABLE Proveedor (
     active BIT DEFAULT 1
 );
 
--- Creación de la tabla 'Producto'
+-- Creaciï¿½n de la tabla 'Producto'
 CREATE TABLE Producto (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY IDENTITY(1,1),
     nombre VARCHAR(255) NOT NULL,
     descripcion TEXT,
-    talla VARCHAR(50) NOT NULL,
     color VARCHAR(50) NOT NULL,
     modelo VARCHAR(50) NOT NULL,
-    precio FLOAT NOT NULL,
-    imagen VARCHAR(250) NOT NULL,
+    precio DECIMAL(18, 2) NOT NULL,
+    imagen VARCHAR(max) NOT NULL,
     stock_existencia INT NOT NULL,
     estatus BIT DEFAULT 1
 );
 
--- Creación de la tabla 'Pedido'
+-- Creaciï¿½n de la tabla 'Pedido'
 CREATE TABLE Pedido (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY IDENTITY(1,1),
     user_id INT NOT NULL,
     fecha DATETIME DEFAULT GETDATE(),
-    estatus VARCHAR(50) NOT NULL,
+    estatus INT DEFAULT 1,
     FOREIGN KEY (user_id) REFERENCES [user](id)
 );
 
--- Creación de la tabla 'DetPedido'
+-- Creaciï¿½n de la tabla 'DetPedido'
 CREATE TABLE DetPedido (
-    id INT PRIMARY KEY IDENTITY,
+    id INT PRIMARY KEY IDENTITY(1,1),
     pedido_id INT NOT NULL,
     producto_id INT NOT NULL,
     cantidad INT NOT NULL,
@@ -70,9 +69,9 @@ CREATE TABLE DetPedido (
     FOREIGN KEY (producto_id) REFERENCES Producto(id)
 );
 
--- Creación de la tabla 'inventario_materia_prima'
-CREATE TABLE inventario_materia_prima (
-    id INT PRIMARY KEY,
+-- Creaciï¿½n de la tabla 'inventario_materia_prima'
+CREATE TABLE inventarioMateriaPrima (
+    id INT PRIMARY KEY IDENTITY(1,1),
     nombre VARCHAR(255) NOT NULL,
     descripcion TEXT,
     cantidad FLOAT NOT NULL,
@@ -80,53 +79,53 @@ CREATE TABLE inventario_materia_prima (
     estatus BIT DEFAULT 1
 );
 
--- Creación de la tabla 'Venta'
+-- Creaciï¿½n de la tabla 'Venta'
 CREATE TABLE Venta (
-    id INT PRIMARY KEY IDENTITY,
-    user_id INT NOT NULL,
-    fecha DATE NOT NULL DEFAULT GETDATE(),
-    estatus BIT DEFAULT 0,
-    FOREIGN KEY (user_id) REFERENCES [user](id)
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    UserId INT NOT NULL, -- Cambiado de User_Id a UserId
+    Fecha DATE NOT NULL DEFAULT GETDATE(),
+    Estatus BIT DEFAULT 0,
+    FOREIGN KEY (UserId) REFERENCES [User](Id) -- Cambiado de User_Id a UserId
 );
 
--- Creación de la tabla 'DetVenta'
+-- Creaciï¿½n de la tabla 'DetVenta'
 CREATE TABLE DetVenta (
-    id INT PRIMARY KEY IDENTITY,
-    venta_id INT NOT NULL,
-    producto_id INT NOT NULL,
+    id INT PRIMARY KEY IDENTITY(1,1),
+    VentaId INT NOT NULL,
+    ProductoId INT NOT NULL,
     cantidad INT NOT NULL,
-    precio FLOAT NOT NULL,
-    FOREIGN KEY (venta_id) REFERENCES Venta(id),
-    FOREIGN KEY (producto_id) REFERENCES Producto(id)
+    precio DECIMAL(18, 2) NOT NULL,
+    FOREIGN KEY (VentaId) REFERENCES Venta(Id),
+    FOREIGN KEY (ProductoId) REFERENCES Producto(id)
 );
 
--- Creación de la tabla 'explotacion_material'
-CREATE TABLE explotacion_material (
-    id INT PRIMARY KEY IDENTITY,
-    producto_id INT NOT NULL,
-    material_id INT NOT NULL,
-    cantidad_usada FLOAT NOT NULL,
+-- Creaciï¿½n de la tabla 'explotacion_material'
+CREATE TABLE ExplotacionMaterial (
+    id INT PRIMARY KEY IDENTITY(1,1),
+    ProductoId INT NOT NULL,
+    MaterialId INT NOT NULL,
+    CantidadUsada FLOAT NOT NULL,
     cantidadIndividual FLOAT NOT NULL,
-    FOREIGN KEY (producto_id) REFERENCES Producto(id),
-    FOREIGN KEY (material_id) REFERENCES inventario_materia_prima(id)
+    FOREIGN KEY (ProductoId) REFERENCES Producto(id),
+    FOREIGN KEY (MaterialId) REFERENCES inventarioMateriaPrima(id)
 );
 
--- Creación de la tabla 'Compra'
+-- Creaciï¿½n de la tabla 'Compra'
 CREATE TABLE Compra (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY IDENTITY(1,1),
     proveedor_id INT NOT NULL,
     fecha DATE NOT NULL,
     estatus BIT DEFAULT 1,
     FOREIGN KEY (proveedor_id) REFERENCES Proveedor(id)
 );
 
--- Creación de la tabla 'DetCompra'
+-- Creaciï¿½n de la tabla 'DetCompra'
 CREATE TABLE DetCompra (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY IDENTITY(1,1),
     compra_id INT NOT NULL,
     material_id INT NOT NULL,
     cantidad INT NOT NULL,
-    precio FLOAT NOT NULL,
-    FOREIGN KEY (compra_id) REFERENCES Compra(id),
-    FOREIGN KEY (material_id) REFERENCES inventario_materia_prima(id)
+    precio DECIMAL NOT NULL,
+    FOREIGN KEY (compra_id) REFERENCES Compra(Id),
+    FOREIGN KEY (material_id) REFERENCES inventarioMateriaPrima(id)
 );

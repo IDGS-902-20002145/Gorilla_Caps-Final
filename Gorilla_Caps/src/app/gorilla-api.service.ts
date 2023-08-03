@@ -207,11 +207,21 @@ export class GorillaApiService {
   }
 
   public pagar(id: number): Observable<any> {
-    return this.http.put<any>(`/api/VentasC/Pagar/${id}`, null);
+    const token = this.aService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<any>(`/api/Pedidos/Pagar/${id}`, { headers });
+  }
+
+  public pagarEfectivo(id: number): Observable<any> {
+    const token = this.aService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<any>(`/api/Pedidos/PagarAE/${id}`, null, { headers });
   }
 
   public pagarTarjeta(id: number): Observable<any> {
-    return this.http.put<any>(`/api/VentasC/PagarTarjeta/${id}`, null);
+    const token = this.aService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post<any>(`/api/Pedidos/PagarTA/${id}`, null, { headers });
   }
 
 

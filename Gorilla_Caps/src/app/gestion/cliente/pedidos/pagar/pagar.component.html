@@ -7,8 +7,7 @@
 
       <div class="row no-gutters">
         <div class="col-md-4">
-          <img src="" class="card-img" alt=""
-            style="height: 150px; width: 150px;">
+          <img src="" class="card-img" alt="" style="height: 150px; width: 150px;">
         </div>
         <div class="col-md-8">
           <div class="card-body">
@@ -20,29 +19,29 @@
           </div>
         </div>
       </div>
-
     </div>
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Resumen de Pago</h5>
-          <p class="card-text">El total es ${{ total }}</p>
-          <form>
-            <div class="form-group">
-              <label for="metodo_pago">Seleccione método de pago:</label>
-              <select class="form-control" id="metodo_pago" name="metodo_pago">
-                <option value="efectivo">Efectivo</option>
-                <option value="tarjeta">Tarjeta</option>
-              </select>
-            </div>
-            <br>
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block">Continuar</button>
-            </div>
-          </form>
-        </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Resumen de Pago</h5>
+        <p class="card-text">El total es ${{ total }}</p>
+        <form>
+          <div class="form-group">
+            <label for="metodo_pago">Seleccione método de pago:</label>
+            <select class="form-control" id="metodo_pago" name="metodo_pago" [(ngModel)]="metodoPago">
+              <option value="efectivo">Efectivo</option>
+              <option value="tarjeta">Tarjeta</option>
+            </select>
+          </div>
+          <br>
+          <div class="form-group">
+            <button class="btn btn-primary btn-block" (click)="pagarArticulo()" >Continuar</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-  <!-- </div> -->
-  <br><br>
+</div>
+<!-- </div> -->
+<br><br>

@@ -71,7 +71,7 @@ export class CatalogoComponent {
           UserId: idUsuario,
           fecha: new Date(),
           cantidad: 1,
-          estatus: true,
+          estatus: 1,
           producto: this.prod
         };
 

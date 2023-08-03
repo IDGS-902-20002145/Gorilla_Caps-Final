@@ -28,13 +28,16 @@ import { VentasAComponent } from './gestion/administrador/ventas-a/ventas-a.comp
 import { FinanzasComponent } from './gestion/administrador/finanzas/finanzas.component';
 import { DetalleVentaComponent } from './gestion/administrador/ventas-a/detalle-venta/detalle-venta.component';
 import { PagarComponent } from './gestion/cliente/pedidos/pagar/pagar.component';
+import { PTarjetaComponent } from './gestion/cliente/pedidos/p-tarjeta/p-tarjeta.component';
 
 
 
 
 const routes: Routes = [
   { path: 'detalle-venta/:idVenta/:estatus', component: DetalleVentaComponent },
-  { path: 'Pagar/:id', component: PagarComponent},
+  { path: 'Pagar/:id', component: PagarComponent },
+  { path: 'PagarAE/:id', component: PagarComponent },
+  { path: 'PagarAT/:id', component: PTarjetaComponent },
   {
     path: '',
     children: [

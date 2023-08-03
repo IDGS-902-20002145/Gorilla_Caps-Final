@@ -3,10 +3,11 @@ using Gorrilla_Caps_Backend.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Gorrilla_Caps_Backend.Controllers.Cliente
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PedidosController : Controller
@@ -24,7 +25,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
                 var detPedido = await _context.DetPedido.
                     Include(p => p.Pedido).
                     Include(p => p.Producto).
-                    Where(p => p.Pedido.UserId == id && p.Pedido.Estatus).
+                    Where(p => p.Pedido.UserId == id && p.Pedido.Estatus == 1).
                     ToListAsync();
 
                 return Ok(detPedido);
@@ -85,7 +86,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
                 {
                     return NotFound();
                 }
-                pedido.Estatus = false;
+                pedido.Estatus = 0;
                 _context.Entry(pedido).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 return Ok();
@@ -106,7 +107,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
                 var pedido = _context.Pedido
                     .Include(p => p.DetPedido)
                         .ThenInclude(d => d.Producto)
-                    .Where(p => p.Id == id && p.Estatus == true)
+                    .Where(p => p.Id == id && p.Estatus == 1)
                     .ToList();
 
                 if (pedido.Count == 0)
@@ -157,6 +158,192 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
         }
 
 
+        [HttpPut("PagarAE/{id}")]
+        public async Task<ActionResult> PagarAEfectivo(int id)
+        {
+            try
+            {
+                var pedido = await _context.Pedido
+                    .Include(p => p.DetPedido)
+                    .ThenInclude(d => d.Producto)
+                    .FirstOrDefaultAsync(p => p.Id == id);
+
+                if (pedido == null || pedido.Estatus != 1)
+                {
+                    return NotFound("No se encontró el pedido o no tiene el estatus adecuado.");
+                }
+
+                // Actualizar estatus del pedido a 2 (pago completado)
+                pedido.Estatus = 2;
+                await _context.SaveChangesAsync();
+
+                // Insertar en tabla Venta
+                var venta = new Venta
+                {
+                    UserId = pedido.UserId,
+                    Fecha = DateTime.Now.Date
+                };
+                _context.Venta.Add(venta);
+                await _context.SaveChangesAsync();
+
+                // Insertar detalles de venta (DetVenta) y actualizar el stock de productos
+                foreach (var detPedido in pedido.DetPedido)
+                {
+                    var prod = detPedido.Producto;
+
+                    if (prod.stock_existencia >= detPedido.Cantidad)
+                    {
+                        var detVenta = new DetVenta
+                        {
+                            VentaId = venta.Id,
+                            ProductoId = prod.Id,
+                            Cantidad = detPedido.Cantidad,
+                            Precio = prod.Precio
+                        };
+                        _context.DetVenta.Add(detVenta);
+                        prod.stock_existencia -= detPedido.Cantidad;
+                    }
+                }
+
+                await _context.SaveChangesAsync();
+
+             
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+
+        [HttpPost("PagarTA/{id}")]
+        public async Task<IActionResult> PagoTarjeta([FromForm] int id)
+        {
+            try
+            {
+                var pedido = await _context.Pedido.FirstOrDefaultAsync(p => p.Id == id);
+
+                if (pedido == null)
+                {
+                    return NotFound("No se encontró el pedido.");
+                }
+
+                // Cambiar estatus del pedido a 2
+                pedido.Estatus = 2;
+                await _context.SaveChangesAsync();
+
+                // Insertar en tabla Venta
+                var venta = new Venta
+                {
+                    UserId = pedido.UserId,
+                    Fecha = DateTime.Now.Date
+                };
+                _context.Venta.Add(venta);
+                await _context.SaveChangesAsync();
+
+                var productos = await _context.DetPedido
+                    .Where(dp => dp.PedidoId == id)
+                    .Include(dp => dp.Producto)
+                    .ToListAsync();
+
+                // Insertar detalle en tabla DetVenta
+                foreach (var producto in productos)
+                {
+                    var prod = producto.Producto;
+                    if (prod.stock_existencia >= producto.Cantidad)
+                    {
+                        var detVenta = new DetVenta
+                        {
+                            VentaId = venta.Id,
+                            ProductoId = prod.Id,
+                            Cantidad = producto.Cantidad,
+                            Precio = prod.Precio
+                        };
+                        _context.DetVenta.Add(detVenta);
+                        prod.stock_existencia -= producto.Cantidad;
+                    }
+                }
+
+                await _context.SaveChangesAsync();
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("pagar_todo")]
+        public async Task<IActionResult> PagarTodo()
+        {
+            try
+            {
+                var currentUserId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+
+                var pedidosDisponibles = await _context.Pedido
+                    .Where(p => p.UserId == currentUserId && p.Estatus == 1)
+                    .Include(p => p.DetPedido)
+                    .ThenInclude(d => d.Producto)
+                    .ToListAsync();
+
+                var detProductos = new List<Dictionary<string, object>>();
+                decimal total = 0;
+                var productosSinExistenciasNombres = new List<string>();
+
+                foreach (var pedido in pedidosDisponibles)
+                {
+                    foreach (var producto in pedido.DetPedido)
+                    {
+                        var prod = producto.Producto;
+                        if (producto.Cantidad > prod.stock_existencia)
+                        {
+                            productosSinExistenciasNombres.Add(prod.Nombre);
+                        }
+                        else
+                        {
+                            if (detProductos.Any(d => d["id"].ToString() == prod.Id.ToString()))
+                            {
+                                var existingDetProducto = detProductos.First(d => d["id"].ToString() == prod.Id.ToString());
+                                existingDetProducto["cantidad"] = Convert.ToInt32(existingDetProducto["cantidad"]) + producto.Cantidad;
+                            }
+                            else
+                            {
+                                detProductos.Add(new Dictionary<string, object>
+                        {
+                            { "id", prod.Id },
+                            { "nombre", prod.Nombre },
+                            { "modelo", prod.Modelo },
+                            { "precio", prod.Precio },
+                            { "descripcion", prod.Descripcion },
+                            { "cantidad", producto.Cantidad },
+                            { "imagen", prod.Imagen }
+                        });
+                            }
+                            total += prod.Precio * producto.Cantidad;
+                        }
+                    }
+                }
+
+                if (productosSinExistenciasNombres.Any())
+                {
+                    productosSinExistenciasNombres = productosSinExistenciasNombres.Distinct().ToList();
+                    // Asegúrate de que estés retornando una respuesta JSON en el formato esperado
+                    return BadRequest(new { message = $"No hay suficiente stock para los productos: {string.Join(", ", productosSinExistenciasNombres)}" });
+                }
+
+                return Ok(new { detProductos, pedidos = pedidosDisponibles, total });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+
+
 
 
         //Creamos una clase para todos los datos de un pedido, producto y usuario
@@ -165,7 +352,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
             public int Id { get; set; }
             public int UserId { get; set; }
             public DateTime Fecha { get; set; }
-            public bool Estatus { get; set; }
+            public int Estatus { get; set; }
             public int Cantidad { get; set; }
             public Producto Producto { get; set; }
         }

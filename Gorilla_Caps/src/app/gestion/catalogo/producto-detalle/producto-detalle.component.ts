@@ -17,7 +17,7 @@ export class ProductoDetalleComponent {
   cantidad: number = 1;
   maximo: number = 1;
   fullPedido?: FullPedidoInterface;
-  
+
   prodPed: ProductoInterface = {
     id: 0 ,
     nombre: '',
@@ -78,7 +78,7 @@ export class ProductoDetalleComponent {
 
   agregarC(id: any) {
     let idUsuario = Number(localStorage.getItem('id'));
-  
+
     this.prod.findProducto(id).subscribe(
       (data) => {
         this.prodPed = data;
@@ -88,12 +88,12 @@ export class ProductoDetalleComponent {
           UserId: idUsuario,
           fecha: new Date(),
           cantidad: this.cantidad,
-          estatus: true,
+          estatus: 1,
           producto: this.prodPed
         };
-  
+
         console.log(this.fullPedido);
-        
+
         this.prod.agregarCarrito(id, this.fullPedido).subscribe(
           (data) => {
             console.log(data);
