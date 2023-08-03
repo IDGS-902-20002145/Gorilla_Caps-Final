@@ -10,10 +10,10 @@ namespace Gorrilla_Caps_Backend.Models
         [Key]
         public int Id { get; set; }
 
-        [Column("user_id")]
+        
         public int UserId { get; set; }
         public DateTime Fecha { get; set; }
-        public bool Estatus { get; set; }
+        public int Estatus { get; set; }
         [JsonIgnore]
         public List<DetPedido> DetPedido { get; set; }
 

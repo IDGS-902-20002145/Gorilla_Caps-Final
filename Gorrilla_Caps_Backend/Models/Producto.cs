@@ -12,7 +12,7 @@ namespace Gorrilla_Caps_Backend.Models
         public string Descripcion { get; set; }
         public string Color { get; set; }
         public string Modelo { get; set; }
-        public decimal Precio { get; set; }
+        public double Precio { get; set; }
         public string Imagen { get; set; }
         public int stock_existencia { get; set; }
         public bool Estatus { get; set; }

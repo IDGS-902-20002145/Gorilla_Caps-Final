@@ -58,7 +58,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Administrador
                 .ToList();
 
             var utilidadMensual = sumaVentasPorMes
-                .Join(sumaComprasPorMes, v => v.Mes, c => c.Mes, (v, c) => new { Mes = v.Mes, Utilidad = Convert.ToDecimal(v.SumaTotal) - c.SumaTotal })
+                .Join(sumaComprasPorMes, v => v.Mes, c => c.Mes, (v, c) => new { v.Mes, Utilidad = Convert.ToDouble(v.SumaTotal) - c.SumaTotal })
                 .ToList();
 
             return Ok(new
@@ -124,7 +124,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Administrador
                         Proveedor = c.Compra.Proveedor.Nombre,
                         Material = material.Nombre,
                         Cantidad = c.DetCompra.Cantidad,
-                        Total = c.DetCompra.Precio
+                        Total = (decimal)c.DetCompra.Precio
                     }
                 )
                 .Where(c => c.Fecha >= fechaInicioDateTime && c.Fecha <= fechaFinDateTime)

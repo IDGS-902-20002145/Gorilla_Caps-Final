@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gorrilla_Caps_Backend.Controllers.Cliente
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PedidosController : Controller
@@ -24,8 +24,8 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
                 var detPedido = await _context.DetPedido.
                     Include(p => p.Pedido).
                     Include(p => p.Producto).
-                    Where(p => p.Pedido.UserId == id && p.Pedido.Estatus).
-                    ToListAsync();
+                    Where(p => p.Pedido.UserId == id && p.Pedido.Estatus == 1)
+                    .ToListAsync();
 
                 return Ok(detPedido);
             }
@@ -85,7 +85,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
                 {
                     return NotFound();
                 }
-                pedido.Estatus = false;
+                pedido.Estatus = 0;
                 _context.Entry(pedido).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 return Ok();
@@ -106,7 +106,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
                 var pedido = _context.Pedido
                     .Include(p => p.DetPedido)
                         .ThenInclude(d => d.Producto)
-                    .Where(p => p.Id == id && p.Estatus == true)
+                    .Where(p => p.Id == id && p.Estatus == 1)
                     .ToList();
 
                 if (pedido.Count == 0)
@@ -116,7 +116,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
 
                 // Mapea los datos necesarios para la respuesta
                 var detallesProductos = new List<Dictionary<string, object>>();
-                decimal total = 0;
+                double total = 0;
 
                 foreach (var p in pedido)
                 {
@@ -165,7 +165,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
             public int Id { get; set; }
             public int UserId { get; set; }
             public DateTime Fecha { get; set; }
-            public bool Estatus { get; set; }
+            public int Estatus { get; set; }
             public int Cantidad { get; set; }
             public Producto Producto { get; set; }
         }

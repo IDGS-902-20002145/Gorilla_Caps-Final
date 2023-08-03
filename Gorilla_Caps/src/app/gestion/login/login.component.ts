@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { local } from 'd3-selection';
 import { AuthService } from 'src/app/auth.service';
 import { GorillaApiService } from 'src/app/gorilla-api.service';
-import { UserInterface } from 'src/app/interfaces/user.interface';
+import { MenuComponent } from 'src/app/menu/menu.component';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
 
 @Component({
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               public user:GorillaApiService,
               private router:Router,
-              private aService: AuthService) { }
+              private aService: AuthService,
+              private menu: MenuComponent) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -33,8 +35,15 @@ export class LoginComponent implements OnInit {
         if(response.user){
         this.aService.setToken(response.token);
         this.aService.setID(response.user.id);
-        this.mostrarSweetAlert('Bienvenido', 'Has iniciado sesión correctamente', 'success');
-        this.router.navigate(['/Proveedor']);
+        localStorage.setItem('admin', response.user.admin);
+        localStorage.setItem('empleado', response.user.empleado);
+        
+        this.router.navigate(['/Catalogo']);
+        
+        setTimeout(() => {
+          this.menu.reloadData();
+        }, 2000);
+        this.mostrarSweetAlert('Bienvenido', '', 'success');
         }else{
           this.mostrarSweetAlert('Error', 'Usuario o contraseña incorrectos', 'error');
         }
@@ -53,8 +62,9 @@ export class LoginComponent implements OnInit {
     Swal.fire({
       title,
       text,
+      html: '<i class="fas fa-spinner fa-spin"></i> Iniciando sesión...',
       icon,
-      confirmButtonText: 'Ok'
+      showConfirmButton: false,
     });
   }
 }

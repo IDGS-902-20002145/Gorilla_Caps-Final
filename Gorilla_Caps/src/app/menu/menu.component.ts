@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GorillaApiService } from '../gorilla-api.service';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
+import { local } from 'd3-selection';
 
 @Component({
   selector: 'app-menu',
@@ -14,13 +15,18 @@ export class MenuComponent implements OnInit {
   empleado: boolean = false;
   admin: boolean = false;
   id: number = Number(localStorage.getItem('id'));
-
-  constructor(public router: Router, public gas: GorillaApiService) { }
+  
+  constructor(public router: Router, public gas: GorillaApiService) {
+   }
 
   ngOnInit(): void {
     this.verificarToken();
     this.obtenerUsuario();
   }
+
+  reloadData() {
+    window.location.reload();
+    }
 
   verificarToken(): void {
     if (localStorage.getItem('token')) {
@@ -31,8 +37,10 @@ export class MenuComponent implements OnInit {
   cerrarSesion() {
     localStorage.removeItem('token');
     localStorage.removeItem('id');
-    this.mostrarSweetAlert('Sesión cerrada', 'Has cerrado sesión correctamente', 'success');
+    localStorage.removeItem('admin');
+    localStorage.removeItem('empleado');
     this.router.navigate(['Catalogo']);
+    this.showLogoutAlert();
   }
 
   obtenerUsuario(): void {
@@ -48,13 +56,42 @@ export class MenuComponent implements OnInit {
       );
     }
   }
-
-  mostrarSweetAlert(title: string, text: string, icon: SweetAlertIcon): void {
+  
+// Función para mostrar la alerta de logout con animación
+  showLogoutAlert():void {
     Swal.fire({
-      title,
-      text,
-      icon,
-      confirmButtonText: 'Ok'
+      title: 'Cerrar sesión',
+      text: '¿Estás seguro de que deseas cerrar sesión?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, cerrar sesión',
+      cancelButtonText: 'Cancelar',
+      showLoaderOnConfirm: true,
+      preConfirm: () => {
+        return new Promise<void>((resolve) => {        
+          setTimeout(() => {
+            resolve();
+          }, 500); 
+        });
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: 'Sesión cerrada',
+          text: '¡Hasta pronto!',
+          html: '<i class="fas fa-check-circle"></i>',
+          timer: 1500,
+          showConfirmButton: false,
+          timerProgressBar: true,
+        }).finally(() => {
+          this.reloadData();
+        });
+        
+      }
     });
   }
+
+
+
+
 }

@@ -16,7 +16,7 @@ namespace Gorrilla_Caps_Backend.Models
         public int MaterialId { get; set; }
 
         public int Cantidad { get; set; }
-        public decimal Precio { get; set; }
+        public double Precio { get; set; }
 
         [JsonIgnore] // Ignora la propiedad Compra al serializar
         public Compra Compra { get; set; }

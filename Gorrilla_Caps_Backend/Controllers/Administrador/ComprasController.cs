@@ -59,7 +59,7 @@ namespace Gorrilla_Caps_Backend.Controllers
                         CompraId = compra.Id,
                         MaterialId = detalle.MaterialId,
                         Cantidad = detalle.Cantidad,
-                        Precio = Convert.ToDecimal(precioCalculado)
+                        Precio = (double)precioCalculado
                     };
                     _context.DetCompra.Add(detCompra);
                 }

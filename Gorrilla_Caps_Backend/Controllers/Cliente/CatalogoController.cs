@@ -28,7 +28,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Administrador
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Error al obtener los productos: " + ex.Message);
+                return StatusCode(500, "Error al obtener los productos: " + ex);
             }
         }
 
