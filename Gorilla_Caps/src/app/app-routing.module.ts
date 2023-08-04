@@ -29,6 +29,8 @@ import { FinanzasComponent } from './gestion/administrador/finanzas/finanzas.com
 import { DetalleVentaComponent } from './gestion/administrador/ventas-a/detalle-venta/detalle-venta.component';
 import { PagarComponent } from './gestion/cliente/pedidos/pagar/pagar.component';
 import { PTarjetaComponent } from './gestion/cliente/pedidos/p-tarjeta/p-tarjeta.component';
+import { PAllComponent } from './gestion/cliente/pedidos/p-all/p-all.component';
+import { TAllComponent } from './gestion/cliente/pedidos/t-all/t-all.component';
 
 
 
@@ -37,7 +39,9 @@ const routes: Routes = [
   { path: 'detalle-venta/:idVenta/:estatus', component: DetalleVentaComponent },
   { path: 'Pagar/:id', component: PagarComponent },
   { path: 'PagarAE/:id', component: PagarComponent },
-  { path: 'PagarAT/:id', component: PTarjetaComponent },
+  { path: 'PagarTodo/:idUsuario', component: PAllComponent },
+  { path: 'PagarTodoP/:idUsuario', component: PAllComponent },
+  { path: 'PagarTTarjeta', component: TAllComponent },
   {
     path: '',
     children: [

@@ -41,8 +41,8 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/PedidosGet" routerLinkActive="active" id="al" title="Pedidos">
-                <i class="fa-solid fa-basket-shopping fa-lg"></i> Ver Pedidos
+              <a class="nav-link" routerLink="/Aprovacion" routerLinkActive="active" id="al" title="Pedidos">
+                <i class="fa-solid fa-basket-shopping fa-lg"></i> Aprovar Envios
               </a>
             </li>
             <li class="nav-item">
@@ -77,6 +77,11 @@
             </li>
 
             <li class="nav-item">
+              <a class="nav-link" routerLink="/MisCompras" routerLinkActive="active" id="al" title="Mis Compras">
+                Mis Compras
+              </a>
+
+            <li class="nav-item">
               <a class="nav-link" (click)="cerrarSesion()" id="al3" style="color: darkgoldenrod;">Cerrar Sesión</a>
             </li>
           </ng-container>
@@ -100,6 +105,7 @@
 </nav>
 
 <div class="container-fluid text-center">
+  <br>
   <router-outlet></router-outlet>
 </div>
 

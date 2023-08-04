@@ -25,10 +25,10 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
             public Dictionary<DateTime, Dictionary<string, MisComprasProductoDto>> Productos { get; set; }
         }
 
-        [HttpGet]
-        public ActionResult GetMisCompras()
+        [HttpGet("MisCompras/{idUsuario}")]
+        public ActionResult GetMisCompras(int idUsuario)
         {
-            int currentUserId = GetCurrentUserId();
+            int currentUserId = idUsuario;
 
             List<Venta> ventasPorAprobar = _context.Venta
                 .Where(v => v.UserId == currentUserId && v.Estatus == false)
@@ -153,12 +153,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
             return Ok(new { VentasPA = ventasPA, VentasA = ventasA });
         }
 
-        private int GetCurrentUserId()
-        {
-            // Implementa el método para obtener el ID del usuario actual
-            // Puedes usar el HttpContext.User o cualquier otra forma de autenticación
-            return 1; // Ejemplo: retorna un ID de usuario fijo
-        }
+      
     }
 
     public class MisComprasProductoDto

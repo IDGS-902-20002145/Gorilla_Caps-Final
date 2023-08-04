@@ -182,8 +182,8 @@ export class GorillaApiService {
   }
 
    //Compras segun cada cliente
-   public getMisCompras(): Observable<VentaInterface[]> {
-    return this.http.get<VentaInterface[]>('/api/VentasC')
+   public getMisCompras(id: number): Observable<VentaInterface[]> {
+    return this.http.get<VentaInterface[]>(`/api/VentasC/MisCompras/${id}`)
   }
 
   //Aprovacion de envio de las ventas Administrador
@@ -218,10 +218,16 @@ export class GorillaApiService {
     return this.http.put<any>(`/api/Pedidos/PagarAE/${id}`, null, { headers });
   }
 
-  public pagarTarjeta(id: number): Observable<any> {
+  public getpagarTodo(id: number): Observable<any> {
     const token = this.aService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post<any>(`/api/Pedidos/PagarTA/${id}`, null, { headers });
+    return this.http.get<any>(`/api/Pedidos/PagarTodo/${id}`, { headers });
+  }
+
+  public postpagarTodo(id: number): Observable<any> {
+    const token = this.aService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post<any>(`/api/Pedidos/PagarTodoP/${id}`, null, { headers });
   }
 
 

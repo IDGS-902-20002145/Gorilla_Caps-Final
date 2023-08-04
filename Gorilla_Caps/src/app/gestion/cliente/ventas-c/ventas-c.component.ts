@@ -11,6 +11,7 @@ export class VentasCComponent implements OnInit {
   ventasAprobadas: any[] = [];
   mostrarPendientes: boolean = true;
   mostrarEnCamino: boolean = false;
+  idUsuario: number = 0;
     // Función para obtener las claves de un objeto
     getObjectKeys(obj: any): string[] {
       return obj ? Object.keys(obj) : [];
@@ -19,13 +20,15 @@ export class VentasCComponent implements OnInit {
   constructor(private ventasService: GorillaApiService) { }
 
   ngOnInit(): void {
+    this.idUsuario = Number(localStorage.getItem('id'));
+    console.log(this.idUsuario);
     this.getCompras();
   }
 
   getCompras() {
-    this.ventasService.getMisCompras().subscribe(
+    this.ventasService.getMisCompras(this.idUsuario).subscribe(
       (response: any) => {
-        console.log(response); // Verificar la respuesta en la consola
+        console.log(response);
         console.log(response.ventasPA);
         console.log(response.ventasA);
         if (response) {

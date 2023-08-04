@@ -18,6 +18,7 @@ export class MenuComponent implements OnInit {
   constructor(public router: Router, public gas: GorillaApiService) { }
 
   ngOnInit(): void {
+
     this.verificarToken();
     this.obtenerUsuario();
   }

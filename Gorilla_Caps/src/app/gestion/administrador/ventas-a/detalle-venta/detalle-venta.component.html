@@ -42,15 +42,15 @@
       <div class="row mt-3">
         <div class="col-md-12 d-flex justify-content-center">
           <!-- Formulario para confirmar el envío -->
-          <form (ngSubmit)="confirmarEnvio()" #ventaForm="ngForm">
+          <form>
             <input type="number" name="idDetVent" [(ngModel)]="idVenta" hidden>
             <!-- El botón y el formulario se mostrarán solo si estatus es falso -->
-            <button type="submit" class="btn btn-primary btn-enviar" [style.display]="estatus == 'false' ? 'block' : 'none'">
+            <button type="submit" class="btn btn-primary btn-enviar" [style.display]="!estatus ? 'block' : 'none'" (click)="confirmarEnvio()">
               <i class="fas fa-paper-plane" style="color: #ffffff;"></i> Confirmar envío
             </button>
           </form>
           <!-- El mensaje se mostrará solo si estatus es verdadero -->
-          <p id="ventaEnviada" [style.display]="estatus == 'true' ? 'block' : 'none'">La venta ya ha sido enviada.</p>
+          <p id="ventaEnviada" [style.display]="estatus ? 'block' : 'none'">La venta ya ha sido enviada.</p>
         </div>
       </div>
 

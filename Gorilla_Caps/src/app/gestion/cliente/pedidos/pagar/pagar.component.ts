@@ -109,7 +109,7 @@ export class PagarComponent {
                 },
               },
               {
-                text: `Total de ventas: ${total}}`,
+                text: `Total de ventas: ${total}`,
                 style: 'negrita'
               }
             ],

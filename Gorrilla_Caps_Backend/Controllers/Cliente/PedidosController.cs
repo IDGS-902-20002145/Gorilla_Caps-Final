@@ -276,15 +276,13 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
             }
         }
 
-        [HttpGet("pagar_todo")]
-        public async Task<IActionResult> PagarTodo()
+        [HttpGet("PagarTodo/{idUsuario}")]
+        public async Task<IActionResult> PagarTodo(int idUsuario)
         {
             try
             {
-                var currentUserId = Convert.ToInt32(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
-
                 var pedidosDisponibles = await _context.Pedido
-                    .Where(p => p.UserId == currentUserId && p.Estatus == 1)
+                    .Where(p => p.UserId == idUsuario && p.Estatus == 1)
                     .Include(p => p.DetPedido)
                     .ThenInclude(d => d.Producto)
                     .ToListAsync();
@@ -342,6 +340,59 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
             }
         }
 
+
+        [HttpPost("PagarTodoP/{idUsuario}")]
+        public async Task<IActionResult> PagarTodoPost(int idUsuario)
+        {
+            try
+            {
+                var pedidosDisponibles = await _context.Pedido
+                 .Where(p => p.UserId == idUsuario && p.Estatus == 1)
+                 .Include(p => p.DetPedido)
+                 .ThenInclude(d => d.Producto)
+                 .ToListAsync();
+
+                foreach (var pedido in pedidosDisponibles)
+                    {
+                        pedido.Estatus = 2;
+                    }
+
+                    var venta = new Venta
+                    {
+                        UserId = idUsuario,
+                        Fecha = DateTime.Now.Date
+                    };
+                    _context.Venta.Add(venta);
+                    _context.SaveChanges();
+
+                var detPedidos = _context.DetPedido
+                        .Where(d => pedidosDisponibles.Select(p => p.Id).Contains(d.PedidoId))
+                        .ToList();
+
+                    foreach (var detallePedido in detPedidos)
+                    {
+                        var producto = detallePedido.Producto;
+                        producto.stock_existencia -= detallePedido.Cantidad;
+                        var detVenta = new DetVenta
+                        {
+                            VentaId = venta.Id,
+                            ProductoId = producto.Id,
+                            Cantidad = detallePedido.Cantidad,
+                            Precio = producto.Precio
+                        };
+                        _context.DetVenta.Add(detVenta);
+                    }
+
+                    _context.SaveChanges();
+
+                    return Ok();
+              
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
 
 
 
