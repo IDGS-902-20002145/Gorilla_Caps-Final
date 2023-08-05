@@ -28,6 +28,7 @@ import { VentasAComponent } from './gestion/administrador/ventas-a/ventas-a.comp
 import { FinanzasComponent } from './gestion/administrador/finanzas/finanzas.component';
 import { DetalleVentaComponent } from './gestion/administrador/ventas-a/detalle-venta/detalle-venta.component';
 import { PagarComponent } from './gestion/cliente/pedidos/pagar/pagar.component';
+import { DashboardComponent } from './gestion/administrador/dashboard/dashboard.component';
 
 
 
@@ -65,6 +66,7 @@ const routes: Routes = [
       { path: 'Aprovacion', component: VentasAComponent },
       { path: 'ConfirmarEnvio/:id', component: VentasAComponent },
       { path: 'Finanzas', component: FinanzasComponent },
+      {path: 'dashboard', component: DashboardComponent},
       { path: '**', redirectTo: '/Login', pathMatch: 'full' }
     ]
   }

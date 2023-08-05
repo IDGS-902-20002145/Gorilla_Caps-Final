@@ -89,6 +89,7 @@ import { TAllComponent } from './gestion/cliente/pedidos/t-all/t-all.component';
     PTarjetaComponent,
     PAllComponent,
     TAllComponent,
+    
   ],
   imports: [
     BrowserModule,
