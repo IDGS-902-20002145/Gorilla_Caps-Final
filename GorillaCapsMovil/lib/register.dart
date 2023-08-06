@@ -138,7 +138,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         final fecha = DateFormat('yyyy-MM-dd').format(DateTime(annio, mes, dia).toLocal());
 
                         final response = await widget.client.post(
-                          Uri.parse('https://192.168.153.193:5000/api/Login/Registrar'),
+                          Uri.parse('https://192.168.1.4:5000/api/Login/Registrar'),
                           headers: <String, String>{
                             'Content-Type': 'application/json; charset=UTF-8',
                           },

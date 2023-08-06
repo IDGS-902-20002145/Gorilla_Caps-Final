@@ -63,7 +63,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final url = Uri.parse("https://192.168.153.193:5000/api/Catalogo");
+  final url = Uri.parse("https://192.168.1.4:5000/api/Catalogo");
   late Future<List<Producto>> productos;
 
   @override

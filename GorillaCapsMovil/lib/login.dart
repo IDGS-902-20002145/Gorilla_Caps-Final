@@ -96,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     try {
                       // Hacemos la petición post a la api
                       final response = await widget.client.post(
-                        Uri.parse('https://192.168.153.193:5000/api/Login/authenticate'),
+                        Uri.parse('https://192.168.1.4:5000/api/Login/authenticate'),
                         headers: <String, String>{
                           'Content-Type': 'application/json; charset=UTF-8',
                         },
