@@ -34,11 +34,7 @@ export class CatalogoComponent {
   constructor(private productService: GorillaApiService, private elRef: ElementRef, public router:Router) { }
 
   ngOnInit() {
-    if (!localStorage.getItem('token')) {
-      this.router.navigate(['/Login']);
-    }else{
     this.loadProducts();
-  }
   }
 
   loadProducts() {
@@ -60,7 +56,8 @@ export class CatalogoComponent {
     return './assets/default.jpg';
   }
   agregarC(id: any) {
-    let idUsuario = Number(localStorage.getItem('id'));
+    if(localStorage.getItem('id') != null){
+      let idUsuario = Number(localStorage.getItem('id'));
 
     this.productService.findProducto(id).subscribe(
       (data) => {
@@ -92,6 +89,11 @@ export class CatalogoComponent {
         console.error(error);
       }
     );
+    }else{
+      this.mostrarSweetAlert('Error', 'Inicia sesión para agregar productos al carrito', 'error');
+      this.router.navigate(['/Login']);
+    }
+
   }
 
 

@@ -14,7 +14,7 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "api/Finanzas",
-      "applicationUrl": "https://localhost:5000",
+      "applicationUrl": "https://192.168.1.4:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

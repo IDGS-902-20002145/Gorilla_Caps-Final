@@ -77,6 +77,7 @@ export class ProductoDetalleComponent {
   }
 
   agregarC(id: any) {
+    if (localStorage.getItem('id') != null) {
     let idUsuario = Number(localStorage.getItem('id'));
 
     this.prod.findProducto(id).subscribe(
@@ -109,6 +110,10 @@ export class ProductoDetalleComponent {
         console.error(error);
       }
     );
+  }else{
+    this.mostrarSweetAlert('Inicia sesión', 'Debes iniciar sesión para poder agregar productos al carrito', 'error');
+    this.router.navigate(['/Login']);
+  }
   }
 
   productosRF():void {

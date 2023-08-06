@@ -31,6 +31,8 @@ import { PagarComponent } from './gestion/cliente/pedidos/pagar/pagar.component'
 import { PTarjetaComponent } from './gestion/cliente/pedidos/p-tarjeta/p-tarjeta.component';
 import { PAllComponent } from './gestion/cliente/pedidos/p-all/p-all.component';
 import { TAllComponent } from './gestion/cliente/pedidos/t-all/t-all.component';
+import { AuthGuardAdmin } from './authAdmin.guart';
+import { AuthGuardEmp } from './authEmpleado.guart';
 
 
 
@@ -46,32 +48,32 @@ const routes: Routes = [
     path: '',
     children: [
       { path: 'Menu', component: MenuComponent },
-      { path: 'Proveedor', component: ProveedorComponent },
-      { path: 'Usuarios', component: UsuariosComponent },
-      { path: 'AgregarUsuarios', component: AgregarUsuariosComponent },
-      { path: 'ModificarUsuarios/:id', component: ModificarUsuariosComponent },
-      { path: 'EliminarUsuarios/:id', component: EliminarUsuariosComponent },
+      { path: 'Proveedor', component: ProveedorComponent , canActivate: [AuthGuardAdmin]},
+      { path: 'Usuarios', component: UsuariosComponent , canActivate: [AuthGuardAdmin]},
+      { path: 'AgregarUsuarios', component: AgregarUsuariosComponent , canActivate: [AuthGuardAdmin]},
+      { path: 'ModificarUsuarios/:id', component: ModificarUsuariosComponent , canActivate: [AuthGuardAdmin]},
+      { path: 'EliminarUsuarios/:id', component: EliminarUsuariosComponent , canActivate: [AuthGuardAdmin]},
       { path: 'Login', component: LoginComponent },
       { path: 'Registro', component: RegistroComponent },
-      { path: 'MateriasPrimas', component: InventarioComponent },
-      { path: 'agregarMP', component: AgregarMPComponent },
-      { path: 'editarMP/:id', component: EditarMPComponent },
-      { path: 'eliminarMP/:id', component: EliminarMPComponent },
-      { path: 'ComprasGet', component: ComprasGETComponent },
-      { path: 'ConfirmarCompra/:id', component: ConfirmarComprasComponent },
-      { path: 'registro-compras/:materialId', component: RegistroComprasComponent },
-      { path: 'productosGet', component: ProductosGetComponent },
-      { path: 'agregarProductos', component: AgregarProductosComponent },
-      { path: 'agregarStock/:id', component: AgregarStockComponent },
-      { path: 'eliminarProducto/:id', component: EliminarProductosComponent },
-      { path: 'editarProducto/:id', component: ModificarProductosComponent },
+      { path: 'MateriasPrimas', component: InventarioComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'agregarMP', component: AgregarMPComponent , canActivate: [AuthGuardAdmin]},
+      { path: 'editarMP/:id', component: EditarMPComponent , canActivate: [AuthGuardAdmin]},
+      { path: 'eliminarMP/:id', component: EliminarMPComponent , canActivate: [AuthGuardAdmin]},
+      { path: 'ComprasGet', component: ComprasGETComponent , canActivate: [AuthGuardEmp]},
+      { path: 'ConfirmarCompra/:id', component: ConfirmarComprasComponent , canActivate: [AuthGuardEmp]},
+      { path: 'registro-compras/:materialId', component: RegistroComprasComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'productosGet', component: ProductosGetComponent , canActivate: [AuthGuardEmp]},
+      { path: 'agregarProductos', component: AgregarProductosComponent , canActivate: [AuthGuardEmp]},
+      { path: 'agregarStock/:id', component: AgregarStockComponent , canActivate: [AuthGuardEmp]},
+      { path: 'eliminarProducto/:id', component: EliminarProductosComponent, canActivate: [AuthGuardEmp] },
+      { path: 'editarProducto/:id', component: ModificarProductosComponent , canActivate: [AuthGuardEmp]},
       { path: 'Catalogo', component: CatalogoComponent },
       { path: 'Pedidos/:id', component: PedidosComponent },
       { path: 'Catalogo/ProductoDetalle/:id', component: ProductoDetalleComponent },
       { path: 'MisCompras', component: VentasCComponent },
-      { path: 'Aprovacion', component: VentasAComponent },
-      { path: 'ConfirmarEnvio/:id', component: VentasAComponent },
-      { path: 'Finanzas', component: FinanzasComponent },
+      { path: 'Aprovacion', component: VentasAComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'ConfirmarEnvio/:id', component: VentasAComponent, canActivate: [AuthGuardAdmin]},
+      { path: 'Finanzas', component: FinanzasComponent , canActivate: [AuthGuardAdmin]},
       { path: '**', redirectTo: '/Login', pathMatch: 'full' }
     ]
   }
