@@ -281,3 +281,71 @@ input.form-control {
   height: 30px;
   font-size: large;
 }
+
+/* Estilos para el div que contiene el carrito flotante */
+.carritoFlotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999; /* Ajusta el valor del z-index según sea necesario */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  
+}
+
+/* Estilos para el botón "Abrir/Cerrar Carrito" dentro del div flotante */
+.carritoFlotante button {
+  margin-bottom: 5px;
+  width: 50px;
+  height: 50px;
+}
+
+/* Estilos para el carrito flotante (app-carrito-temporal) */
+.floating-cart {
+  /* Ajusta los estilos de app-carrito-temporal según tus necesidades */
+  /* Por ejemplo, podrías ajustar el ancho, altura, colores, etc. */
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+.tr{
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+  width: 100%;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilos para el label "Tienes productos en tu carrito" */
+.carritoFlotante label {
+  animation: fadeInOut 2s ease-in-out infinite;
+  opacity: 1; /* Asegura que el label sea inicialmente visible */
+  color: black; /* Color inicial del texto (puedes ajustar el color según tu diseño) */
+}
+
+/* Definición de la animación */
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 1; /* El label es completamente visible al inicio y al final */
+    color: black; /* Color dorado (o el color que desees) al inicio y al final */
+  }
+  50%, 95% {
+    opacity: 0.65; /* El label se oculta a la mitad y desaparece gradualmente hasta el final */
+    color: green; /* Color dorado (o el color que desees) a la mitad y antes de desaparecer */
+  }
+}
+
+.cartAn:active {
+  transform: scale(1.1);
+  background-color: #007bff;
+}
+

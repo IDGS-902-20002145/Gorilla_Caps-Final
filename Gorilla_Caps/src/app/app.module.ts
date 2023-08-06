@@ -50,6 +50,8 @@ import { PagarComponent } from './gestion/cliente/pedidos/pagar/pagar.component'
 import { PTarjetaComponent } from './gestion/cliente/pedidos/p-tarjeta/p-tarjeta.component';
 import { PAllComponent } from './gestion/cliente/pedidos/p-all/p-all.component';
 import { TAllComponent } from './gestion/cliente/pedidos/t-all/t-all.component';
+import { CarritoTemporalComponent } from './gestion/catalogo/carrito-temporal/carrito-temporal.component';
+import { CarritoService } from './carrito.service';
 
 
 @NgModule({
@@ -89,6 +91,7 @@ import { TAllComponent } from './gestion/cliente/pedidos/t-all/t-all.component';
     PTarjetaComponent,
     PAllComponent,
     TAllComponent,
+    CarritoTemporalComponent,
   ],
   imports: [
     BrowserModule,
@@ -107,7 +110,8 @@ import { TAllComponent } from './gestion/cliente/pedidos/t-all/t-all.component';
     CommonModule,
     NgxChartsModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService,
+              CarritoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,45 @@
+<div class="cart-container">
+    <h2>Carrito de compras</h2>
+  
+    <div *ngIf="cartItems.length === 0" class="empty-cart-message">
+      <p>No hay productos en el carrito.</p>
+    </div>
+  
+    <div *ngIf="cartItems.length > 0">
+      <table class="cart-items">
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Color</th>
+          <th>Modelo</th>
+          <th>Unidades</th>
+          <th>Agregar</th>
+          <th></th> <!-- Espacio para el botón Eliminar -->
+        </tr>
+        <tr *ngFor="let prod of cartItems; let i = index">
+          <td>{{ prod.nombre }}</td>
+          <td>{{ prod.precio | currency }}</td>
+          <td>{{ prod.color }}</td>
+          <td>{{ prod.modelo }}</td>
+          <td>{{ cantidades[i] }}</td>
+          <td>         
+            
+              <button  class="btn btn-sm btn-info" (click)="decremento(i)">
+                <i class="fa fa-chevron-down"></i>
+              </button>
+              <button class="btn btn-sm btn-info" (click)="incremento(i, prod.stock_existencia)">
+                <i class="fa fa-chevron-up"></i></button>
+          </td>
+          <td>
+            <button (click)="elimProducto(i)" class="btn btn-sm btn-danger">Eliminar</button>
+          </td>
+        </tr>
+      </table>
+  
+      <div class="cart-summary">
+        <p><b>Productos en el carrito: </b>{{ cartItems.length }}</p>
+        <button class="btn btn-sm btn-primary" (click)="irAPedidos()">Confirmar pedido</button>
+      </div>
+    </div>
+  </div>
+  

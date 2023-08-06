@@ -64,6 +64,7 @@ namespace Gorrilla_Caps_Backend.Controllers
         [HttpPost("Registrar")]
         public IActionResult Post([FromBody] User user)
         {
+            Debug.WriteLine(user.ToString());
             try
             {
                 user.SetPassword(user.Password); // Almacena la contraseña como hash

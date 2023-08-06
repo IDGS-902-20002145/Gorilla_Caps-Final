@@ -4,6 +4,7 @@ import { ProductoInterface } from '../../interfaces/producto.interface';
 import { FullPedidoInterface } from '../../interfaces/fullPedido.interface';
 import Swal, { SweetAlertIcon } from 'sweetalert2';
 import { Router } from '@angular/router';
+import { CarritoService } from 'src/app/carrito.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -18,6 +19,7 @@ export class CatalogoComponent {
   listFilter:string='';
   products: ProductoInterface[] = [];
   fullPedido?: FullPedidoInterface;
+  productosEnCarrito:boolean = false;
 
   prod: ProductoInterface = {
     id: 0 ,
@@ -31,10 +33,18 @@ export class CatalogoComponent {
     estatus: true,
     explotacion_material: []
   };
-  constructor(private productService: GorillaApiService, private elRef: ElementRef, public router:Router) { }
+  constructor(private productService: GorillaApiService, private elRef: ElementRef,
+     public router:Router, public carritoS: CarritoService) { }
 
   ngOnInit() {
     this.loadProducts();
+    if(this.carritoS.obtenerCarritoTemporal().length > 0){
+      this.productosEnCarrito = true;
+      //Establecemos un timeout y volemos a poner productosEnCarrito en false para que no se muestre el mensaje
+      setTimeout(() => {
+        this.productosEnCarrito = false;
+      }, 4000);
+    }
   }
 
   loadProducts() {
@@ -96,6 +106,42 @@ export class CatalogoComponent {
     
   }
 
+  agregarCTemporal(id: any, cantidad: any) {
+    if(localStorage.getItem('id') != null){
+      let idUsuario = Number(localStorage.getItem('id'));
+
+    this.productService.findProducto(id).subscribe(
+      (data) => {
+        this.prod = data;
+        console.log(this.prod);
+        this.fullPedido = {
+          id: 0,
+          UserId: idUsuario,
+          fecha: new Date(),
+          cantidad: cantidad,
+          estatus: 1,
+          producto: this.prod
+        };
+
+        console.log(this.fullPedido);
+
+        this.productService.agregarCarrito(id, this.fullPedido).subscribe(
+          (data) => {
+            console.log(data);
+          },
+          (error) => {
+            console.error(error);
+          }
+        );
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+    }
+    
+  }
+
 
     mostrarSweetAlert(title: string, text: string, icon: SweetAlertIcon): void {
       Swal.fire({
@@ -117,4 +163,26 @@ export class CatalogoComponent {
       clearInterval(this.scrollInterval);
       this.container.scrollLeft = 0;
     }
+
+    isCartOpen: boolean = false;
+
+    toggleCart() {
+      this.isCartOpen = !this.isCartOpen;
+    }
+
+    agregarCarritoTemporal(id: any) {
+      //Primero obtenemos el producto
+      let prodTemp: ProductoInterface;
+      this.productService.findProducto(id).subscribe(
+        (data) => {
+          prodTemp = data;
+          this.carritoS.agregarProductoAlCarrito(prodTemp);
+          this.carritoS.obtenerCarritoTemporal();
+        },
+        (error) => {
+          this.mostrarSweetAlert('Error', 'No se pudo agregar el producto al carrito', 'error');
+        });
+
+      }
+
 }
