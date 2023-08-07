@@ -29,7 +29,7 @@ app.layout = html.Div(children=[
         date='2023-12-31'
     ),
 
-    html.H2('Ventas por Producto'),
+    html.H2('Compras por Proveedor'),
     dcc.Graph(id='ventas-por-producto-graph'),
 
     # Agregar más gráficas para las otras métricas del data warehouse...
@@ -51,7 +51,7 @@ def update_graphs(fecha_inicio, fecha_fin):
             {'x': compras_mes_actual_df['proveedor'], 'y': compras_mes_actual_df['cantidad'], 'type': 'bar', 'name': 'Ventas'}
         ],
         'layout': {
-            'title': 'Ventas por Producto'
+            'title': 'Compras por Proveedor'
         }
     }
 
