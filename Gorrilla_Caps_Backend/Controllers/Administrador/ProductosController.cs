@@ -23,7 +23,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Administrador
         {
             _context = context;
         }
-        [Authorize(Policy = "Empleado")]
+        [Authorize]
         [HttpPost]
         public IActionResult AgregarProducto([FromBody] Producto producto)
         {
@@ -275,41 +275,41 @@ namespace Gorrilla_Caps_Backend.Controllers.Administrador
             }
         }
 
-        //[HttpGet("mostrar-productos")]
-        //public IActionResult MostrarProductos()
-        //{
-        //    try
-        //    {
-        //        // Obtener todos los productos activos (Estatus = 1) de la base de datos
-        //        var productos = _context.Producto.Where(p => p.Estatus == true).ToList();
+        [HttpGet("mostrar-productos")]
+        public IActionResult MostrarProductos()
+        {
+            try
+            {
+                // Obtener todos los productos activos (Estatus = 1) de la base de datos
+                var productos = _context.Producto.Where(p => p.Estatus == true).ToList();
 
-        //        return Ok(productos);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(500, "Error al obtener los productos: " + ex.Message);
-        //    }
-        //}
-        ////metodo para obtener los productos por id
-        //[HttpGet("{id}")]
-        //public IActionResult ObtenerProducto(int id)
-        //{
-        //    try
-        //    {
-        //        // Buscar el producto por su ID en la base de datos
-        //        var producto = _context.Producto.Find(id);
-        //        if (producto == null)
-        //        {
-        //            return NotFound("No se encontró el producto.");
-        //        }
+                return Ok(productos);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error al obtener los productos: " + ex.Message);
+            }
+        }
+        //metodo para obtener los productos por id
+        [HttpGet("{id}")]
+        public IActionResult ObtenerProducto(int id)
+        {
+            try
+            {
+                // Buscar el producto por su ID en la base de datos
+                var producto = _context.Producto.Find(id);
+                if (producto == null)
+                {
+                    return NotFound("No se encontró el producto.");
+                }
 
-        //        return Ok(producto);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(500, "Error al obtener el producto: " + ex.Message);
-        //    }
-        //}
+                return Ok(producto);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error al obtener el producto: " + ex.Message);
+            }
+        }
 
 
 
