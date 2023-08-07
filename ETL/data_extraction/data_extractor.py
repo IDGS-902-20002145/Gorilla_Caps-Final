@@ -4,7 +4,7 @@ import pyodbc
 
 def extract_data():
     # Configura la conexión al motor de base de datos SQL Server
-    connection_string = 'DRIVER={SQL Server};SERVER=DESKTOP-6K7EDGI\SQLEXPRESS;DATABASE=gorilla_caps3;'
+    connection_string = 'DRIVER={SQL Server};SERVER=SERGIOALBA\\SQLEXPRESS;DATABASE=gorilla_caps;Trusted_Connection=yes;'
     connection = pyodbc.connect(connection_string)
 
     # Consulta para obtener los datos de la tabla 'user'

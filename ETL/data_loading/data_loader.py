@@ -1,7 +1,9 @@
 # data_loader.py
 import os
 import pandas as pd
+import sqlalchemy 
 from sqlalchemy import create_engine
+
 
 def load_data():
     # Configurar la conexión al motor de base de datos SQL Server

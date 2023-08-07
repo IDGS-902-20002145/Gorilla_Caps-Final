@@ -50,6 +50,7 @@ import { PagarComponent } from './gestion/cliente/pedidos/pagar/pagar.component'
 import { PTarjetaComponent } from './gestion/cliente/pedidos/p-tarjeta/p-tarjeta.component';
 import { PAllComponent } from './gestion/cliente/pedidos/p-all/p-all.component';
 import { TAllComponent } from './gestion/cliente/pedidos/t-all/t-all.component';
+import { DashboardComponent } from './gestion/administrador/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -89,6 +90,7 @@ import { TAllComponent } from './gestion/cliente/pedidos/t-all/t-all.component';
     PTarjetaComponent,
     PAllComponent,
     TAllComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

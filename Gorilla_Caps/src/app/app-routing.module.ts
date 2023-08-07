@@ -33,6 +33,7 @@ import { PAllComponent } from './gestion/cliente/pedidos/p-all/p-all.component';
 import { TAllComponent } from './gestion/cliente/pedidos/t-all/t-all.component';
 import { AuthGuardAdmin } from './authAdmin.guart';
 import { AuthGuardEmp } from './authEmpleado.guart';
+import { DashboardComponent } from './gestion/administrador/dashboard/dashboard.component';
 
 
 
@@ -74,6 +75,7 @@ const routes: Routes = [
       { path: 'Aprovacion', component: VentasAComponent, canActivate: [AuthGuardAdmin] },
       { path: 'ConfirmarEnvio/:id', component: VentasAComponent, canActivate: [AuthGuardAdmin]},
       { path: 'Finanzas', component: FinanzasComponent , canActivate: [AuthGuardAdmin]},
+      {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardAdmin]},
       { path: '**', redirectTo: '/Login', pathMatch: 'full' }
     ]
   }
