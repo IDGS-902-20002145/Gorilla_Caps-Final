@@ -17,8 +17,15 @@ export class CarritoService {
   }
 
   agregarProductoAlCarrito(producto: ProductoInterface) {
+    if(this.carritoTemporal.find(p => p.id === producto.id)){
+      this.carritoTemporal.find(p => p.id === producto.id)!.cantidad!++;
+      this.actualizarLocalStorage();
+    }else{
+    producto.cantidad = 1;
     this.carritoTemporal.push(producto);
     this.actualizarLocalStorage();
+  }
+    
   }
   eliminarProductoDelCarrito(index: number) {
     if (index >= 0 && index < this.carritoTemporal.length) {

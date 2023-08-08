@@ -98,7 +98,7 @@ export class ProductoDetalleComponent {
         this.prod.agregarCarrito(id, this.fullPedido).subscribe(
           (data) => {
             console.log(data);
-            this.mostrarSweetAlert('Producto agregado', 'El producto se agregó al carrito', 'success');
+            this.mostrarSweetAlert('Producto agregado', 'El producto se agregó pedidos', 'success');
             this.router.navigate(['/Catalogo']);
           },
           (error) => {
@@ -111,7 +111,7 @@ export class ProductoDetalleComponent {
       }
     );
   }else{
-    this.mostrarSweetAlert('Inicia sesión', 'Debes iniciar sesión para poder agregar productos al carrito', 'error');
+    this.mostrarSweetAlert('Inicia sesión', 'Debes iniciar sesión para poder agregar productos a pedidos', 'error');
     this.router.navigate(['/Login']);
   }
   }

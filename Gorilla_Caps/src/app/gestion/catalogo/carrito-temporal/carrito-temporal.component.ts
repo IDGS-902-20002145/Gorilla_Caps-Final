@@ -21,25 +21,25 @@ export class CarritoTemporalComponent {
 
   ngOnInit(): void {
     this.cartItems = this.carritoS.obtenerCarritoTemporal();
-    this.cantidades = Array(this.cartItems.length).fill(1);
   }
 
   elimProducto(index: number) {
     this.carritoS.eliminarProductoDelCarrito(index);
     this.cartItems = this.carritoS.obtenerCarritoTemporal();
-    this.cantidades = Array(this.cartItems.length).fill(1);
+
   }
 
   incremento(index: any, maximo: any) {
-    if (this.cantidades[index] < maximo){
-    this.cantidades[index]++;
+    if (this.cartItems[index].cantidad!++ < maximo){
+    this.cartItems[index].cantidad!++;
     }
   }
   
   decremento(index: any) {
-    if (this.cantidades[index] > 1) {
-      this.cantidades[index]--;
+    if (this.cartItems[index].cantidad! > 1){
+    this.cartItems[index].cantidad!--;
     }
+    
   }
 
   mostrarSweetAlert(title: string, text: string, icon: SweetAlertIcon): void {
@@ -57,7 +57,7 @@ export class CarritoTemporalComponent {
       //Establecemos un timeout para que el sweet alert se muestre antes de redirigir
       setTimeout(() => {
         for (let i = 0; i < this.cartItems.length; i++) {
-          this.pedCatalogo.agregarCTemporal(this.cartItems[i].id, this.cantidades[i]);
+          this.pedCatalogo.agregarCTemporal(this.cartItems[i].id, this.cartItems[i].cantidad!);
         }
         this.carritoS.vaciarCarrito();
       }, 1500);

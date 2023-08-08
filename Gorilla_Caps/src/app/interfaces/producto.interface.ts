@@ -7,6 +7,7 @@ export interface ProductoInterface {
   color: string;
   modelo: string;
   precio: number;
+  cantidad?: number;
   imagen: string;
   stock_existencia: number;
   estatus: boolean;
