@@ -30,17 +30,28 @@ export class EditarMPComponent {
   }
 
   editar() {
-    this.gorillaApiService.modifyMateriasPrimas(this.ediMateriaPrima).subscribe(
-      () => {
-        console.log('Material editado exitosamente');
-        this.mostrarSweetAlert('¡Éxito!', 'Material editado exitosamente.', 'success');
-        this.router.navigate(['MateriasPrimas']);
-      },
-      (error) => {
-        this.mostrarSweetAlert('¡Error!', 'Error al editar el material.', 'error');
-        console.error('Error al editar el material:', error);
-      }
-    );
+    if (this.ediMateriaPrima.nombre.trim() === '' || this.ediMateriaPrima.descripcion.trim() === '' || this.ediMateriaPrima.stock_Minimo === 0) {
+      this.mostrarSweetAlert('¡Error!', 'Todos los campos son obligatorios.', 'error');
+      return;
+    }
+    else if (this.ediMateriaPrima.stock_Minimo<0){
+      this.mostrarSweetAlert('¡Error!', 'El stock mínimo no puede ser menor a 0.', 'error');
+      return;
+    }
+    else{
+      this.gorillaApiService.modifyMateriasPrimas(this.ediMateriaPrima).subscribe(
+        () => {
+          console.log('Material editado exitosamente');
+          this.mostrarSweetAlert('¡Éxito!', 'Material editado exitosamente.', 'success');
+          this.router.navigate(['MateriasPrimas']);
+        },
+        (error) => {
+          this.mostrarSweetAlert('¡Error!', 'Error al editar el material.', 'error');
+          console.error('Error al editar el material:', error);
+        }
+      );
+    }
+    
   }
   obtenerMaterial(id: number) {
     this.gorillaApiService.getMateriasPrimasById(id).subscribe({

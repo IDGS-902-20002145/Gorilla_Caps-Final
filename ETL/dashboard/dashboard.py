@@ -21,14 +21,14 @@ app.layout = html.Div(children=[
     dcc.DatePickerSingle(
         id='fecha-inicio-input',
         display_format='YYYY-MM-DD',
-        date='2023-01-01'
+        date='2023-06-01'
     ),
 
     # Input para seleccionar la fecha de fin
     dcc.DatePickerSingle(
         id='fecha-fin-input',
         display_format='YYYY-MM-DD',
-        date='2023-12-31'
+        date='2023-08-31'
     ),
 
     html.H2('Ventas por Producto'),

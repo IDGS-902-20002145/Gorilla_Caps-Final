@@ -19,11 +19,11 @@
     </div>
     <div class="form-group">
       <label for="cantidad">Cantidad:</label>
-      <input type="number" id="cantidad" name="cantidad" [(ngModel)]="regMateriaPrima.cantidad" disabled>
+      <input type="number" id="cantidad" min="0" name="cantidad" [(ngModel)]="regMateriaPrima.cantidad" disabled>
     </div>
     <div class="form-group">
       <label for="stock_minimo">Stock Mínimo:</label>
-      <input type="number" id="stock_minimo" name="stock_minimo" [(ngModel)]="regMateriaPrima.stock_Minimo" required>
+      <input type="number" id="stock_minimo" min="0" name="stock_minimo" [(ngModel)]="regMateriaPrima.stock_Minimo" required>
     </div>
     <div class="form-group">
       <label for="estatus">Activo:</label>

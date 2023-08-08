@@ -96,18 +96,41 @@ export class AgregarProductosComponent implements OnInit {
       explotacion_material: detallesExplotacionMaterial
     };
 
-    // Llamar al servicio para agregar el producto
-    this.gorilaApiService.addProducto(producto).subscribe(
-      (resultado) => {
-        console.log('Registro guardado', resultado);
-        this.mostrarSweetAlert('¡Éxito!', 'Producto agregado exitosamente.', 'success');
-        this.router.navigate(['productosGet']);
-      },
-      (error) => {
-        console.log('Error al agregar el producto:', error);
-        this.mostrarSweetAlert('¡Error!', 'Ocurrió un error al agregar el producto.', 'error');
-      }
-    );
+    if (producto.nombre.trim() === '' || producto.descripcion.trim() === '' || producto.color.trim() === '' || producto.modelo.trim() === '' || producto.precio === 0 || producto.stock_existencia === 0) {
+      this.mostrarSweetAlert('¡Error!', 'Todos los campos son obligatorios.', 'error');
+      return;
+    }
+    else if (producto.precio < 0) {
+      this.mostrarSweetAlert('¡Error!', 'El precio no puede ser menor a 0.', 'error');
+      return;
+    }
+    else if (producto.stock_existencia < 0) {
+      this.mostrarSweetAlert('¡Error!', 'El stock de existencia no puede ser menor a 0.', 'error');
+      return;
+    }
+    else if (materiasPrimasSeleccionadas.length === 0) {
+      this.mostrarSweetAlert('¡Error!', 'Selecciona al menos una materia prima.', 'error');
+      return;
+    }
+    else if (materiasPrimasSeleccionadas.some(item => item.cantidadIndividual <= 0)) {
+      this.mostrarSweetAlert('¡Error!', 'La cantidad de cada materia prima debe ser mayor a 0.', 'error');
+      return;
+    }
+    else {
+// Llamar al servicio para agregar el producto
+this.gorilaApiService.addProducto(producto).subscribe(
+  (resultado) => {
+    console.log('Registro guardado', resultado);
+    this.mostrarSweetAlert('¡Éxito!', 'Producto agregado exitosamente.', 'success');
+    this.router.navigate(['productosGet']);
+  },
+  (error) => {
+    console.log('Error al agregar el producto:', error);
+    this.mostrarSweetAlert('¡Error!', 'Ocurrió un error al agregar el producto.', 'error');
+  }
+);
+    }
+    
 
   }
   actualizarCantidadUsada(materiaPrimaItem: { materiaPrima: InventariomateriaprimaInterface, cantidadUsada: number, cantidadIndividual: number }): void {

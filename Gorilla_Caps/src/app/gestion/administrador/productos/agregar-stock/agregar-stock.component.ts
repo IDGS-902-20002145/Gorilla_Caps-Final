@@ -38,28 +38,40 @@ export class AgregarStockComponent implements OnInit{
 
   actualizarStock() {
     const id = this.route.snapshot.params['id'];
-    this.productApiService.addStockProducto(id, this.nuevoStock).subscribe(
-      (response) => {
-        console.log('Stock actualizado:', response);
-        // Lógica adicional luego de actualizar el stock
-        this.mostrarSweetAlert(
-          'Stock actualizado',
-          'El stock se ha actualizado correctamente',
-          'success'
-        );
-        this.router.navigate(['productosGet']);
 
-      },
-      (error) => {
-        console.error('Error al actualizar el stock:', error);
-        this.mostrarSweetAlert(
-          'Error',
-          'Ha ocurrido un error al actualizar el stock',
-          'error'
-        );
-        // Manejo de errores
-      }
-    );
+    if (this.nuevoStock === 0 || this.nuevoStock < 0) {
+      this.mostrarSweetAlert(
+        'Error',
+        'El stock no puede ser menor o igual a 0',
+        'error'
+      );
+      return;
+    }
+    else {
+      this.productApiService.addStockProducto(id, this.nuevoStock).subscribe(
+        (response) => {
+          console.log('Stock actualizado:', response);
+          // Lógica adicional luego de actualizar el stock
+          this.mostrarSweetAlert(
+            'Stock actualizado',
+            'El stock se ha actualizado correctamente',
+            'success'
+          );
+          this.router.navigate(['productosGet']);
+  
+        },
+        (error) => {
+          console.error('Error al actualizar el stock:', error);
+          this.mostrarSweetAlert(
+            'Error',
+            'Ha ocurrido un error al actualizar el stock',
+            'error'
+          );
+          // Manejo de errores
+        }
+      );
+    }
+    
   }
 
    // Método para convertir la imagen Base64 a un objeto URL
