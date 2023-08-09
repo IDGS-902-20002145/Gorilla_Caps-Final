@@ -23,25 +23,19 @@ WHERE V.fecha >= '2023-05-01' AND V.fecha <= '2023-07-31' AND V.Estatus = 1;
 
 
 -- Consulta para obtener el total de las ventas de cada producto desglosado por cada mes para crear la grafica
-SELECT 
-    YEAR(v.Fecha) AS Anio,
-    MONTH(v.Fecha) AS Mes,
-    p.id AS ProductoId,
-    p.nombre AS NombreProducto,
-    SUM(dv.cantidad) AS TotalCantidad,
-    SUM(dv.precio * dv.cantidad) AS TotalVenta
-FROM 
-    Venta v
-INNER JOIN 
-    DetVenta dv ON v.Id = dv.VentaId
-INNER JOIN 
-    Producto p ON dv.ProductoId = p.id
-WHERE 
-    v.Estatus = 1
-GROUP BY 
-    YEAR(v.Fecha), MONTH(v.Fecha), p.id, p.nombre
-ORDER BY 
-    YEAR(v.Fecha), MONTH(v.Fecha), p.id;
+SELECT YEAR(v.Fecha) AS Anio,
+       MONTH(v.Fecha) AS Mes,
+       p.id AS ProductoId,
+       p.nombre AS NombreProducto,
+       SUM(dv.cantidad) AS TotalCantidad,
+       SUM(dv.precio * dv.cantidad) AS TotalVenta
+FROM Venta v
+INNER JOIN DetVenta dv ON v.Id = dv.VentaId
+INNER JOIN Producto p ON dv.ProductoId = p.id
+WHERE v.Estatus = 1 AND v.Fecha BETWEEN '2023-05-01' AND '2023-07-31'
+GROUP BY YEAR(v.Fecha), MONTH(v.Fecha), p.id, p.nombre
+ORDER BY YEAR(v.Fecha), MONTH(v.Fecha), p.id;
+
 
 
 

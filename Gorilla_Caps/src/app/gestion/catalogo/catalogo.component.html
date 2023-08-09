@@ -5,13 +5,13 @@
 </div>
 
 <!-- Agregar botón para abrir/cerrar el carrito flotante -->
-<div class="carritoFlotante">
-<label *ngIf="productosEnCarrito"><h4>Tienes productos en tu carrito</h4></label>
-<button class="btn btn-primary my-2" (click)="toggleCart()" title="Abrir ó Cerrar Carrito">
-  <i class="fas fa-shopping-cart"></i></button>
+<div *ngIf="esAdminOEmpleado()" class="carritoFlotante">
+  <label *ngIf="productosEnCarrito"><h4>Tienes productos en tu carrito</h4></label>
+  <button class="btn btn-primary my-2" (click)="toggleCart()" title="Abrir ó Cerrar Carrito">
+    <i class="fas fa-shopping-cart"></i></button>
 
-<!-- Carrito flotante -->
-<app-carrito-temporal *ngIf="isCartOpen" class="floating-cart"></app-carrito-temporal>
+  <!-- Carrito flotante -->
+  <app-carrito-temporal *ngIf="isCartOpen" class="floating-cart"></app-carrito-temporal>
 </div>
 
 <h2>Productos destacados</h2>

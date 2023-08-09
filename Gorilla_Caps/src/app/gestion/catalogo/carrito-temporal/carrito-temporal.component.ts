@@ -31,12 +31,14 @@ export class CarritoTemporalComponent {
   incremento(index: any, maximo: any) {
     if (this.cartItems[index].cantidad! < maximo){
     this.cartItems[index].cantidad!++;
+    this.carritoS.actualizarLocalStorage();
     }
   }
 
   decremento(index: any) {
     if (this.cartItems[index].cantidad! > 1){
     this.cartItems[index].cantidad!--;
+    this.carritoS.actualizarLocalStorage();
     }
   }
 

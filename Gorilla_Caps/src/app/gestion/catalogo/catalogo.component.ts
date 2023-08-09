@@ -182,4 +182,12 @@ export class CatalogoComponent {
         });
 
       }
+
+  esAdminOEmpleado():boolean{
+   if(localStorage.getItem('admin') == 'true' || localStorage.getItem('empleado') == 'true'){
+     return false;
+    }else{
+     return true;
+    }
+  }
 }

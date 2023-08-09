@@ -25,7 +25,8 @@ card_style = {
     'border-radius': '5px',
     'padding': '20px',
     'margin': '20px',
-    'box-shadow': '0 3px 7px rgba(0, 0, 0, 0.1)',
+    'boxShadow': '0 3px 7px rgba(0, 0, 0, 0.1)',
+    'transition': 'background-color 0.3s ease-in-out',
 }
 
 card_title = {
@@ -46,152 +47,11 @@ icon_style = {
 }
 
 
-
-
-# Definir el layout del dashboard
-app.layout = html.Div(children=[
-    html.Link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"),
-
-        html.Div(children=[
-            
-            
-            html.Div([
-                    # Div con el contenido del card en el lado izquierdo
-                    html.Div(children=[
-                            html.H3('Indicadores',style={'text-align': 'center', 'font-size': '24px', 'margin-bottom': '20px', 'font-weight': 'bold'}),
-                                    
-                            html.Div([
-                                html.Div([
-                                    html.I(className='fas fa-wallet', style={'font-size': '1.5rem', 'margin-right': '10px'}),
-                                    html.Div([
-                                        html.Span('Total de Ventas', className='card-title'),
-                                        html.Span(id='ventas-mes-value', className='card-value', style={'font-weight': 'bold'})
-                                    ], style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'flex-start'})
-                                ], style={'display': 'flex', 'flex-direction': 'row', 'align-items': 'center'}),
-                            ], style=card_style),
-                            
-                            html.Div([
-                                html.Div([
-                                    html.I(className='fas fa-file-invoice-dollar', style={'font-size': '1.5rem', 'margin-right': '10px'}),
-                                    html.Div([
-                                        html.Span('Total de Compras', className='card-title'),
-                                        html.Span(id='compras-mes-value', className='card-value', style={'font-weight': 'bold'})
-                                    ], style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'flex-start'})
-                                ], style={'display': 'flex', 'flex-direction': 'row', 'align-items': 'center'}),
-                            ], style=card_style),
-                            
-                            html.Div([
-                                html.Div([
-                                    html.I(className='fas fa-users', style={'font-size': '1.5rem', 'margin-right': '10px'}),
-                                    html.Div([
-                                        html.Span('Clientes Activos', className='card-title'),
-                                        html.Span(id='clientes-activos-value', className='card-value', style={'font-weight': 'bold'})
-                                    ], style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'flex-start'})
-                                ], style={'display': 'flex', 'flex-direction': 'row', 'align-items': 'center'}),
-                            ], style=card_style),
-                            
-                            html.Div([
-                                html.Div([
-                                    html.I(className='fas fa-book', style={'font-size': '1.5rem', 'margin-right': '10px'}),
-                                    html.Div([
-                                        html.Span('Productos Activos', className='card-title'),
-                                        html.Span(id='productos-activos-value', className='card-value', style={'font-weight': 'bold'})
-                                    ], style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'flex-start'})
-                                ], style={'display': 'flex', 'flex-direction': 'row', 'align-items': 'center'}),                                
-                            ], style=card_style),                            
-                           
-                    ], style={'flex': '0 0 25%', 'display': 'flex', 'flex-direction': 'column', 'border': '1px solid #ccc',
-                      'border-radius': '5px', 'background-color': '#f9f9f9', 'padding': '20px', 'margin-right': '20px'},\
-                       className='divIzquierdo col-4'),
-                    
-                    # Div con el contenido del dashboard en el lado derecho
-                    html.Div([
-                        html.Div([
-                        # Input para seleccionar la fecha de inicio
-                            dcc.DatePickerSingle(
-                                id='fecha-inicio-input',
-                                display_format='YYYY-MM-DD',
-                                date='2023-05-01',
-                                style={'margin-right': '10px'}
-                            ),
-
-                            # Input para seleccionar la fecha de fin
-                            dcc.DatePickerSingle(
-                                id='fecha-fin-input',
-                                display_format='YYYY-MM-DD',
-                                date='2023-12-31',
-                                style={'margin-left': '10px'}
-                            ),
-                            html.Br(),
-                        ],  style={'display': 'flex', 'align-items': 'center', 'margin-bottom': '20px'}),
-
-                        html.Div(children=[
-                                html.Div([                                    
-                                    dcc.Graph(id='ventas-por-producto-graph'),
-                                ], style={'flex': '1', 'margin-right': '20px', 'padding': '20px', 'border': '1px solid #ccc',
-                                        'border-radius': '5px', 'margin-bottom': '20px'}, className='container col-6'),
-
-                                html.Div([                                    
-                                    dcc.Graph(id='compras-por-proveedor-graph'),
-                                ], style={'flex': '1', 'margin-right': '20px', 'padding': '20px', 'border': '1px solid #ccc',
-                                        'border-radius': '5px', 'margin-bottom': '20px'}, className='container col-6'),
-                        ], style={'display': 'flex', 'flex-wrap': 'wrap', 'justify-content': 'space-between', 'margin-bottom': '20px'}),
-
-                        html.Div(children=[
-                                html.Div([
-                                    html.H4('Top 5 Clientes', style={'text-align': 'center'}),
-                                    # Agregar la tabla del top 5 de clientes aquí
-                                    DataTable(
-                                        id='top-5-clientes-table',
-                                        columns=[
-                                            {'name': 'Nombre del Cliente', 'id': 'NombreCliente'},
-                                            {'name': 'Cantidad de Compras', 'id': 'CantidadCompras'}
-                                        ],
-                                        data=[],  # Aquí irá la data que se actualizará mediante el callback
-                                        style_table={'height': '300px', 'overflowY': 'auto'},
-                                        style_header={
-                                            'backgroundColor': '#DEDEDE',  # Color de fondo del encabezado
-                                            'fontWeight': 'bold',          # Texto en negritas
-                                            'textAlign': 'center'          # Centrar el texto en el encabezado
-                                        },
-                                        style_cell={
-                                            'textAlign': 'center',         # Centrar el texto en las celdas
-                                            'backgroundColor': '#f9f9f9',  # Color de fondo de las celdas
-                                            'color': 'black'               # Color del texto en las celdas
-                                        },
-                                        style_data={
-                                            'border': '1px solid #ccc'     # Borde de las celdas
-                                        }
-                                    ),                  
-                                ], style={'flex': '1', 'margin-right': '20px', 'padding': '20px', 'border': '1px solid #ccc',
-                                        'border-radius': '5px', 'margin-bottom': '20px'}, className='container col-6'),
-
-                                html.Div([                                    
-                                    dcc.Graph(id='utilidad-por-mes-graph'),
-                                ], style={'flex': '1', 'margin-right': '20px', 'padding': '20px', 'border': '1px solid #ccc',
-                                        'border-radius': '5px', 'margin-bottom': '20px'}, className='container col-6'),  
-                                            
-                        ], style={'display': 'flex', 'flex-wrap': 'wrap', 'justify-content': 'space-between'}),               
-                    ], style={'flex': '1', 'display': 'flex', 'flex-direction': 'column', 'border': '1px solid #ccc',
-                      'border-radius': '5px', 'background-color': '#f9f9f9', 'padding': '20px'},\
-                       className='divDerecho col-8'),               
-            ], style={'display': 'flex', 'justify-content': 'space-between', 'background-color': 'black', 'padding': '20px;'},\
-               className='divPrincipal row'),   
-            
-            # Div Secundario
-            html.Div([
-                html.H2('Materia Prima'),
-                dbc.Row(id='materia-prima-cards'),  # Div para mostrar las cards de materia prima
-            ],style={'margin-top': '20px', 'border': '1px solid #ccc', 'border-radius': '5px', 'background-color': '#f9f9f9', 'padding': '20px'},\
-               className='divSecundario row'),    
-        ], style={'display': 'flex', 'flex-direction': 'column', 'background-color': 'black', 'font-family': 'Arial, sans-serif', 'color': 'black'}),
-],style={'background-color': 'black'})
-
-
 # Definir estilos CSS
 app.css.append_css({
     # 'external_url': '/dashboard/dash.css',  # Reemplaza con la URL o ruta al archivo CSS
     'external_url': 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css',  # Enlace a Bootstrap CSS
+    'external_url': 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css',  # Enlace a animate.css
     'code': '''
          .card-style {
             display: flex;
@@ -203,6 +63,10 @@ app.css.append_css({
             box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
         }
         
+        .card-style:hover {
+            background-color: #eaeaea;
+        }
+        
         .card-title {
             font-size: 15px;
             margin-bottom: 5px;           
@@ -212,8 +76,235 @@ app.css.append_css({
             font-size: 13px;
             font-weight: bold;
         }
+        
+        
     ''',
 })
+
+
+
+# Definir el layout del dashboard
+app.layout = html.Div(children=[
+    html.Link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"),
+    html.Link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"), 
+    
+        
+    # Div Superior
+    html.Div([
+        # Contenido del card en el lado izquierdo, organizado horizontalmente
+        html.Div([
+            html.Div([
+                html.I(className='fas fa-wallet', style={'font-size': '1.5rem', 'margin-right': '10px'}),
+                html.Div([
+                    html.Span('Total de Ventas', className='card-title'),
+                    html.Span(id='ventas-mes-value', className='card-value', style={'font-weight': 'bold'})
+                ], style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'center'})
+            ], style={'display': 'flex', 'flex-direction': 'row', 'align-items': 'center', 'border-radius': '5px',
+                    'background-color': '#f9f9f9', 'padding': '10px', 'margin-right': '10px'},
+            className='card shadow p-3 card-style animate__animated animate__fadeInLeft animate__faster'),
+            html.Div([
+                html.I(className='fas fa-file-invoice-dollar', style={'font-size': '1.5rem', 'margin-right': '10px'}),
+                html.Div([
+                    html.Span('Total de Compras', className='card-title'),
+                    html.Span(id='compras-mes-value', className='card-value', style={'font-weight': 'bold'})
+                ], style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'center'})
+            ], style={'display': 'flex', 'flex-direction': 'row', 'align-items': 'center', 'border-radius': '5px',
+                    'background-color': '#f9f9f9', 'padding': '10px', 'margin-right': '10px'},
+            className='card shadow'),
+            html.Div([
+                html.I(className='fas fa-users', style={'font-size': '1.5rem', 'margin-right': '10px'}),
+                html.Div([
+                    html.Span('Clientes Activos', className='card-title'),
+                    html.Span(id='clientes-activos-value', className='card-value', style={'font-weight': 'bold'})
+                ], style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'center'})
+            ], style={'display': 'flex', 'flex-direction': 'row', 'align-items': 'center', 'border-radius': '5px',
+                    'background-color': '#f9f9f9', 'padding': '10px', 'margin-right': '10px'},
+            className='card shadow'),
+            html.Div([
+                html.I(className='fas fa-book', style={'font-size': '1.5rem', 'margin-right': '10px'}),
+                html.Div([
+                    html.Span('Productos Activos', className='card-title'),
+                    html.Span(id='productos-activos-value', className='card-value', style={'font-weight': 'bold'})
+                ], style={'display': 'flex', 'flex-direction': 'column', 'align-items': 'center'})
+            ], style={'display': 'flex', 'flex-direction': 'row', 'align-items': 'center', 'border-radius': '5px',
+                    'background-color': '#f9f9f9', 'padding': '10px', 'margin-right': '10px'},
+            className='card shadow'),
+        ], style={'display': 'flex', 'justify-content': 'space-between', 'border-radius': '5px',
+                'padding': '10px', 'margin-right': '10px'},
+        className='divIzquierdo col-12 cards-container'),
+    ], style={'background-color': '#BDBDBD', 'padding': '1px'}),
+
+
+    # Div Principal
+    html.Div([
+        html.Div([
+            html.Div([
+                # Input para seleccionar la fecha de inicio
+                dcc.DatePickerSingle(
+                    id='fecha-inicio-input',
+                    display_format='YYYY-MM-DD',
+                    date='2023-05-01',
+                    style={'margin-right': '10px'}
+                ),
+
+                # Input para seleccionar la fecha de fin
+                dcc.DatePickerSingle(
+                    id='fecha-fin-input',
+                    display_format='YYYY-MM-DD',
+                    date='2023-12-31',
+                    style={'margin-left': '10px'}
+                ),
+                html.Br(),
+            ], style={'display': 'flex', 'align-items': 'center', 'margin-bottom': '20px'}),
+
+            html.Div(
+                children=[
+                    html.Div(
+                        [
+                            # Gráfica de ventas por producto
+                            dcc.Graph(id='ventas-por-producto-graph'),
+                        ],
+                        style={
+                            'flex': '1',
+                            'margin-right': '10px',
+                            'padding': '10px',
+                            'border': '1px solid #ccc',
+                            'border-radius': '5px',
+                            'margin-bottom': '20px',
+                            'background-color': '#005f8e',  # Azul oscuro
+                        },
+                        className='container col-6',
+                    ),
+                    
+                    html.Div(
+                        [
+                            # Tabla de ventas por producto
+                            html.Div(
+                                [
+                                    html.H4('Venta de Productos por Mes', style={'text-align': 'center'}),
+                                    DataTable(
+                                        id='ventas-por-producto-table',
+                                        columns=[
+                                            {'name': 'Nombre del Producto', 'id': 'NombreProducto'},
+                                            {'name': 'Cantidad de Compras (#)', 'id': 'TotalCantidad'},
+                                            {'name': 'Total de Ventas ($)', 'id': 'TotalVenta'},
+                                        ],
+                                        data=[],
+                                        style_table={'height': '300px', 'overflowY': 'auto'},
+                                        style_header={
+                                            'backgroundColor': '#045FB4',  # Azul medio
+                                            'fontWeight': 'bold',
+                                            'textAlign': 'center',
+                                        },
+                                        style_cell={
+                                            'textAlign': 'center',
+                                            'backgroundColor': '#f9f9f9',
+                                            'color': 'black',
+                                        },
+                                        style_data={'border': '1px solid #ccc'},
+                                    ),
+                                ],
+                                style={
+                                    'flex': '1',
+                                    'margin-right': '10px',
+                                    'padding': '10px',
+                                    'border': '1px solid #ccc',
+                                    'border-radius': '5px',
+                                    'margin-bottom': '20px',
+                                    'width': 'calc(100% - 10px)',
+                                    'background-color': '#81BEF7',  # Azul oscuro
+                                },
+                                className='col-6',
+                            ),
+                        ],
+                        className='col-6',
+                    ),                     
+                ],
+                style={
+                    'display': 'flex',
+                    'flex-wrap': 'wrap',                        
+                    'justify-content': 'space-between',
+                    'margin-bottom': '20px',
+                },
+            ),
+
+            html.Div(
+                [
+                    # Gráfica de compras por proveedor
+                    dcc.Graph(id='compras-por-proveedor-graph'),
+                ],
+                style={
+                    'flex': '1',
+                    'margin-right': '10px',
+                    'padding': '10px',
+                    'border': '1px solid #ccc',
+                    'border-radius': '5px',
+                    'margin-bottom': '20px',
+                    'background-color': '#008e5e',  # Verde oscuro
+                },
+                className='row',
+            ),
+
+            html.Div(
+                children=[
+                    html.Div([
+                        html.H4('Top 5 Clientes', style={'text-align': 'center'}),
+                        # Agregar la tabla del top 5 de clientes aquí
+                        DataTable(
+                            id='top-5-clientes-table',
+                            columns=[
+                                {'name': 'Nombre del Cliente', 'id': 'NombreCliente'},
+                                {'name': 'Cantidad de Compras', 'id': 'CantidadCompras'}
+                            ],
+                            data=[],
+                            style_table={'height': '300px', 'overflowY': 'auto'},
+                            style_header={
+                                'backgroundColor': '#004370',  # Azul medio
+                                'fontWeight': 'bold',
+                                'textAlign': 'center'
+                            },
+                            style_cell={
+                                'textAlign': 'center',
+                                'backgroundColor': '#f9f9f9',
+                                'color': 'black'
+                            },
+                            style_data={
+                                'border': '1px solid #ccc'
+                            }
+                        ),
+                    ], style={'flex': '1', 'margin-right': '20px', 'padding': '20px', 'border': '1px solid #ccc',
+                            'border-radius': '5px', 'margin-bottom': '20px', 'background-color': '#007bff'},  # Azul claro
+                        className='container col-6'),
+
+                    html.Div([
+                        dcc.Graph(id='utilidad-por-mes-graph'),
+                    ], style={'flex': '1', 'margin-right': '20px', 'padding': '20px', 'border': '1px solid #ccc',
+                            'border-radius': '5px', 'margin-bottom': '20px', 'background-color': '#008e5e'},  # Verde oscuro
+                        className='container col-6'),
+                ],
+                style={'display': 'flex', 'flex-wrap': 'wrap', 'justify-content': 'space-between'},
+            ),
+        ], style={'flex': '1', 'display': 'flex', 'flex-direction': 'column', 'border': '1px solid #ccc',
+                'border-radius': '5px', 'background-color': '#f9f9f9', 'padding': '10px'},
+            className='divDerecho col-12'),
+    ], style={'background-color': '#FFFFFF', 'padding': '1px'}),
+
+        
+    # Div Secundario
+    html.Div([
+        html.H2('Materia Prima'),
+        dbc.Row(id='materia-prima-cards'),  # Div para mostrar las cards de materia prima
+    ], style={'margin-top': '20px', 'border': '1px solid #ccc', 'border-radius': '5px', 'background-color': '#007bff',
+            'padding': '10px', 'margin-right': '10px'}, className='divSecundario row'),
+], style={'background-color': '#007bff'})
+        
+        
+
+        
+
+
+
+
 
 
 # Callback para actualizar los indicadores cuando se cambian las fechas
@@ -256,7 +347,7 @@ def indicadores(fecha_inicio, fecha_fin):
      Output('utilidad-por-mes-graph', 'figure'),
      Output('ventas-por-producto-graph', 'figure'),
      Output('materia-prima-cards', 'children'),
-     ],
+     Output('ventas-por-producto-table', 'data')],
     [Input('fecha-inicio-input', 'date'),
      Input('fecha-fin-input', 'date')]
 )
@@ -315,11 +406,14 @@ def update_graphs(fecha_inicio, fecha_fin):
                                                GROUP BY Anio, Mes, p.id, p.nombre\
                                                ORDER BY Anio, Mes, p.id;", engine)
     
+    # Aplicar el substring a la columna 'NombreProducto'
+    ventas_producto_por_mes_df['NombreProducto'] = ventas_producto_por_mes_df['NombreProducto'].str[14:]
+    
     ventas_producto_graph = {
         'data': [
             {
                 'x': ventas_producto_por_mes_df['NombreProducto'],
-                'y': ventas_producto_por_mes_df['TotalVenta'],
+                'y': ventas_producto_por_mes_df['TotalCantidad'],
                 'type': 'bar',
                 'name': 'Ventas',
                 'marker': {'color': '#1f77b4'}  # Color azul
@@ -338,11 +432,10 @@ def update_graphs(fecha_inicio, fecha_fin):
                 'tickfont': {'size': 12},
             },
             'yaxis': {
-                'title': 'Total de Ventas',
+                'title': 'Total de Piezas Vendidas',
                 'showgrid': True,
                 'gridcolor': '#e5e5e5',
-                'tickfont': {'size': 12},
-                'ticksuffix': '$',
+                'tickfont': {'size': 12},                
             },
             'barmode': 'group',
             'bargap': 0.1,
@@ -460,7 +553,7 @@ def update_graphs(fecha_inicio, fecha_fin):
         cards_materia_prima.append(card)
 
     # Devolver el diccionario del gráfico y los datos de la tabla
-    return compras_por_proveedor_graph, top5_clientes_por_mes_df.to_dict('records'), utilidad_por_mes_graph, ventas_producto_graph,cards_materia_prima
+    return compras_por_proveedor_graph,top5_clientes_por_mes_df.to_dict('records'), utilidad_por_mes_graph, ventas_producto_graph, cards_materia_prima, ventas_producto_por_mes_df.to_dict('records')
 
 
 if __name__ == '__main__':
