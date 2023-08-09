@@ -34,13 +34,13 @@
     background-color: #fff;
     transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transiciones suaves */
   }
-  
+
   /* Efecto de levantar la tarjeta cuando se pasa el cursor sobre ella */
   .product-card:hover {
     transform: translateY(-5px); /* Elevar la tarjeta 5px hacia arriba */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra al levantar */
   }
-  
+
   /* Estilos para la imagen del producto */
   .product-image {
     width: 100%;
@@ -48,12 +48,12 @@
     object-fit: cover;
     border-radius: 8px;
   }
-  
+
   /* Estilos para los detalles del producto */
   .product-details {
     margin-top: 10px;
   }
-  
+
   /* Estilos para el nombre del producto */
   .product-name {
     font-size: 18px;
@@ -61,28 +61,28 @@
     color: #333;
     margin-bottom: 5px;
   }
-  
+
   /* Estilos para la descripción del producto */
   .product-description {
     font-size: 14px;
     color: #555;
     margin-bottom: 10px;
   }
-  
+
   /* Estilos para el precio del producto */
   .product-price {
     font-size: 16px;
     color: #007bff; /* Azul brillante, puedes cambiar el color según tu preferencia */
     margin-bottom: 5px;
   }
-  
+
   /* Estilos para el stock del producto */
   .product-stock {
     font-size: 14px;
     color: #555;
     margin-bottom: 10px;
   }
-  
+
   /* Estilos para las acciones del producto (si las tienes) */
   .product-actions {
     display: flex;
@@ -90,7 +90,7 @@
     align-items: center;
     margin-top: 10px;
   }
-  
+
   /* Puedes agregar estilos adicionales para botones, por ejemplo */
   .product-actions button {
     padding: 8px 12px;
@@ -101,12 +101,12 @@
     cursor: pointer;
     font-size: 14px;
   }
-  
+
   /* Cambiar el color del botón al pasar el ratón sobre él */
   .product-actions button:hover {
     background-color: #0056b3; /* Un tono más oscuro del color principal */
   }
-  
+
   /* Estilo general de la lista de productos */
 .product-list-cards-general {
   display: flex;
@@ -281,3 +281,71 @@ input.form-control {
   height: 30px;
   font-size: large;
 }
+
+/* Estilos para el div que contiene el carrito flotante */
+.carritoFlotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999; /* Ajusta el valor del z-index según sea necesario */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+
+}
+
+/* Estilos para el botón "Abrir/Cerrar Carrito" dentro del div flotante */
+.carritoFlotante button {
+  margin-bottom: 5px;
+  width: 50px;
+  height: 50px;
+}
+
+/* Estilos para el carrito flotante (app-carrito-temporal) */
+.floating-cart {
+  /* Ajusta los estilos de app-carrito-temporal según tus necesidades */
+  /* Por ejemplo, podrías ajustar el ancho, altura, colores, etc. */
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+.tr{
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+  width: 100%;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilos para el label "Tienes productos en tu carrito" */
+.carritoFlotante label {
+  animation: fadeInOut 2s ease-in-out infinite;
+  opacity: 1; /* Asegura que el label sea inicialmente visible */
+  color: black; /* Color inicial del texto (puedes ajustar el color según tu diseño) */
+}
+
+/* Definición de la animación */
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 1; /* El label es completamente visible al inicio y al final */
+    color: black; /* Color dorado (o el color que desees) al inicio y al final */
+  }
+  50%, 95% {
+    opacity: 0.65; /* El label se oculta a la mitad y desaparece gradualmente hasta el final */
+    color: green; /* Color dorado (o el color que desees) a la mitad y antes de desaparecer */
+  }
+}
+
+.cartAn:active {
+  transform: scale(1.1);
+  background-color: #007bff;
+}
+

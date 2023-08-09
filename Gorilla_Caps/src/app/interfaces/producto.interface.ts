@@ -8,6 +8,7 @@ export interface ProductoInterface {
   modelo: string;
   precio: number;
   imagen: string;
+  cantidad?: number;
   stock_existencia: number;
   estatus: boolean;
   explotacion_material?: ExplotacionmaterialInterface[];

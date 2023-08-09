@@ -14,7 +14,8 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "launchUrl": "api/Finanzas",
-      "applicationUrl": "https://192.168.1.4:5000",
+      "192.168.1.4": null,
+      "applicationUrl": "https://192.168.43.168:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -29,3 +30,5 @@
     }
   }
 }
+//10.16.12.186 ip escuela
+//192.168.1.4 ip casa 

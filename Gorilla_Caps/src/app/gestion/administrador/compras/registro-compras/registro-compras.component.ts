@@ -65,22 +65,46 @@ export class RegistroComprasComponent implements OnInit {
       DetCompra: [detalle]
     };
 
-    this.compraService.registrarCompra(compra).subscribe(
-      (response) => {
-        console.log('Compra registrada:', response);
-        // Aquí puedes mostrar un mensaje de éxito o redirigir a otra página.
-        this.mostrarSweetAlert('¡Éxito!', 'La compra esta por confirmarse', 'success');
-        this.router.navigate(['MateriasPrimas'])
+    if (this.proveedorId === 0) {
+      this.mostrarSweetAlert('¡Error!', 'Selecciona un proveedor.', 'error');
+      return;
+    }
+    else if (this.cantidad === 0) {
+      this.mostrarSweetAlert('¡Error!', 'Ingresa una cantidad.', 'error');
+      return;
+    }
+    else if (this.precio === 0) {
+      this.mostrarSweetAlert('¡Error!', 'Ingresa un precio.', 'error');
+      return;
+    }
+    else if (this.cantidad < 0) {
+      this.mostrarSweetAlert('¡Error!', 'La cantidad no puede ser menor a 0.', 'error');
+      return;
+    }
+    else if (this.precio < 0) {
+      this.mostrarSweetAlert('¡Error!', 'El precio no puede ser menor a 0.', 'error');
+      return;
+    }
+    else {
+      this.compraService.registrarCompra(compra).subscribe(
+        (response) => {
+          console.log('Compra registrada:', response);
+          // Aquí puedes mostrar un mensaje de éxito o redirigir a otra página.
+          this.mostrarSweetAlert('¡Éxito!', 'La compra esta por confirmarse', 'success');
+          this.router.navigate(['MateriasPrimas'])
 
-      },
-      (error) => {
-        console.error('Error al registrar la compra:', error);
-        // Aquí puedes mostrar un mensaje de error.
-        this.mostrarSweetAlert('¡Error!', 'Ocurrio un error inesperado', 'error');
+        },
+        (error) => {
+          console.error('Error al registrar la compra:', error);
+          // Aquí puedes mostrar un mensaje de error.
+          this.mostrarSweetAlert('¡Error!', 'Ocurrio un error inesperado', 'error');
 
-      }
-    );
+        }
+      );
+    }
+
   }
+
 
   mostrarSweetAlert(title: string, text: string, icon: SweetAlertIcon): void {
     Swal.fire({

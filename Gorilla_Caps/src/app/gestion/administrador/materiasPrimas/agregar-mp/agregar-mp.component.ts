@@ -10,7 +10,7 @@ import Swal, { SweetAlertIcon } from 'sweetalert2';
   styleUrls: ['./agregar-mp.component.css']
 })
 export class AgregarMPComponent {
-  
+
   regMateriaPrima: InventariomateriaprimaInterface ={
     id: 0,
     nombre: '',
@@ -23,12 +23,24 @@ export class AgregarMPComponent {
   constructor(private gorillaApiService: GorillaApiService, private router: Router) {}
 
   agregarMateriaPrima() {
-    this.gorillaApiService.addMateriasPrimas(this.regMateriaPrima).subscribe({
-      next: () => console.log(),
-      error: (e) => console.error(e),
-      complete: () => console.info()
-      
-    })
+    if (this.regMateriaPrima.nombre.trim() === '' || this.regMateriaPrima.descripcion.trim() === '' || this.regMateriaPrima.stock_Minimo === 0) {
+      this.mostrarSweetAlert('¡Error!', 'Todos los campos son obligatorios.', 'error');
+      return;
+    }
+    else if (this.regMateriaPrima.stock_Minimo<0 && this.regMateriaPrima.stock_Minimo==0){
+      this.mostrarSweetAlert('¡Error!', 'El stock mínimo no puede ser menor a 0.', 'error');
+      return;
+    }
+    else {
+      this.gorillaApiService.addMateriasPrimas(this.regMateriaPrima).subscribe({
+        next: () => console.log(),
+        error: (e) => console.error(e),
+        complete: () => console.info()
+      })
+    }
+
+
+
 
     this.regMateriaPrima = {
     id: 0,
