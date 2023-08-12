@@ -1,22 +1,24 @@
-import subprocess
 from flask import Flask, request, jsonify
-import os
+from flask_cors import CORS
 from data_extraction.data_extractor import extract_data
 from data_transformation.data_transformer import transform_data
 from data_loading.data_loader import load_data
-from flask_cors import CORS
 
 app = Flask(__name__)
-# Habilitar CORS para permitir solicitudes desde http://localhost:4200
 CORS(app, resources={r"/*": {"origins": "http://localhost:4200"}})
 
 @app.route('/run_etl', methods=['POST'])
 def run_etl():
     try:
+        # Obtener los valores de start_date y end_date desde el cuerpo de la solicitud
+        start_date = request.json['start_date']
+        end_date = request.json['end_date']
+
         # Ejecuta el ETL con las fechas proporcionadas
-        extract_data()
+        extract_data(start_date, end_date)
         transform_data()
         load_data()
+        
         return jsonify({"message": "Proceso ETL ejecutado correctamente"})
     except Exception as e:
         return jsonify({"error": str(e)}), 500

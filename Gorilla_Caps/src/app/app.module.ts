@@ -53,6 +53,7 @@ import { TAllComponent } from './gestion/cliente/pedidos/t-all/t-all.component';
 import { DashboardComponent } from './gestion/administrador/dashboard/dashboard.component';
 import { CarritoService } from './carrito.service';
 import { CarritoTemporalComponent } from './gestion/catalogo/carrito-temporal/carrito-temporal.component';
+import { PageNotFoundComponent } from './gestion/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { CarritoTemporalComponent } from './gestion/catalogo/carrito-temporal/ca
     TAllComponent,
     DashboardComponent,
     CarritoTemporalComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

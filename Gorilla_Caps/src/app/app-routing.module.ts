@@ -34,6 +34,7 @@ import { TAllComponent } from './gestion/cliente/pedidos/t-all/t-all.component';
 import { AuthGuardAdmin } from './authAdmin.guart';
 import { AuthGuardEmp } from './authEmpleado.guart';
 import { DashboardComponent } from './gestion/administrador/dashboard/dashboard.component';
+import { PageNotFoundComponent } from './gestion/page-not-found/page-not-found.component';
 
 
 
@@ -49,34 +50,35 @@ const routes: Routes = [
     path: '',
     children: [
       { path: 'Menu', component: MenuComponent },
-      { path: 'Proveedor', component: ProveedorComponent , canActivate: [AuthGuardAdmin]},
-      { path: 'Usuarios', component: UsuariosComponent , canActivate: [AuthGuardAdmin]},
-      { path: 'AgregarUsuarios', component: AgregarUsuariosComponent , canActivate: [AuthGuardAdmin]},
-      { path: 'ModificarUsuarios/:id', component: ModificarUsuariosComponent , canActivate: [AuthGuardAdmin]},
-      { path: 'EliminarUsuarios/:id', component: EliminarUsuariosComponent , canActivate: [AuthGuardAdmin]},
+      { path: 'Proveedor', component: ProveedorComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'Usuarios', component: UsuariosComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'AgregarUsuarios', component: AgregarUsuariosComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'ModificarUsuarios/:id', component: ModificarUsuariosComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'EliminarUsuarios/:id', component: EliminarUsuariosComponent, canActivate: [AuthGuardAdmin] },
       { path: 'Login', component: LoginComponent },
       { path: 'Registro', component: RegistroComponent },
       { path: 'MateriasPrimas', component: InventarioComponent, canActivate: [AuthGuardAdmin] },
-      { path: 'agregarMP', component: AgregarMPComponent , canActivate: [AuthGuardAdmin]},
-      { path: 'editarMP/:id', component: EditarMPComponent , canActivate: [AuthGuardAdmin]},
-      { path: 'eliminarMP/:id', component: EliminarMPComponent , canActivate: [AuthGuardAdmin]},
-      { path: 'ComprasGet', component: ComprasGETComponent , canActivate: [AuthGuardEmp]},
-      { path: 'ConfirmarCompra/:id', component: ConfirmarComprasComponent , canActivate: [AuthGuardEmp]},
+      { path: 'agregarMP', component: AgregarMPComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'editarMP/:id', component: EditarMPComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'eliminarMP/:id', component: EliminarMPComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'ComprasGet', component: ComprasGETComponent, canActivate: [AuthGuardEmp] },
+      { path: 'ConfirmarCompra/:id', component: ConfirmarComprasComponent, canActivate: [AuthGuardEmp] },
       { path: 'registro-compras/:materialId', component: RegistroComprasComponent, canActivate: [AuthGuardAdmin] },
-      { path: 'productosGet', component: ProductosGetComponent , canActivate: [AuthGuardEmp]},
-      { path: 'agregarProductos', component: AgregarProductosComponent , canActivate: [AuthGuardEmp]},
-      { path: 'agregarStock/:id', component: AgregarStockComponent , canActivate: [AuthGuardEmp]},
+      { path: 'productosGet', component: ProductosGetComponent, canActivate: [AuthGuardEmp] },
+      { path: 'agregarProductos', component: AgregarProductosComponent, canActivate: [AuthGuardEmp] },
+      { path: 'agregarStock/:id', component: AgregarStockComponent, canActivate: [AuthGuardEmp] },
       { path: 'eliminarProducto/:id', component: EliminarProductosComponent, canActivate: [AuthGuardEmp] },
-      { path: 'editarProducto/:id', component: ModificarProductosComponent , canActivate: [AuthGuardEmp]},
+      { path: 'editarProducto/:id', component: ModificarProductosComponent, canActivate: [AuthGuardEmp] },
       { path: 'Catalogo', component: CatalogoComponent },
       { path: 'Pedidos/:id', component: PedidosComponent },
       { path: 'Catalogo/ProductoDetalle/:id', component: ProductoDetalleComponent },
       { path: 'MisCompras', component: VentasCComponent },
       { path: 'Aprovacion', component: VentasAComponent, canActivate: [AuthGuardAdmin] },
-      { path: 'ConfirmarEnvio/:id', component: VentasAComponent, canActivate: [AuthGuardAdmin]},
-      { path: 'Finanzas', component: FinanzasComponent , canActivate: [AuthGuardAdmin]},
-      {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardAdmin]},
-      { path: '**', redirectTo: '/Login', pathMatch: 'full' }
+      { path: 'ConfirmarEnvio/:id', component: VentasAComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'Finanzas', component: FinanzasComponent, canActivate: [AuthGuardAdmin] },
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardAdmin] },
+      { path: '404', component: PageNotFoundComponent },
+      { path: '**', redirectTo: '/404', pathMatch: 'full' }
     ]
   }
 ];

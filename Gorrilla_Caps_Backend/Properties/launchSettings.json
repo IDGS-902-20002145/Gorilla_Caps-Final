@@ -15,7 +15,7 @@
       "launchBrowser": true,
       "launchUrl": "api/Finanzas",
       "192.168.1.4": null,
-      "applicationUrl": "https://192.168.43.168:5000",
+      "applicationUrl": "https://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

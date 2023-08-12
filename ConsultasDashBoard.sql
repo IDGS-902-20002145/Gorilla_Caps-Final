@@ -5,10 +5,12 @@ SELECT COUNT(*) AS Clientes_Activos FROM [user] WHERE   active = 1  AND admin = 
 
 
 -- Consulta para calcular las compras segun las fechas 
-SELECT SUM(d.Precio * d.Cantidad) AS Total_Compras
+SELECT YEAR(c.fecha) AS Anio, MONTH(c.fecha) AS Mes, SUM(d.Precio * d.Cantidad) AS Total_Compras
 FROM Compra c
 INNER JOIN DetCompra d ON c.id = d.compra_id
-WHERE c.fecha >= '2023-06-01' AND c.fecha <= '2023-07-31' AND c.estatus = 1;
+WHERE c.fecha >= '2023-05-01' AND c.fecha <= '2023-07-31' AND c.estatus = 1
+GROUP BY YEAR(c.fecha), MONTH(c.fecha);
+
 
 
 -- Consulta para tener un conteo de los productos activos y con stock en tienda
@@ -16,10 +18,12 @@ SELECT COUNT(*) AS Productos_Activos FROM Producto WHERE estatus = 1 AND stock_e
 
 
 -- Consulta para obtener las ventas totales  segun las fechas 
-SELECT SUM(D.Precio * D.Cantidad) AS Ventas_Totales
+SELECT YEAR(V.fecha) AS Anio, MONTH(V.fecha) AS Mes, SUM(D.Precio * D.Cantidad) AS Ventas_Totales
 FROM VENTA V
 INNER JOIN DetVenta D ON V.Id = D.VentaId
-WHERE V.fecha >= '2023-05-01' AND V.fecha <= '2023-07-31' AND V.Estatus = 1;
+WHERE V.fecha >= '2023-05-01' AND V.fecha <= '2023-07-31' AND V.Estatus = 1
+GROUP BY YEAR(V.fecha), MONTH(V.fecha);
+
 
 
 -- Consulta para obtener el total de las ventas de cada producto desglosado por cada mes para crear la grafica

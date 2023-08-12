@@ -1,3 +1,12 @@
-<div>
-  <iframe src="http://localhost:8050/dashboard" width="100%" height="600"></iframe>
-</div>
+  <form class="form" (ngSubmit)="onSubmit()">
+    <label class="label" for="fechaInicio">Fecha de inicio:</label>
+    <input class="input" type="date" id="fechaInicio" [(ngModel)]="start_date" name="fechaInicio" required min="2023-05-01">
+
+    <label class="label" for="fechaFin">Fecha de fin:</label>
+    <input class="input" type="date" id="fechaFin" [(ngModel)]="end_date" name="fechaFin" required>
+
+    <button class="button" type="submit">Ejecutar ETL</button>
+  </form>
+  <div class="dashboard">
+    <iframe class="dashboard-frame" src="http://localhost:8050/dashboard" width="100%" height="600"></iframe>
+  </div>
