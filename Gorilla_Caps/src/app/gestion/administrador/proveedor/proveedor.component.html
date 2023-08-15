@@ -1,17 +1,25 @@
+
 <div class="card">
   <div class="card-header">
-    Lista Proveedores
+   Proveedores
   </div>
   <div class="card-body">
     <div class="row">
       <div class="col-md-2">Filtrar por:</div>
       <div class="col-md-4">
-        <input class="form-control" name="filter" type="text">
+        <input class="form-control" [(ngModel)]="listFilter" class="form-control" name="filter" type="text">
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
-        <h3>Filtro: </h3>
+        <h3>Filtro: {{listFilter}}</h3>
+      </div>
+      <div class="row">
+          <div class="col-md-4">
+            <button mat-raised-button color="primary" [routerLink]="['/AgregarProveedor']">
+              Agregar
+            </button>      
+          </div>
       </div>
     </div>
     <div class="table-responsive">
@@ -24,23 +32,22 @@
             <th>Email</th>
             <th>Telefono</th>
             <th>Dirección</th>
-            <th>Activo</th>
-
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let proveedor of dataSource">
-            <td>{{proveedor.id}}</td>
-            <td>{{proveedor.nombre | uppercase}}</td>
-            <td>{{proveedor.email}}</td>
-            <td>{{proveedor.telefono}}</td>
-            <td>{{proveedor.direccion}}</td>
-            <td>{{proveedor.activo}}</td>
-
-
-            <td><button mat-flat-button color="primary">Editar</button></td>
-          </tr>
-        </tbody>
+          <ng-container *ngFor="let proveedor of dataSource | proveedoresFilter:listFilter">
+            <tr *ngIf="proveedor.active">
+              <td>{{proveedor.id}}</td>
+              <td>{{proveedor.nombre | uppercase}}</td>
+              <td>{{proveedor.email}}</td>
+              <td>{{proveedor.telefono}}</td>
+              <td>{{proveedor.direccion}}</td>
+              <td><button mat-flat-button color="primary" [routerLink]="['/ModificarProveedor',proveedor.id]">Editar</button></td>
+              <td><button mat-flat-button color="warn" [routerLink]="['/EliminarProveedor',proveedor.id]">Eliminar</button></td>
+             
+            </tr>
+          </ng-container>
+        </tbody>          
       </table>
     </div>
   </div>

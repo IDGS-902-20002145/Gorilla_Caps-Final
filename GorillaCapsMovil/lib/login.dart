@@ -48,7 +48,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.black.withOpacity(0.3),
                         spreadRadius: 5,
                         blurRadius: 7,
-                        offset: Offset(0, 3), // Cambiar la posición de la sombra
+                        offset:
+                            Offset(0, 3), // Cambiar la posición de la sombra
                       ),
                     ],
                   ),
@@ -96,7 +97,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     try {
                       // Hacemos la petición post a la api
                       final response = await widget.client.post(
-                        Uri.parse('https://192.168.1.4:5000/api/Login/authenticate'),
+                        Uri.parse(
+                            'https://192.168.1.9:5000/api/Login/authenticate'),
                         headers: <String, String>{
                           'Content-Type': 'application/json; charset=UTF-8',
                         },
@@ -105,16 +107,20 @@ class _LoginScreenState extends State<LoginScreen> {
                           'password': _passwordController.text,
                         }),
                       );
-                      final usuario = Usuario.fromJson(jsonDecode(response.body.toString()));
+                      final usuario = Usuario.fromJson(
+                          jsonDecode(response.body.toString()));
                       if (response.statusCode == 200) {
                         // Si la respuesta es correcta, guardamos el token y vamos a la pantalla principal
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => HomePage(client: widget.client, usuario: usuario)),
+                          MaterialPageRoute(
+                              builder: (context) => HomePage(
+                                  client: widget.client, usuario: usuario)),
                         );
                       } else {
                         // Si la respuesta es incorrecta, mostramos un mensaje de error
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error al iniciar sesión')));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Error al iniciar sesión')));
                       }
                     } catch (e) {
                       print(e);
@@ -123,7 +129,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Text('Iniciar Sesión'),
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
                     elevation: 5, // Agregar sombra al botón
                     primary: Colors.teal, // Color de fondo del botón
                   ),
@@ -131,16 +138,22 @@ class _LoginScreenState extends State<LoginScreen> {
                 // Boton para ir a la pantalla de registro
                 TextButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen(client: widget.client)));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                RegisterScreen(client: widget.client)));
                   },
-                  child: Text('Registrarse', style: TextStyle(color: Colors.white)),
+                  child: Text('Registrarse',
+                      style: TextStyle(color: Colors.white)),
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
                     elevation: 5, // Agregar sombra al botón
                     primary: Colors.deepPurple, // Color de fondo del botón
                   ),
-                  )
+                )
               ],
             ),
           ),

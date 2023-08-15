@@ -7,7 +7,6 @@ import 'dart:io';
 import 'login.dart';
 import 'models/usuarios.dart'; // Importa 'dart:io' para usar HttpClient.
 
-
 void main() {
   // Deshabilitar la verificación del certificado SSL
   HttpOverrides.global = MyHttpOverrides();
@@ -22,7 +21,8 @@ class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
-      ..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
 
@@ -45,7 +45,8 @@ class MyApp extends StatelessWidget {
           bodyMedium: TextStyle(
             color: Colors.blueGrey[800], // Color del texto del cuerpo
           ),
-        ), colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.amber),
+        ),
+        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.amber),
       ),
       home: LoginScreen(client: client), // Pasar el cliente HTTP a HomePage
     );
@@ -56,14 +57,15 @@ class HomePage extends StatefulWidget {
   final http.Client client;
   final Usuario usuario;
 
-  const HomePage({Key? key, required this.client, required this.usuario}) : super(key: key);
+  const HomePage({Key? key, required this.client, required this.usuario})
+      : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final url = Uri.parse("https://192.168.1.4:5000/api/Catalogo");
+  final url = Uri.parse("https://192.168.1.9:5000/api/Catalogo");
   late Future<List<Producto>> productos;
 
   @override
@@ -84,9 +86,10 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-        
       ),
-      drawer: NavigationDrawer(usuario: widget.usuario,), // Agrega el Navigation Drawer
+      drawer: NavigationDrawer(
+        usuario: widget.usuario,
+      ), // Agrega el Navigation Drawer
       body: FutureBuilder<List<Producto>>(
         future: productos,
         builder: (context, snapshot) {
@@ -109,7 +112,8 @@ class _HomePageState extends State<HomePage> {
                 final Producto producto = listaProductos[index];
                 return Card(
                   child: ListTile(
-                    leading: Image.memory(base64Decode(producto.imagen)), // Desconvertir de base64 a imagen
+                    leading: Image.memory(base64Decode(
+                        producto.imagen)), // Desconvertir de base64 a imagen
                     title: Text(
                       producto.nombre,
                       style: Theme.of(context).textTheme.titleLarge,
@@ -126,7 +130,8 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ProductDetailPage(producto: producto),
+                          builder: (context) =>
+                              ProductDetailPage(producto: producto),
                         ),
                       );
                     },
@@ -151,7 +156,8 @@ class _HomePageState extends State<HomePage> {
 
     if (res.statusCode == 200) {
       final List<dynamic> jsonList = jsonDecode(res.body);
-      final List<Producto> listaProductos = jsonList.map((json) => Producto.fromJson(json)).toList();
+      final List<Producto> listaProductos =
+          jsonList.map((json) => Producto.fromJson(json)).toList();
 
       return listaProductos;
     }
@@ -178,7 +184,8 @@ class ProductDetailPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.memory(base64Decode(producto.imagen)), // Desconvertir de base64 a imagen
+            Image.memory(base64Decode(
+                producto.imagen)), // Desconvertir de base64 a imagen
             const SizedBox(height: 16),
             Text(
               'Descripción: ${producto.descripcion}',
@@ -187,7 +194,10 @@ class ProductDetailPage extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               'Precio: \$${producto.precio.toStringAsFixed(2)}',
-              style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium!
+                  .copyWith(fontWeight: FontWeight.bold),
               // Agrega el operador de acceso seguro ?. para que sea condicional
             ),
             const SizedBox(height: 16),
@@ -237,7 +247,7 @@ class ProductDetailPage extends StatelessWidget {
 // Agregar el Navigation Drawer
 class NavigationDrawer extends StatelessWidget {
   final Usuario usuario;
-  NavigationDrawer({required this.usuario,super.key});
+  NavigationDrawer({required this.usuario, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -247,7 +257,8 @@ class NavigationDrawer extends StatelessWidget {
           UserAccountsDrawerHeader(
             accountName: Text(
               usuario.nombre,
-              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blueGrey[800]),
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.blueGrey[800]),
             ),
             accountEmail: Text(
               usuario.email,
@@ -319,13 +330,17 @@ class NavigationDrawer extends StatelessWidget {
                     TextButton(
                       onPressed: () {
                         Navigator.pop(context);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen(client: client)));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    LoginScreen(client: client)));
                       },
                       child: Text('Aceptar'),
                     ),
                   ],
                 ),
-              );             
+              );
             },
           ),
         ],

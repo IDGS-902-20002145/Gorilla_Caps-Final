@@ -25,6 +25,24 @@ export class GorillaApiService {
     return this.http.get<ProveedorInterface[]>('/api/Proveedor', { headers });
   }
 
+  public addProveedor(proveedor: ProveedorInterface): Observable<ProveedorInterface> {
+    const token = this.aService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post<ProveedorInterface>('/api/Proveedor/Add', proveedor, { headers })
+  }
+
+  public updateProveedor(proveedor: ProveedorInterface): Observable<ProveedorInterface> {
+    let url = `/api/Proveedor/${proveedor.id}`;
+    const token = this.aService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<ProveedorInterface>(url, proveedor, { headers })
+  }
+  public findProveedor(id: number): Observable<ProveedorInterface> {
+    const token = this.aService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<ProveedorInterface>(`/api/Proveedor/${id}`, { headers })
+  }
+
   public getUsers(): Observable<UserInterface[]> {
     const token = this.aService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);

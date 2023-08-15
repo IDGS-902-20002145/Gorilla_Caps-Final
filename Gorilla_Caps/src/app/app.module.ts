@@ -54,6 +54,11 @@ import { DashboardComponent } from './gestion/administrador/dashboard/dashboard.
 import { CarritoService } from './carrito.service';
 import { CarritoTemporalComponent } from './gestion/catalogo/carrito-temporal/carrito-temporal.component';
 import { PageNotFoundComponent } from './gestion/page-not-found/page-not-found.component';
+import { EliminarProveedorComponent } from './gestion/administrador/proveedor/eliminar-proveedor/eliminar-proveedor.component';
+import { ModificarProveedorComponent } from './gestion/administrador/proveedor/modificar-proveedor/modificar-proveedor.component';
+import { AgregarProveedorComponent } from './gestion/administrador/proveedor/agregar-proveedor/agregar-proveedor.component';
+import { ProveedoresFilterPipe } from './gestion/administrador/proveedor/proveedor-filter.pipe';
+import { HomeComponent } from './gestion/home/home.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +100,11 @@ import { PageNotFoundComponent } from './gestion/page-not-found/page-not-found.c
     DashboardComponent,
     CarritoTemporalComponent,
     PageNotFoundComponent,
+    AgregarProveedorComponent,
+    EliminarProveedorComponent,
+    ModificarProveedorComponent,
+    ProveedoresFilterPipe,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

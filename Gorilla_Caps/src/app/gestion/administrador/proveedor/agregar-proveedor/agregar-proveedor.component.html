@@ -1,0 +1,16 @@
+
+<h3>Agregar</h3>
+<hr>
+<form (ngSubmit)="agregarProveedor()">
+  <label>Nombre:</label>
+  <input type="text" name="nombre" [(ngModel)]="proveedorNuevo.nombre" placeholder="Nombre">
+  <label>Email:</label>
+  <input type="text" name="email" [(ngModel)]="proveedorNuevo.email" placeholder="Email">
+  <label>Telefono:</label>
+  <input type="text" name="telefono" [(ngModel)]="proveedorNuevo.telefono" placeholder="Telefono">
+  <label>Dirección:</label>
+  <input type="text" name="direccion" [(ngModel)]="proveedorNuevo.direccion" placeholder="Dirección">
+  <button type="submit" class="btn btn-primary">Agregar</button>
+</form>
+
+

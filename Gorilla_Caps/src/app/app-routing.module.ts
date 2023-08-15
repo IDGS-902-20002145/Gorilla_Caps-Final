@@ -35,6 +35,10 @@ import { AuthGuardAdmin } from './authAdmin.guart';
 import { AuthGuardEmp } from './authEmpleado.guart';
 import { DashboardComponent } from './gestion/administrador/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './gestion/page-not-found/page-not-found.component';
+import { EliminarProveedorComponent } from './gestion/administrador/proveedor/eliminar-proveedor/eliminar-proveedor.component';
+import { ModificarProveedorComponent } from './gestion/administrador/proveedor/modificar-proveedor/modificar-proveedor.component';
+import { AgregarProveedorComponent } from './gestion/administrador/proveedor/agregar-proveedor/agregar-proveedor.component';
+import { HomeComponent } from './gestion/home/home.component';
 
 
 
@@ -46,6 +50,10 @@ const routes: Routes = [
   { path: 'PagarTodo/:idUsuario', component: PAllComponent },
   { path: 'PagarTodoP/:idUsuario', component: PAllComponent },
   { path: 'PagarTTarjeta', component: TAllComponent },
+  { path: 'AgregarProveedor', component: AgregarProveedorComponent, canActivate: [AuthGuardAdmin] },
+  { path: 'ModificarProveedor/:id', component: ModificarProveedorComponent, canActivate: [AuthGuardAdmin] },
+  { path: 'EliminarProveedor/:id', component: EliminarProveedorComponent, canActivate: [AuthGuardAdmin] },
+  { path: 'Home', component: HomeComponent},
   {
     path: '',
     children: [
