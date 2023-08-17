@@ -8,5 +8,5 @@ export interface UserInterface {
     admin : boolean;
     empleado : boolean;
     roles : any[];
-    token? : string;
+    token? : string; 
 }

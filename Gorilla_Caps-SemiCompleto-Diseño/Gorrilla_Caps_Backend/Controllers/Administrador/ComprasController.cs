@@ -1,4 +1,4 @@
-﻿using Gorrilla_Caps_Backend.Context;
+using Gorrilla_Caps_Backend.Context;
 using Gorrilla_Caps_Backend.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Gorrilla_Caps_Backend.Controllers
 {
-    [Authorize]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class ComprasController : ControllerBase

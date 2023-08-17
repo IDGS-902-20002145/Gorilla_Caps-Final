@@ -1,4 +1,4 @@
-﻿using Gorrilla_Caps_Backend.Context;
+using Gorrilla_Caps_Backend.Context;
 using Microsoft.AspNetCore.Mvc;
 using Gorrilla_Caps_Backend.Models;
 using Microsoft.EntityFrameworkCore;
@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Gorrilla_Caps_Backend.Controllers.Administrador
 {
-    [Authorize(Policy = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase

@@ -1,4 +1,4 @@
-﻿using Gorrilla_Caps_Backend.Context;
+using Gorrilla_Caps_Backend.Context;
 using Gorrilla_Caps_Backend.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Gorrilla_Caps_Backend.Controllers.Administrador
 {
-    [Authorize]
+  
     [Route("api/[controller]")]
     [ApiController]
     public class MateriasPrimasController : ControllerBase

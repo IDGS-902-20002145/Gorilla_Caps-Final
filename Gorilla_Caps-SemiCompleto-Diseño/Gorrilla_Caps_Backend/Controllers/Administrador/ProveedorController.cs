@@ -1,4 +1,4 @@
-﻿using Gorrilla_Caps_Backend.Context;
+using Gorrilla_Caps_Backend.Context;
 using Gorrilla_Caps_Backend.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gorrilla_Caps_Backend.Controllers.Administrador
 {
-    [Authorize(Policy = "Admin")]
     [ApiController]
     [Route("api/[controller]")]
 

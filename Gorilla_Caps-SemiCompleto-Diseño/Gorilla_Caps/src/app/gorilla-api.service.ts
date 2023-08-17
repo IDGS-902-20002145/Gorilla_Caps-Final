@@ -20,27 +20,23 @@ export class GorillaApiService {
   constructor(private http: HttpClient, private aService:AuthService) { }
 
   public getProveedores(): Observable<ProveedorInterface[]> {
-    const token = this.aService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<ProveedorInterface[]>('/api/Proveedor', { headers });
+   
+    return this.http.get<ProveedorInterface[]>('/api/Proveedor');
   }
 
   public addProveedor(proveedor: ProveedorInterface): Observable<ProveedorInterface> {
-    const token = this.aService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post<ProveedorInterface>('/api/Proveedor/Add', proveedor, { headers })
+   
+    return this.http.post<ProveedorInterface>('/api/Proveedor/Add', proveedor)
   }
 
   public updateProveedor(proveedor: ProveedorInterface): Observable<ProveedorInterface> {
     let url = `/api/Proveedor/${proveedor.id}`;
-    const token = this.aService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.put<ProveedorInterface>(url, proveedor, { headers })
+    
+    return this.http.put<ProveedorInterface>(url, proveedor)
   }
   public findProveedor(id: number): Observable<ProveedorInterface> {
-    const token = this.aService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<ProveedorInterface>(`/api/Proveedor/${id}`, { headers })
+   
+    return this.http.get<ProveedorInterface>(`/api/Proveedor/${id}`)
   }
 
   public getUsers(): Observable<UserInterface[]> {
@@ -78,34 +74,27 @@ export class GorillaApiService {
     return this.http.post<UserInterface>(`/api/Login/Registrar`, user)
   }
   public getMateriasPrimas(): Observable<InventariomateriaprimaInterface[]> {
-    const token = this.aService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<InventariomateriaprimaInterface[]>('/api/MateriasPrimas', { headers })
+    
+    return this.http.get<InventariomateriaprimaInterface[]>('/api/MateriasPrimas')
   }
 
   public getMateriasPrimasById(id: number): Observable<InventariomateriaprimaInterface> {
-    const token = this.aService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get<InventariomateriaprimaInterface>(`/api/MateriasPrimas/${id}`, { headers })
+   
+    return this.http.get<InventariomateriaprimaInterface>(`/api/MateriasPrimas/${id}`)
   }
 
   public addMateriasPrimas(materiasPrimas: InventariomateriaprimaInterface): Observable<any> {
-    const token = this.aService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post<InventariomateriaprimaInterface>('/api/MateriasPrimas', materiasPrimas, { headers })
+   
+    return this.http.post<InventariomateriaprimaInterface>('/api/MateriasPrimas', materiasPrimas)
   }
 
   public modifyMateriasPrimas(materiasPrimas: InventariomateriaprimaInterface){
-    const token = this.aService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.put<InventariomateriaprimaInterface>(`/api/MateriasPrimas/${materiasPrimas.id}`,
-     materiasPrimas, { headers })
+     materiasPrimas)
   }
 
   public deleteMateriasPrimas(id: number): Observable<InventariomateriaprimaInterface> {
-    const token = this.aService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.delete<InventariomateriaprimaInterface>(`/api/MateriasPrimas/${id}`, { headers })
+    return this.http.delete<InventariomateriaprimaInterface>(`/api/MateriasPrimas/${id}`)
   }
   public comprasRealizadas(): Observable<CompraGET[]> {
     const token = this.aService.getToken();
@@ -120,9 +109,8 @@ export class GorillaApiService {
   }
 
   public confirmarCompra(compra: any) {
-    const token = this.aService.getToken();
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.put<any>(`/api/Compras/ConfirmarCompra/${compra.id}`, compra, { headers })
+    
+    return this.http.put<any>(`/api/Compras/ConfirmarCompra/${compra.id}`, compra)
   }
 
   public comprasNoConfirmadas(): Observable<CompraGET[]> {

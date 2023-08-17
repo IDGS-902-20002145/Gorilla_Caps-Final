@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\HP\\Downloads\\Gorilla_Caps-SemiCompleto-Sergio\\Gorilla_Caps-SemiCompleto-Sergio\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj": {}
+    "C:\\Users\\HP\\Documents\\IDGS902\\proyectoApi_IDGS902\\Gorilla_Caps-SemiCompleto\\Gorilla_Caps-SemiCompleto-Diseño\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\HP\\Downloads\\Gorilla_Caps-SemiCompleto-Sergio\\Gorilla_Caps-SemiCompleto-Sergio\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj": {
+    "C:\\Users\\HP\\Documents\\IDGS902\\proyectoApi_IDGS902\\Gorilla_Caps-SemiCompleto\\Gorilla_Caps-SemiCompleto-Diseño\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\HP\\Downloads\\Gorilla_Caps-SemiCompleto-Sergio\\Gorilla_Caps-SemiCompleto-Sergio\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Documents\\IDGS902\\proyectoApi_IDGS902\\Gorilla_Caps-SemiCompleto\\Gorilla_Caps-SemiCompleto-Diseño\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj",
         "projectName": "Gorrilla_Caps_Backend",
-        "projectPath": "C:\\Users\\HP\\Downloads\\Gorilla_Caps-SemiCompleto-Sergio\\Gorilla_Caps-SemiCompleto-Sergio\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj",
+        "projectPath": "C:\\Users\\HP\\Documents\\IDGS902\\proyectoApi_IDGS902\\Gorilla_Caps-SemiCompleto\\Gorilla_Caps-SemiCompleto-Diseño\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\HP\\Downloads\\Gorilla_Caps-SemiCompleto-Sergio\\Gorilla_Caps-SemiCompleto-Sergio\\Gorrilla_Caps_Backend\\obj\\",
+        "outputPath": "C:\\Users\\HP\\Documents\\IDGS902\\proyectoApi_IDGS902\\Gorilla_Caps-SemiCompleto\\Gorilla_Caps-SemiCompleto-Diseño\\Gorrilla_Caps_Backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
