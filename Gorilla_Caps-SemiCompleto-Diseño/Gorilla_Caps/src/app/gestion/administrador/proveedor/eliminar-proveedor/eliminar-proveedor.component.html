@@ -1,0 +1,15 @@
+
+<form (ngSubmit)="eliminarProveedor()">
+  <h3 class="titulo">Eliminar</h3>
+    <label>Nombre:</label>
+    <input type="text" name="nombre" [(ngModel)]="proveedorElim.nombre" placeholder="Nombre" readonly>
+    <label>Email:</label>
+    <input type="text" name="email" [(ngModel)]="proveedorElim.email" placeholder="Email" readonly>
+    <label>Telefono:</label>
+    <input type="text" name="telefono" [(ngModel)]="proveedorElim.telefono" placeholder="Telefono" readonly>
+    <label>Dirección:</label>
+    <input type="text" name="direccion" [(ngModel)]="proveedorElim.direccion" placeholder="Dirección" readonly>
+    
+  <button type="submit" class="btn btn-primary">Eliminar</button>
+</form>
+

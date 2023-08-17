@@ -1,0 +1,132 @@
+ /* Estilos para el fondo del dashboard */
+ #ventasDasboards {
+  background-color: #cce4f3;
+  padding: 30px;
+}
+
+/* Estilos para el título de los paneles */
+.panel-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+/* Estilos para los paneles */
+.panel {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px #bbb;
+  margin-bottom: 30px;
+}
+
+/* Estilos para los íconos de los paneles */
+.panel-icon {
+  font-size: 48px;
+  color: #000000;
+  margin-right: 10px;
+}
+
+/* Estilos para el texto de los paneles */
+.panel-text {
+  font-size: 36px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.panel:focus,
+.panel:hover {
+  outline: none;
+}
+
+#regresar {
+  background: none;
+  border: none;
+  color: #337ab7;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  /*border is optional*/
+  border-bottom: 1px solid #337ab7;
+  float: left;
+}
+
+#regresar:hover {
+  color: #23527c;
+  border-bottom: 1px solid #23527c;
+}
+
+h1 {
+  font-family: 'Times New Roman', Times, serif;
+}
+  
+  /* Estilo de los encabezados */
+.header-row th {
+    background-color: #1c4069; /* Color para los encabezados */
+    color: #fff; /* Texto en blanco */
+    padding: 10px;
+} 
+.card {
+  max-width: 800px;
+  margin: 10px auto;
+  background-color: #acc4d3;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.card-header {
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #031546;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+
+.card-body {
+  margin-bottom: 10px;
+}
+.row {
+  margin-bottom: 10px;
+}
+
+input.form-control {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+}
+/* Estilos de búsqueda */
+.search-container {
+  position: relative;
+}
+
+.search-container input {
+  padding-right: 30px; /* Espacio para el ícono */
+}
+
+.search-container i {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #1C3E66; /* Color del ícono */
+  cursor: pointer;
+}
+.titulo {
+  font-size: 24px; /* Tamaño de fuente */
+  font-weight: bold; /* Negrita */
+  color: #1c4069; /* Color del texto */
+  text-transform: uppercase; /* Convertir a mayúsculas */
+  border-bottom: 2px solid #1c4069; /* Línea decorativa en la parte inferior */
+  padding-bottom: 10px; /* Espacio debajo de la línea */
+}
+#btn-success {
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+ 

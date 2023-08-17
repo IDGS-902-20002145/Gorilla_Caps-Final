@@ -1,0 +1,97 @@
+/* Estilos para el contenedor principal */
+
+tr {
+    padding: 12px;
+    text-align: center;
+    transition: box-shadow 0.3s ease; /* Transición suave del efecto */
+  }
+  
+  /* Efecto de levantamiento y sombreado al pasar el mouse por encima */
+  tr:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra cuando el mouse está encima */
+    transform: translateY(-4px); /* Efecto de levantamiento */
+  }
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  /* Estilos para el encabezado */
+  .card-header {
+    background-color: #24c0eb;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+  }
+  .header-row th {
+    background-color:#5cceee; /* Color para los encabezados */
+    color: #fff; /* Texto en blanco */
+    padding: 10px;
+  }
+  
+  /* Estilos para el título */
+  h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  /* Estilos para el botón "Seguir comprando" */
+  .col-md-4 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos para la tabla */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  /* Estilos para las celdas de la tabla */
+  th, td {
+    padding: 12px;
+    text-align: center;
+  }
+  
+  /* Estilos para la fila de encabezado de la tabla */
+  thead tr {
+    background-color: #f2f2f2;
+  }
+  
+  /* Estilos para las filas pares de la tabla */
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Estilos para el botón "Eliminar" */
+  .btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Estilos para la imagen del producto */
+  .product-image {
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  /* Estilos para el botón de Angular Material */
+  .mat-raised-button {
+    background-color: #007bff;
+    color: #fff;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  

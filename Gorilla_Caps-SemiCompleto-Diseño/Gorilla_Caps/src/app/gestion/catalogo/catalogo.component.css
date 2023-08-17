@@ -1,0 +1,528 @@
+/* Estilos generales para el catálogo de productos */
+.product-carousel {
+  width: 100%;
+  /* Ajustar el ancho del carrusel según el diseño */
+  overflow-x: hidden;
+  /* Ocultar el contenido que se desborda del carrusel */
+}
+
+/* Contenedor que se desplazará horizontalmente */
+.product-list-cards {
+  display: flex;
+  gap: 20px;
+  white-space: nowrap;
+  /* Evitar el salto de línea */
+  transition: transform 0.5s ease;
+  /* Añadir una transición suave al desplazamiento */
+  scroll-behavior: smooth;
+  /* Desplazamiento suave al hacer clic en los botones */
+  overflow-y: hidden;
+
+}
+
+.verProd {
+  position: relative;
+  overflow: hidden;
+}
+
+.verProd-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.verProd:hover .verProd-message {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.verProdC:hover .verProd-message {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.verProd img {
+  transition: transform 0.3s;
+}
+
+.verProd:hover img {
+  transform: scale(1.2);
+}
+
+.verProdC img {
+  transition: transform 0.3s;
+}
+
+.verProdC:hover img {
+  transform: scale(1.1);
+  filter: brightness(60%);
+  /* Reduce el brillo para oscurecer la imagen */
+}
+
+.verProd:hover img {
+  transform: scale(1.1);
+  filter: brightness(70%);
+  /* Reduce el brillo para oscurecer la imagen */
+}
+
+
+/* Establecer el ancho de cada tarjeta de producto */
+.product-card {
+  width: calc(25% - 10px);
+  /* Resto del código para los estilos de las tarjetas (los mismos que ya tienes) */
+}
+
+/* Efecto de desplazamiento del carrusel */
+/* Estilos para cada tarjeta de producto */
+.product-card {
+  width: calc(25% - 10px);
+  /* Ajustar el ancho para 4 tarjetas por fila con espacios entre ellas */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* Transiciones suaves */
+}
+
+/* Efecto de levantar la tarjeta cuando se pasa el cursor sobre ella */
+.product-card:hover {
+  transform: translateY(-5px);
+  /* Elevar la tarjeta 5px hacia arriba */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  /* Sombra al levantar */
+}
+
+/* Estilos para la imagen del producto */
+.product-image {
+  width: 100%;
+  height: 150px;
+  /* Ajustar la altura deseada para las imágenes */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Estilos para los detalles del producto */
+.product-details {
+  margin-top: 10px;
+}
+
+/* Estilos para el nombre del producto */
+.product-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Estilos para la descripción del producto */
+.product-description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Estilos para el precio del producto */
+.product-price {
+  font-size: 16px;
+  color: #007bff;
+  /* Azul brillante, puedes cambiar el color según tu preferencia */
+  margin-bottom: 5px;
+}
+
+/* Estilos para el stock del producto */
+.product-stock {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Estilos para las acciones del producto (si las tienes) */
+.product-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Puedes agregar estilos adicionales para botones, por ejemplo */
+.product-actions button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Cambiar el color del botón al pasar el ratón sobre él */
+.product-actions button:hover {
+  background-color: #0056b3;
+  /* Un tono más oscuro del color principal */
+}
+
+/* Estilo general de la lista de productos */
+.product-list-cards-general {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  /* Espacio entre las tarjetas */
+}
+
+/* Estilo para cada tarjeta de producto */
+.product-card-general {
+  flex: 0 0 calc(33.3333% - 20px);
+  /* Ajusta el tamaño de la tarjeta según tus preferencias */
+  max-width: calc(33.3333% - 20px);
+  /* Ajusta el tamaño máximo de la tarjeta según tus preferencias */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  margin-bottom: 20px;
+  /* Espacio entre las tarjetas y el borde inferior */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* Transiciones suaves */
+}
+
+.product-card-general:hover {
+  transform: translateY(-5px);
+  /* Elevar la tarjeta 5px hacia arriba */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  /* Sombra al levantar */
+}
+
+/* Estilo para la imagen del producto */
+.product-image-general {
+  width: 90%;
+  height: 250px;
+  /* Ajusta la altura de la imagen según tus preferencias */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  object-fit: cover;
+}
+
+.product-image-first {
+  width: 100%;
+  height: 200px;
+  /* Ajusta la altura de la imagen según tus preferencias */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  object-fit: fill;
+}
+
+/* Estilo para los detalles del producto */
+.product-details-g {
+  padding: 20px;
+  /* Ajusta el espaciado interno de los detalles */
+}
+
+.product-name-g {
+  font-size: 24px;
+  /* Ajusta el tamaño de la fuente según tus preferencias */
+  font-weight: bold;
+  margin-bottom: 10px;
+  /* Espacio entre el nombre del producto y la descripción */
+}
+
+.product-description-g {
+  font-size: 18px;
+  /* Ajusta el tamaño de la fuente según tus preferencias */
+  color: #555;
+  margin-bottom: 20px;
+  /* Espacio entre la descripción y el precio */
+}
+
+.product-price-g {
+  font-size: 20px;
+  /* Ajusta el tamaño de la fuente según tus preferencias */
+  color: #007bff;
+  margin-bottom: 10px;
+  /* Espacio entre el precio y el stock */
+}
+
+.product-stock-g {
+  font-size: 18px;
+  /* Ajusta el tamaño de la fuente según tus preferencias */
+  color: #666;
+}
+
+/* Estilo para las acciones del producto */
+.product-actions-g {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  /* Ajusta el espaciado interno de las acciones */
+}
+
+.product-actions-g button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-actions-g button:hover {
+  background-color: #0056b3;
+}
+
+.product-actions-g .mat-icon {
+  margin-right: 5px;
+}
+
+/* Ajuste para pantallas más pequeñas */
+@media screen and (max-width: 768px) {
+  .product-card-general {
+    flex: 0 0 100%;
+    /* Las tarjetas ocuparán todo el ancho en pantallas pequeñas */
+    max-width: 100%;
+    /* Tamaño máximo igual al ancho completo */
+  }
+}
+
+/* Estilo para la cabecera del catálogo */
+.Cabecera-catalogo {
+  text-align: center;
+  padding: 50px 0;
+  background-image: url('../../../assets/fondo3.jpg');
+  background-size: 1300px 500px;
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  color: #fff;
+}
+
+
+.titulo-cabecera {
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.subtitulo-cabecera {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.imagen-cabecera {
+  max-width: 100px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 20px;
+}
+
+.boton-cabecera {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #fff;
+  color: #007bff;
+  font-size: 20px;
+  font-weight: bold;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.boton-cabecera:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Ajuste para pantallas más pequeñas */
+@media screen and (max-width: 768px) {
+  .imagen-cabecera {
+    max-width: 200px;
+  }
+
+  .titulo-cabecera {
+    font-size: 36px;
+  }
+
+  .subtitulo-cabecera {
+    font-size: 20px;
+  }
+
+  .boton-cabecera {
+    font-size: 18px;
+    padding: 10px 16px;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+input.form-control {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+  height: 30px;
+  font-size: large;
+}
+
+.neon-dark-background {
+  background-color: #2e1f3c;
+  /* Un tono oscuro */
+  color: #00ffcc;
+  /* Un color neón (turquesa) */
+}
+
+/* Estilos para el div que contiene el carrito flotante */
+.carritoFlotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  /* Ajusta el valor del z-index según sea necesario */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+
+}
+
+/* Estilos para el botón "Abrir/Cerrar Carrito" dentro del div flotante */
+.carritoFlotante button {
+  margin-bottom: 5px;
+  width: 50px;
+  height: 50px;
+}
+
+/* Estilos para el carrito flotante (app-carrito-temporal) */
+.floating-cart {
+  /* Ajusta los estilos de app-carrito-temporal según tus necesidades */
+  /* Por ejemplo, podrías ajustar el ancho, altura, colores, etc. */
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.tr {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+  width: 100%;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilos para el label "Tienes productos en tu carrito" */
+.carritoFlotante label {
+  animation: fadeInOut 2s ease-in-out infinite;
+  opacity: 1;
+  /* Asegura que el label sea inicialmente visible */
+  color: black;
+  /* Color inicial del texto (puedes ajustar el color según tu diseño) */
+}
+
+/* Definición de la animación */
+@keyframes fadeInOut {
+
+  0%,
+  100% {
+    opacity: 1;
+    /* El label es completamente visible al inicio y al final */
+    color: black;
+    /* Color dorado (o el color que desees) al inicio y al final */
+  }
+
+  50%,
+  95% {
+    opacity: 0.65;
+    /* El label se oculta a la mitad y desaparece gradualmente hasta el final */
+    color: green;
+    /* Color dorado (o el color que desees) a la mitad y antes de desaparecer */
+  }
+}
+
+.cartAn:active {
+  transform: scale(1.1);
+  background-color: #6f95ff;
+}
+
+/*Más cosas del carrito*/
+@keyframes rotateButton {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-button {
+  transition: transform 3s;
+  /* Transición para un giro suave */
+}
+
+.rotate-button.clicked {
+  animation: rotateButton 1s linear;
+}
+
+/* Extra */
+.heart {
+  background-image: url(../../../assets/web_heart_animation.png);
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 1450px;
+  cursor: pointer;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+}
+.heart:hover
+{
+  background-position: right;
+}
+
+@-webkit-keyframes heartTransition
+{
+    0% {background-position: left;}
+    100% {background-position: right;}
+}
+
+@keyframes heartTransition
+{
+    0% {background-position: left;}
+    100% {background-position: right;}
+}
+
+.heart_animate
+{
+    animation-duration: .8s;
+    animation-iteration-count: 1;
+    animation-name: heartTransition;
+    animation-timing-function: steps(28);
+    background-position: right;
+}
+
+.body {
+  background-color: #cce4f3;
+  }

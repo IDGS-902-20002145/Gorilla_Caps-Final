@@ -1,0 +1,57 @@
+<div class="card">
+    <div class="card-header">
+      Usuarios
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-2">
+          <label class="blue-label">Buscar</label></div>
+        <div class="col-md-4">
+          <div class="search-container">
+            <input class="form-control" [(ngModel)]="listFilter" name="filter" type="text">
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr class="header-row">
+  
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Rol</th>
+              <th>Acciones</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let user of dataSource | usuariosFilter:listFilter">
+              <tr *ngIf="user.active">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.empleado ? 'Empleado' : 'Cliente'}}</td>
+                <td><button mat-flat-button color="primary" [routerLink]="['/ModificarUsuarios',user.id]">Editar</button></td>
+                <td><button mat-flat-button color="warn" [routerLink]="['/EliminarUsuarios',user.id]">Eliminar</button></td>
+              </tr>
+            </ng-container>
+          </tbody>          
+        </table>
+      </div>
+      
+      <div class="row">
+        <div>
+          <button mat-raised-button color="success" [routerLink]="['/AgregarUsuarios']">
+            <mat-icon>add</mat-icon>
+            Agregar
+          </button>      
+        </div>
+    </div>
+    </div>
+  </div>
+  

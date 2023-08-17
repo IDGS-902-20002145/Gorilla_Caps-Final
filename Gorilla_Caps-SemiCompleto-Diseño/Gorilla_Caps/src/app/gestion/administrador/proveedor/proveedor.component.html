@@ -1,0 +1,60 @@
+
+<div class="card">
+  <div class="card-header">
+   Proveedores
+  </div>
+  <div class="row">
+    <label class="blue-label">Buscar</label>
+    <div class="search-container">
+      <input class="form-control" [(ngModel)]="listFilter" name="filter" type="text">
+      <i class="fas fa-search"></i>
+    </div>
+  </div>
+    <div class="row">
+      <!-- <div class="col-md-6">
+        <h3>Filtro: {{listFilter}}</h3>
+      </div> -->
+      <br>
+      
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr class="header-row">
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Telefono</th>
+            <th>Dirección</th>
+            <th>Opciones</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let proveedor of dataSource | proveedoresFilter:listFilter">
+            <tr  *ngIf="proveedor.active">
+              <td>{{proveedor.id}}</td>
+              <td>{{proveedor.nombre | uppercase}}</td>
+              <td>{{proveedor.email}}</td>
+              <td>{{proveedor.telefono}}</td>
+              <td>{{proveedor.direccion}}</td>
+              <td><button mat-flat-button color="primary" [routerLink]="['/ModificarProveedor',proveedor.id]">Editar</button></td>
+              <td><button mat-flat-button color="warn" [routerLink]="['/EliminarProveedor',proveedor.id]">Eliminar</button></td>
+             
+            </tr>
+          </ng-container>
+        </tbody>          
+      </table>
+    </div>
+
+    <div class="row">
+      <div >
+        <button mat-raised-button color="success" [routerLink]="['/AgregarProveedor']">
+          <mat-icon>add</mat-icon>
+          Agregar
+        </button>      
+      </div>
+  </div>
+  </div>
+
+

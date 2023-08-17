@@ -1,0 +1,144 @@
+/* product-list.component.css */
+
+/* Estilos generales para la lista de productos */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+  } 
+  
+/* Estilos para la vista en forma de cards */
+.product-list-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Tamaño específico para las tarjetas */
+.product-list-cards .product-card {
+  width: 300px; /* Establece el ancho deseado */
+  margin: 10px; /* Espacio entre las tarjetas */
+  /* Otros estilos para las tarjetas... */
+}
+
+  
+  .product-card {
+    width: 400px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #cce4f3;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .header-row th {
+    background-color: #1c4069; /* Color para los encabezados */
+    color: #fff; /* Texto en blanco */
+    padding: 10px;
+  }
+  .product-image {
+    width: 250px; /* Establece el ancho deseado */
+    height: 200px; /* Establece la altura deseada */
+    border-radius: 5px;
+  }
+  
+  .product-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+  .product-description {
+    font-size: 14px;
+    color: #000000;
+    margin-top: 2px;
+  }
+  
+  .product-price {
+    font-size: 15px;
+    margin-top: 2px;
+  }
+  
+  .product-stock {
+    font-size: 14px;
+    color: #000000;
+    margin-top: 2px;
+  }
+  
+  /* Estilos para la vista en forma de tabla */
+  .product-list-table {
+    margin-top: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  /* Estilos para el botón de cambiar vista */
+  .view-toggle {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .view-toggle button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .view-toggle button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilo del contenedor de botones */
+.button-container {
+  display: flex;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  gap: 20px; /* Espacio entre los botones */
+}
+
+/* Estilo para el botón "Cambiar Vista" */
+.toggle-button {
+  padding: 10px 20px;
+  background-color: #1c4069;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Estilo para el botón "Agregar Producto" (clase de Bootstrap) */
+.btn-success {
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.mat-success {
+  background-color: #28a745; /* Color verde */
+  color: #fff; /* Texto en blanco */
+}
+
+/* Cambiar el color del botón al color personalizado */
+button.mat-success {
+  background-color: #28a745; /* Color verde */
+  color: #fff; /* Texto en blanco */
+}
+ 

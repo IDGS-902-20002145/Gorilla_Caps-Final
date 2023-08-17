@@ -1,0 +1,60 @@
+<!-- product-list.component.html -->
+
+<div class="button-container">
+  <button (click)="toggleView()" class="toggle-button">Cambiar vista</button>
+  <button  mat-raised-button color="success" [routerLink]="'/agregarProductos'"><mat-icon>add</mat-icon>
+    Agregar producto</button>
+</div>
+<br>
+  
+  <div *ngIf="isCardView; else tableView" class="product-list-cards">
+    <div *ngFor="let product of products" class="product-card">
+      <img [src]="getImageUrl(product.imagen)" class="product-image" >
+      <div class="product-details">
+        <h3 class="product-name">{{ product.nombre }}</h3>
+        <p class="product-description">{{ product.descripcion }}</p>
+        <p class="product-price">Precio: ${{ product.precio }}</p>
+        <p class="product-stock">Stock: {{ product.stock_existencia }}</p>
+        <div class="product-actions; button-container">
+          <button mat-flat-button color="primary" [routerLink]="['/editarProducto',product.id]">Editar</button>
+          <button mat-flat-button color="warn" [routerLink]="['/eliminarProducto',product.id]">Eliminar</button>
+          <button mat-flat-button color="accent" [routerLink]="['/agregarStock',product.id]">Add Stock</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+   
+  <ng-template #tableView>
+    <div class="product-list-table">
+      <table class="table table-striped">
+        <thead>
+          <tr class="header-row th">
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Acciones</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td><img [src]="getImageUrl(product.imagen)" class="product-image" style="height: 80px; width: 80px;"></td>
+            <td>{{ product.nombre }}</td>
+            <td>{{ product.descripcion }}</td>
+            <td>${{ product.precio }}</td>
+            <td>{{ product.stock_existencia }}</td>
+            <td>
+              <button  mat-flat-button color="primary" [routerLink]="['editarProducto',product.id]">Editar</button></td>
+            <td>  <button  mat-flat-button color="warn"  [routerLink]="['/eliminarProducto',product.id]">Eliminar</button></td>
+             <td> <button mat-flat-button color="accent" [routerLink]="['/agregarStock',product.id]">Add Stock</button>
+              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ng-template>
+  

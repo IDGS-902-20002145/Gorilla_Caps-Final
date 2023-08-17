@@ -1,0 +1,8 @@
+
+<form (ngSubmit)="eliminarUsuario()">
+  <h3 class="titulo">Eliminar</h3>
+  <input type="text" name="nombre" [(ngModel)]="usuarioElim.name" placeholder="Nombre" readonly>
+  <input type="text" name="apellido" [(ngModel)]="usuarioElim.email" placeholder="Correo electronico" readonly>
+  <input type="text" name="email" [(ngModel)]="usuarioElim.password" placeholder="Contraseña" readonly>
+  <button type="submit" class="btn btn-primary">Eliminar</button>
+</form>

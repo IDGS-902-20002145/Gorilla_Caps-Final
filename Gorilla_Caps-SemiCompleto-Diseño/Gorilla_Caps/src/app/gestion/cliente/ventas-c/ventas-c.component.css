@@ -1,0 +1,95 @@
+.card {
+  border: none;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  /* background-color: rgb(172, 224, 224); */
+  
+  background-color:#cce4f3;
+}
+
+.card-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+ .header-row th {
+    background-color: #1c4069; /* Color para los encabezados */
+    color: #fff; /* Texto en blanco */
+    padding: 10px;
+  }
+
+.card-header {
+  background-color: #3d9fb8;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+}
+
+.row2{
+  padding-left: 60px;
+}
+.table {
+  margin-bottom: 0;
+}
+
+.table th {
+  border-top: none;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+#btn-en-camino {
+  background-color: rgb(50, 85, 224);
+  border-color: rgb(105, 156, 193);
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+#btn-en-camino:hover {
+  background-color: rgb(105, 156, 193);
+  border-color: white;
+  color: black;
+  transform: scale(1.1);
+}
+
+
+#btn-pendientes {
+  
+  background-color: rgb(50, 85, 224);
+  border-color: rgb(105, 156, 193);
+  color: white;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+#btn-pendientes:hover {
+  background-color:rgb(105, 156, 193);
+  border-color: white;
+  color: black;
+  transform: scale(1.1);
+}
+
+.card-text {
+  color: rgb(0, 0, 0); /* dorado metálico */
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 17px;
+  padding-left: 40px;
+}
+
+.card-titulo {
+  color: rgb(28, 79, 135); /* dorado metálico */
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 17px;
+  font-weight: bold;
+  padding-left: 40px;
+  text-align: center; /* Centrar horizontalmente */
+}

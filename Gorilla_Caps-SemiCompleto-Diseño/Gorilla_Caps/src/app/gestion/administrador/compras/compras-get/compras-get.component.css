@@ -1,0 +1,55 @@
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color:#cce4f3; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.card.active {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.form-container {
+  padding: 20px;
+  
+}
+
+.compras-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.compras-table th, .compras-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.compras-table th {
+  background-color: #f2f2f2;
+}
+
+.header-row th {
+  background-color: #1c4069; /* Color para los encabezados */
+  color: #fff; /* Texto en blanco */
+  padding: 10px;
+}
+
+.titulo {
+  font-size: 24px; /* Tamaño de fuente */
+  font-weight: bold; /* Negrita */
+  color: #1c4069; /* Color del texto */
+  text-transform: uppercase; /* Convertir a mayúsculas */
+  border-bottom: 2px solid #1c4069; /* Línea decorativa en la parte inferior */
+  padding-bottom: 10px; /* Espacio debajo de la línea */
+  
+}

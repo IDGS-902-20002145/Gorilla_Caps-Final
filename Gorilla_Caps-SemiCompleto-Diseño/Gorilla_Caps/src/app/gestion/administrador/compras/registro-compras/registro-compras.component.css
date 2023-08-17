@@ -1,0 +1,55 @@
+.form-container {
+    width: 80%; /* Ajusta el ancho del formulario según tus preferencias */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #cce4f3;
+    border-radius: 5px;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input,
+  select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  .titulo {
+    font-size: 24px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    color: #1c4069; /* Color del texto */
+    text-transform: uppercase; /* Convertir a mayúsculas */
+    border-bottom: 2px solid #1c4069; /* Línea decorativa en la parte inferior */
+    padding-bottom: 10px; /* Espacio debajo de la línea */
+  }
+  
+  /* Ajusta los estilos según tus preferencias */
+  

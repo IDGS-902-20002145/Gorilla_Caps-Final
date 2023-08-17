@@ -1,0 +1,116 @@
+<div class="container-fluid" id="ventasDasboards">
+  <div class="row">
+    <div class="col-md-6">
+      <a (click)="mostrarVentaE()">
+        <div class="panel bg-primary">
+          <h2 class="panel-title">Ventas enviadas</h2>
+          <i class="fas fa-truck fa-lg" style="color: #000000;"></i>
+          <span class="panel-text"> {{conteo_ventas_enviadas}}</span>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-6">
+      <a (click)="mostrarVentasPE()">
+        <div class="panel bg-warning">
+          <h2 class="panel-title">Ventas pendientes por enviar</h2>
+          <i class="fas fa-dolly fa-lg" style="color: #000000;"></i>
+          <span class="panel-text"> {{conteo_ventas_pendientes}}</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container-fluid table-responsive" id="ventasP" [style.display]="ventasPDisplay">
+  <div class="card">
+    <div>
+      <h1 class="titulo">Ventas pendientes</h1>
+    </div>
+    <div class="card-body">
+      <form class="form-inline my-3" method="POST">
+        <div class="form-group">
+          <label for="fechaR" class="mr-2">Fecha de compra:</label>
+          <input type="date" class="form-control mr-2" id="fechaR" name="fechaR">
+        </div><br>
+        <button type="button" class="btn btn-primary" (click)="buscarPorFechaR()">Buscar</button>
+      </form>
+      <hr>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr class="header-row th">
+              <th class="text-center align-middle">Fecha</th>
+              <th class="text-center align-middle">Cliente</th>
+              <th class="text-center align-middle"></th>
+              <th class="text-center align-middle"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ... Contenido para ventas pendientes ... -->
+            <tr *ngFor="let ventaE of ventas_pendientes">
+              <td>{{ventaE.fecha}}</td>
+              <td>{{ventaE.user.name}}</td>
+              <td class="text-center align-middle">
+                <button  mat-raised-button color="accent"
+                  [routerLink]="['/detalle-venta', ventaE.id, ventaE.estatus.toString()]"> Ver detalle </button>
+              </td>
+              <td class="text-center align-middle">
+                <button mat-raised-button color="primary" (click)="confirmarEnvio(ventaE.id)">Confirmar envío</button>
+                <br>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    
+  <button class="btn btn-primary float-right" id="regresar" (click)="regresarVentas();">
+    <i class="fas fa-arrow-left mr-2"></i> Regresar
+  </button></div>
+  </div>
+</div>
+
+<div class="container-fluid table-responsive" id="ventasE" [style.display]="ventasEDisplay">
+  <div class="card">
+    <div >
+      <h1 class="titulo">Ventas enviadas</h1>
+      
+    </div>
+    <div class="card-body">
+      <form class="form-inline my-3" method="POST">
+        <div class="form-group">
+          <label for="fechaR" class="mr-2">Fecha de compra:</label>
+          <input type="date" class="form-control mr-2" id="fechaR" name="fechaR">
+        </div><br>
+        <button type="button" class="btn btn-primary" (click)="buscarPorFechaR()">Buscar</button>
+      </form>
+      <hr>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr class="header-row th">
+              <th class="text-center align-middle">Fecha</th>
+              <th class="text-center align-middle">Cliente</th>
+              <th class="text-center align-middle"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- ... Contenido para ventas enviadas ... -->
+            <tr *ngFor="let ventaE of ventas_enviadas">
+              <td>{{ventaE.fecha}}</td>
+              <td>{{ventaE.user.name}}</td>
+              <td >
+                <button mat-raised-button color="accent" [routerLink]="['/detalle-venta', ventaE.id, ventaE.estatus]"> Ver
+                  detalle </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button class="btn btn-primary float-right" id="regresar" (click)="regresarVentas();">
+        <i class="fas fa-arrow-left mr-2"></i> Regresar
+      </button>
+    </div>
+  </div>
+</div>
+
+

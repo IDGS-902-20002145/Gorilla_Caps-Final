@@ -1,0 +1,10 @@
+
+
+<form (ngSubmit)="agregarUsuario()">
+<h3 class="titulo">Agregar</h3>
+  <input type="text" name="nombre" [(ngModel)]="usuarioNuevo.name" placeholder="Nombre">
+  <input type="text" name="apellido" [(ngModel)]="usuarioNuevo.email" placeholder="Correo electrónico">
+  <input type="text" name="email" [(ngModel)]="usuarioNuevo.password" placeholder="Contraseña">
+  <mat-slide-toggle name="empleado" [(ngModel)]="usuarioNuevo.empleado">Es empleado</mat-slide-toggle>
+  <button type="submit" class="btn btn-primary">Agregar</button>
+</form>

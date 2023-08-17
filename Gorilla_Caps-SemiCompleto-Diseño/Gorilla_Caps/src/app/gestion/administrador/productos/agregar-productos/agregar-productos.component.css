@@ -1,0 +1,209 @@
+/* AgregarProductosComponent CSS */
+/* Estilos para el formulario */
+.form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  input[type="file"],
+  textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  /* Estilos para el checkbox */
+  .checkbox-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  
+  .checkbox {
+    display: flex;
+    align-items: center;
+  }
+  
+  .checkbox input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  
+  /* Estilos para el botón */
+  button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Estilos para el contenedor del formulario */
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #cce4f3;
+  }
+  
+  /* Estilos para el título del formulario */
+  .form-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .titulo {
+    font-size: 24px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    color: #1c4069; /* Color del texto */
+    text-transform: uppercase; /* Convertir a mayúsculas */
+    border-bottom: 2px solid #1c4069; /* Línea decorativa en la parte inferior */
+    padding-bottom: 10px; /* Espacio debajo de la línea */
+  }
+
+  .titulo2 {
+    font-size: 17px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    color: #1c4069; /* Color del texto */
+  }
+  /* AgregarProductosComponent CSS */
+/* Estilos para el formulario */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+ul {
+  list-style-type: none; /* Quitar los puntos de la lista */
+  padding: 0; /* Eliminar el padding de la lista */
+}
+
+ul li {
+  text-align: left; /* Alinear a la izquierda */
+  margin-bottom: 5px; /* Espacio entre los elementos de la lista */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Estilos para el checkbox */
+.checkbox-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+
+/* Estilos para el botón */
+button {
+  padding: 10px 20px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2b4664;
+}
+
+/* Estilos para el contenedor del formulario */
+.container {
+  max-width: px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Estilos para el título del formulario */
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+/* Estilos de búsqueda */
+.search-container {
+  position: relative;
+}
+
+.search-container input {
+  padding-right: 30px; /* Espacio para el ícono */
+}
+
+.search-container i {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #1C3E66; /* Color del ícono */
+  cursor: pointer;
+}
+/* Estilo del label con fondo azul */
+.blue-label {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #1C3E66; /* Fondo azul */
+  color: #fff; /* Texto en blanco */
+  border-radius: 6px;
+}
+.row {
+  display: flex; /* Utilizar flexbox para alinear elementos en una fila */
+  align-items: center; /* Centrar verticalmente los elementos */
+}
+
+.blue-label {
+  margin-right: 10px; /* Espacio entre la etiqueta y el campo de búsqueda */
+}
+
+.search-container {
+  display: flex; /* Utilizar flexbox para los elementos dentro del contenedor de búsqueda */
+  align-items: center; /* Centrar verticalmente los elementos dentro del contenedor */
+}
+
+.search-container input {
+  margin-right: 5px; /* Espacio entre el campo de búsqueda y el ícono de búsqueda */
+}

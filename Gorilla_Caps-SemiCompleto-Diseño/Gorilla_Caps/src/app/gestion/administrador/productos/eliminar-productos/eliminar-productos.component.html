@@ -1,0 +1,29 @@
+<div class="form">
+    <div *ngIf="producto">
+      <h3 class="titulo">Eliminar producto</h3>
+      <div>
+        <label>Nombre:</label>
+        <p>{{ producto.nombre }}</p>
+      </div>
+      <div>
+        <label>Descripción:</label>
+        <p>{{ producto.descripcion }}</p>
+      </div>
+      <div>
+        <label>Precio:</label>
+        <p>{{ producto.precio }}</p>
+      </div>
+      <div>
+        <label>Imagen:</label>
+        <img [src]="getImageUrl(producto.imagen)" style="width: 150px; height: 150px;">
+      </div>
+      <div>
+        <label>Stock Existencia Actual:</label>
+        <p>{{ producto.stock_existencia }}</p>
+      </div>
+      <div>
+        <button type="button" (click)="eliminarProducto()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+  

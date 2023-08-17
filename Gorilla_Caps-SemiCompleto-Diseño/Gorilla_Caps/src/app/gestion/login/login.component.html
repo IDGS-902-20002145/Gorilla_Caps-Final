@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="login.component.css">
+</head>
+<body class="fondo">
+
+ 
+  <form class="login-form" [formGroup]="loginForm">
+    <img src="../../../assets/logoD.jpg" alt="GorillaCaps" class="imagen-cabecera">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Ingrese su email">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="password" type="password" placeholder="Ingrese su contraseña">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="login()">Iniciar sesión</button>
+
+    <div class="register-link">
+      ¿No tienes una cuenta?
+       <a href="/Registro">Regístrate aquí</a>
+    </div>
+  </form>
+</body>
+
+</html>
+

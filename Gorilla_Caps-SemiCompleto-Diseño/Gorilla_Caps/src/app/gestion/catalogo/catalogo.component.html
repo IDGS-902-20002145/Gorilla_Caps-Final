@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="catalogo.component.css">
+</head>
+<body class="body">
+<div>
+  <div class="Cabecera-catalogo">
+    <p class="titulo-cabecera">!Bienvenido!</p>
+    <p class="subtitulo-cabecera">Descubre la mejor selección de gorras...</p>
+  </div>
+
+  <!-- Agregar botón para abrir/cerrar el carrito flotante -->
+  <div *ngIf="esAdminOEmpleado()" class="carritoFlotante">
+    <label *ngIf="productosEnCarrito"><h4>Tienes productos en tu carrito</h4></label>
+    <button class="btn btn-primary my-2" (click)="toggleCart()" title="Abrir ó Cerrar Carrito">
+      <i class="fas fa-shopping-cart"></i></button>
+
+    <!-- Carrito flotante -->
+    <app-carrito-temporal *ngIf="isCartOpen" class="floating-cart"></app-carrito-temporal>
+  </div>
+
+  <h2>Productos destacados</h2>
+  <div class="product-carousel">
+      <div class="product-carousel">
+        <div class="product-list-cards">
+            <div *ngFor="let product of products" class="product-card">
+              <div class="verProdC">
+                <a [routerLink]="['ProductoDetalle',product.id]">
+                  <img [src]="getImageUrl(product.imagen)" class="product-image-first" >
+                </a>
+                <span class="verProd-message">Ver el producto</span>
+              </div>
+              <div class="product-details">
+                <h3 class="product-name">{{ product.nombre }}</h3>
+                <p class="product-description">{{ product.descripcion }}</p>
+                <p class="product-price">Precio: ${{ product.precio }}</p>
+                <p class="product-stock">Stock: {{ product.stock_existencia }}</p>
+                <div class="center" style="display: flex; justify-content: center;" >
+                    <button class="btn btn-sm btn-primary cartAn" (click)="agregarCarritoTemporal(product.id)">
+                      <mat-icon>shopping_cart</mat-icon>
+                      Agregar</button>
+                </div>
+              </div>
+              
+            </div>
+        </div>
+    </div>
+  </div>
+  <br>
+
+  <h2>Explora nuestros productos</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <input class="form-control filtro-input" [(ngModel)]="listFilter" name="filter" type="text" placeholder="Buscar...">
+    </div>
+  </div>
+  <br>
+
+  <div class="product-list-cards-general" style="padding: 10px;">
+    <div style="cursor:default;" *ngFor="let product of products | catalogoFilter:listFilter" class="product-card-general">
+      <div class="verProd" title="Click para ver producto">
+        <a [routerLink]="['ProductoDetalle',product.id]">
+          <img [src]="getImageUrl(product.imagen)" class="product-image-general" >
+        </a>
+        <span class="verProd-message">Ver el producto</span>
+      </div>
+      <div class="product-details-g">
+        <h3 class="product-name-g">{{ product.nombre }}</h3>
+        <p class="product-description-g">{{ product.descripcion }}</p>
+        <p class="product-price-g">Precio: ${{ product.precio }}</p>
+        <p class="product-stock-g">Stock: {{ product.stock_existencia }}</p>
+        <div>
+          <button class="btn btn-sm btn-primary cartAn" (click)="agregarCarritoTemporal(product.id)">
+            <mat-icon>shopping_cart</mat-icon>
+            Agregar al carrito</button>
+        </div>
+        <div class="feeds">
+          <div class="feed">
+              <div class="actions">
+                  <div class="heart"></div>
+              </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="script.js"></script>
+<script src="jquery-1.11.3.min.js"></script>
+
+</body>
+</html>

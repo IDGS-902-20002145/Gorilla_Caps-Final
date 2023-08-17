@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-header">
+      <h2>Mis pedidos</h2>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="row">
+            <div class="col-md-4">
+              <button mat-raised-button color="accent" style="margin-top: 10px;" [routerLink]="['/Catalogo']">
+                <mat-icon>add</mat-icon>
+                Seguir comprando
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr class="header-row">
+              <th>Imagen</th>
+              <th>No. del pedido</th>
+              <th>Nombre del producto</th>
+              <th>Color</th>
+              <th>Modelo</th>
+              <th>Unidades</th>
+              <th>Precio Unitario</th>
+              <th>Fecha</th>
+              <th>Acciones</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ped of listaPedidos">
+              <td><img [src]="getImageUrl(ped.producto.imagen)" class="product-image" width="50" height="50"></td>
+              <td>{{ped.pedido.id}}</td>
+              <td>{{ped.producto.nombre}}</td>
+              <td>{{ped.producto.color}}</td>
+              <td>{{ped.producto.modelo}}</td>
+              <td>{{ped.cantidad}}</td>
+              <td>${{ped.producto.precio}}</td>
+              <td>{{ped.pedido.fecha}}</td>
+              <td>
+              <button class="btn btn-sm btn-warning" (click)="eliminarPedido(ped.pedido.id)">Eliminar</button></td>
+              <td><a [routerLink]="['/Pagar', ped.pedido.id]"  class="btn btn-sm btn-success"><i
+                class="fas fa-money-bill-wave" style="color: #ffffff;"></i>Comprar</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <a [routerLink]="['/PagarTodo', this.idUsuario]" mat-raised-button color="warn"> <i class="fas fa-cash-register"
+          ></i> Comprar todo</a>
+      </div>
+    </div>
+  </div>
+

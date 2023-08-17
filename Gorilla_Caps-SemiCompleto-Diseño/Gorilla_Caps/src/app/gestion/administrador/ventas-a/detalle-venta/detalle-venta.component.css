@@ -1,0 +1,162 @@
+h1 {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+#tablaDetVentas {
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+#tablaDetVentas th {
+  background-color:  #1c4069; 
+  color: #fff;
+  font-weight: 600;
+}
+
+#tablaDetVentas tbody tr:hover {
+  background-color: #cce4f3;
+  cursor: pointer;
+}
+
+#detVentas h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+#detVentas {
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 10px 30px;
+  margin-top: 20px;
+}
+
+@media (max-width: 576px) {
+  #detVentas h1 {
+      font-size: 28px;
+  }
+
+  #detVentas {
+      font-size: 14px;
+      padding: 8px 20px;
+  }
+}
+
+#regresardet {
+  background: none;
+  border: none;
+  color: #337ab7;
+  text-decoration: underline;
+  cursor: pointer
+}
+
+.btn-enviar {
+  position: relative;
+}
+
+/* .btn-enviar:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background-image: url('ruta-de-la-imagen-del-avion-de-papel');
+  background-size: contain;
+  background-repeat: no-repeat;
+  animation: avion-despegando 1s linear infinite;
+} */
+
+@keyframes avion-despegando {
+  0% {
+      transform: translate(-50%, -10px) rotateZ(0deg);
+  }
+
+  50% {
+      transform: translate(-50%, -20px) rotateZ(15deg);
+  }
+
+  100% {
+      transform: translate(-50%, -10px) rotateZ(0deg);
+  }
+}
+
+
+.btn-enviar.enviando {
+  animation: enviar 1s forwards;
+}
+
+@keyframes enviar {
+  0% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+
+  50% {
+      transform: translateY(20px);
+      opacity: 0.5;
+  }
+
+  100% {
+      transform: translateY(50px);
+      opacity: 0;
+  }
+}
+
+#ventaEnviada {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#ventaEnviada {
+  font-weight: bold;
+  font-size: 20px;
+  color: rgb(7, 7, 7);
+}
+
+
+
+#btn-success {
+  padding: 10px 20px;
+  background-color: #007bff; /* Fondo azul */
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.header-row th {
+  background-color: #1c4069; /* Color para los encabezados */
+  color: #fff; /* Texto en blanco */
+  padding: 10px;
+}
+
+  /* Estilo de la tarjeta */
+  .card {
+    max-width: 800px;
+    margin: 10px auto;
+    background-color: #cce4f3;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+  .titulo {
+    font-size: 24px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    color: #1c4069; /* Color del texto */
+    text-transform: uppercase; /* Convertir a mayúsculas */
+    border-bottom: 2px solid #1c4069; /* Línea decorativa en la parte inferior */
+    padding-bottom: 10px; /* Espacio debajo de la línea */
+  }
+  .card-header {
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #031546;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .card-body {
+    margin-bottom: 10px;
+  }

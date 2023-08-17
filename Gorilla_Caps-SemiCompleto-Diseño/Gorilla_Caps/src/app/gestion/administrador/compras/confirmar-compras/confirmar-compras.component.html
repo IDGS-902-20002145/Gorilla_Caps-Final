@@ -1,0 +1,46 @@
+<div class="form-container">
+    <h2 class="titulo">Confirmar Compra</h2>
+    <form (submit)="confirmarCompra()" class="form">
+      <div class="form-group">
+        <label for="compraId">ID de Compra:</label>
+        <input type="number" id="compraId" name="compraId" [(ngModel)]="compraId" disabled>
+      </div>
+      <button type="submit" class="btn-submit">Confirmar</button>
+    </form>
+  </div>
+  
+  <div *ngIf="compraConfirmada" class="compra-info">
+    <h3>Detalles de la Compra</h3>
+    <table>
+      <tr>
+        <th>ID de Compra</th>
+        <th>Fecha</th>
+        <th>Proveedor</th>
+        <th>Total</th>
+        <th>Estatus</th>
+      </tr>
+      <tr>
+        <td>{{ compra.id }}</td>
+        <td>{{ compra.fecha | date }}</td>
+        <td>{{ compra.proveedor.nombre }}</td>
+        <td>{{ compra.total }}</td>
+        <td>{{ compra.estatus ? 'Confirmada' : 'No Confirmada' }}</td>
+      </tr>
+    </table>
+  
+    <h3>Detalle de Compra</h3>
+    <table>
+      <tr>
+        <th>Material</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+      </tr>
+      <tr *ngFor="let detalle of compra.detCompra">
+        <td>{{ detalle.material.nombre }}</td>
+        <td>{{ detalle.cantidad }}</td>
+        <td>{{ detalle.precio }}</td>
+      </tr>
+    </table>
+  </div>
+  
+

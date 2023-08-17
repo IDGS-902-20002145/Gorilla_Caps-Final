@@ -1,0 +1,137 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="col-12 mb-4 text-center">
+      <div class="card border-primary">
+        <div class="card-body">
+          <h5 class="card-titulo"><i class="fas fa-truck"></i> Compras en camino</h5>
+          <p class="card-text">Revisa el estado de tus compras que ya están en camino</p>
+          <button id="btn-en-camino" class="btn btn-primary" (click)="cambiarVista('enCamino')"
+            [class.active]="mostrarEnCamino">Ver compras en camino</button>
+        </div>
+      </div>
+      <br><br>
+      <div class="card border-primary">
+        <div class="card-body">
+          <h5 class="card-titulo"><i class="fas fa-shopping-bag"></i> Compras pendientes</h5>
+          <p class="card-text">Revisa tus compras pendientes de envío</p>
+          <button id="btn-pendientes" class="btn btn-primary" (click)="cambiarVista('pendientes')"
+            [class.active]="mostrarPendientes">Ver compras pendientes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container my-12">
+  <div class="row2">
+    <!-- Ventas pendientes -->
+    <div class="col-md-11" *ngIf="mostrarPendientes">
+      <div class="card mb-11">
+        <div class="card-header bg-primary text-white">
+          <h2 class="mb-0">Pendientes de Envío</h2>
+        </div>
+        <div>
+          <ng-container *ngIf="ventasPorAprobar.length > 0; else noVentasPendientes">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr class="header-row">
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Talla</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio unitario</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let venta of ventasPorAprobar">
+                    <ng-container *ngFor="let fecha of getObjectKeys(venta.productos)">
+                      <ng-container *ngFor="let productoKey of getObjectKeys(venta.productos[fecha])">
+                        <tr>
+                          <td>{{ venta.fecha }}</td>
+                          <td>{{ productoKey }}</td>
+                          <td>{{ venta.productos[fecha][productoKey].talla }}</td>
+                          <td>
+                            <img [src]="venta.productos[fecha][productoKey].imagen" alt=""
+                              style="width: 50px; height: 50px;" />
+                          </td>
+                          <td>{{ venta.productos[fecha][productoKey].cantidad }}</td>
+                          <td>${{ venta.productos[fecha][productoKey].precio }}</td>
+                          <td>
+                            ${{ venta.productos[fecha][productoKey].cantidad *
+                            venta.productos[fecha][productoKey].precio }}
+                          </td>
+                        </tr>
+                      </ng-container>
+                    </ng-container>
+                  </ng-container>
+                </tbody>
+              </table>
+            </div>
+          </ng-container>
+          <ng-template #noVentasPendientes>
+            <p class="text-center">No hay compras pendientes por aprobar.</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Ventas en camino -->
+    <div class="col-md-11" *ngIf="mostrarEnCamino">
+      <div class="card mb-11">
+        <div class="card-header bg-primary text-white">
+          <h2 class="mb-0">En Camino</h2>
+        </div>
+        <div>
+          <ng-container *ngIf="ventasAprobadas.length > 0; else noVentasEnCamino">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr class="header-row">
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Talla</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio unitario</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let venta of ventasAprobadas">
+                    <ng-container *ngFor="let fecha of getObjectKeys(venta.productos)">
+                      <ng-container *ngFor="let productoKey of getObjectKeys(venta.productos[fecha])">
+                        <tr>
+                          <td>{{ venta.fecha }}</td>
+                          <td>{{ productoKey }}</td>
+                          <td>{{ venta.productos[fecha][productoKey].talla }}</td>
+                          <td>
+                            <img [src]="venta.productos[fecha][productoKey].imagen" alt=""
+                              style="width: 50px; height: 50px;" />
+                          </td>
+                          <td>{{ venta.productos[fecha][productoKey].cantidad }}</td>
+                          <td>${{ venta.productos[fecha][productoKey].precio }}</td>
+                          <td>
+                            ${{ venta.productos[fecha][productoKey].cantidad *
+                            venta.productos[fecha][productoKey].precio }}
+                          </td>
+                        </tr>
+                      </ng-container>
+                    </ng-container>
+                  </ng-container>
+                </tbody>
+              </table>
+            </div>
+          </ng-container>
+          <ng-template #noVentasEnCamino>
+            <p class="text-center">Aún no ha realizado una compra o aún no ha sido aprobada.</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

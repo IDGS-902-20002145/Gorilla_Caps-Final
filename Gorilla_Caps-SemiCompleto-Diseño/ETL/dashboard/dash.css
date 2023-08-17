@@ -1,0 +1,39 @@
+/* Estilos para el Div Principal */
+.divPrincipal {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+/* Estilos para el Div Izquierdo */
+.divIzquierdo {
+    flex: 0 0 25%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-right: 20px;
+}
+
+/* Estilos para el Div Derecho */
+.divDerecho {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+/* Estilos para el Div Secundario */
+.divSecundario {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    padding: 20px;
+}

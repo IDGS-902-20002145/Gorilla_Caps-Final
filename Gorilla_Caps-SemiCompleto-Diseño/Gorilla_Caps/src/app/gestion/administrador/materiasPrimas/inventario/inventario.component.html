@@ -1,0 +1,69 @@
+<div class="card">
+    <div class="card-header">
+      Materias Primas
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-2">
+          <label class="blue-label">Buscar</label></div>
+        <div class="col-md-4">
+          <div class="search-container">
+            <input class="form-control" [(ngModel)]="listFilter" name="filter" type="text">
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+      
+      </div>
+      <div class="row">
+      
+
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr class="header-row">
+  
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Descripcion</th>
+              <th>Cantidad</th>
+              <th>Stock Minimo</th>
+              <th>Activo</th>
+              <th>Opciones</th>
+              <th></th>
+              <th></th>
+              
+  
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let inventario of dataSource | materiasFilter:listFilter">
+              <td>{{inventario.id}}</td>
+              <td>{{inventario.nombre }}</td>
+              <td>{{inventario.descripcion}}</td>
+              <td>{{inventario.cantidad}}</td>
+              <td>{{inventario.stock_Minimo}}</td>
+              <td>{{ inventario.estatus ? 1 : 0 }}</td>
+
+  
+  
+              <td><button mat-flat-button color="primary" [routerLink]="['/editarMP',inventario.id]">Editar</button></td>
+              <td><button mat-flat-button color="warn" [routerLink]="['/eliminarMP',inventario.id]">Eliminar</button></td>
+              <td>
+                <button mat-raised-button color="accent" (click)="comprarMaterial(inventario.id)">Comprar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+       
+        <div class="row">
+          <div >
+            <button mat-raised-button color="success" [routerLink]="['/agregarMP']">
+              <mat-icon>add</mat-icon>
+              Agregar
+            </button>      
+          </div>
+      </div>
+    </div>
+  </div>
+  
