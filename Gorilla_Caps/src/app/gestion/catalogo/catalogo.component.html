@@ -1,8 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="catalogo.component.css">
+</head>
+<body class="body">
 <div>
   <div class="Cabecera-catalogo">
-    <img src="../../assets/logoD.jpg" alt="GorillaCaps" class="imagen-cabecera">
-    <p class="titulo-cabecera">Bienvenido a GorillaCaps</p>
-    <p class="subtitulo-cabecera">Descubre la mejor selección de gorras</p>
+    <p class="titulo-cabecera">!Bienvenido!</p>
+    <p class="subtitulo-cabecera">Descubre la mejor selección de gorras...</p>
   </div>
 
   <!-- Agregar botón para abrir/cerrar el carrito flotante -->
@@ -31,12 +38,13 @@
                 <p class="product-description">{{ product.descripcion }}</p>
                 <p class="product-price">Precio: ${{ product.precio }}</p>
                 <p class="product-stock">Stock: {{ product.stock_existencia }}</p>
-                <div style="width: 200px;" >
+                <div class="center" style="display: flex; justify-content: center;" >
                     <button class="btn btn-sm btn-primary cartAn" (click)="agregarCarritoTemporal(product.id)">
                       <mat-icon>shopping_cart</mat-icon>
                       Agregar</button>
                 </div>
               </div>
+              
             </div>
         </div>
     </div>
@@ -69,7 +77,21 @@
             <mat-icon>shopping_cart</mat-icon>
             Agregar al carrito</button>
         </div>
+        <div class="feeds">
+          <div class="feed">
+              <div class="actions">
+                  <div class="heart"></div>
+              </div>
+          </div>
+      </div>
       </div>
     </div>
   </div>
 </div>
+
+
+<script src="script.js"></script>
+<script src="jquery-1.11.3.min.js"></script>
+
+</body>
+</html>

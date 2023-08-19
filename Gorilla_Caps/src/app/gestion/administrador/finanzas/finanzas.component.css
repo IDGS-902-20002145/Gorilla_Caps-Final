@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 2rem; /* Reducir el valor de margin-bottom según prefieras */
-  background-color: #f2f2f2; /* Color de fondo gris para el grupo de gráficas */
+  background-color: #cce4f3; /* Color de fondo gris para el grupo de gráficas */
   padding: 1rem; /* Espacio interno (padding) para el grupo de gráficas */
 }
 
@@ -45,14 +45,15 @@ h6 {
 }
 
 .card-header {
-    background-color: grey;
     color: #fff;
     font-size: 20px;
     padding: 20px;
 }
 
 .card-title {
-    margin-bottom: 0;
+    background-color: #1c4069; /* Color para los encabezados */
+    color: #fff; /* Texto en blanco */
+    padding: 10px;
 }
 
 .card-body {
@@ -89,3 +90,9 @@ img {
     display: inline-block;
     vertical-align: middle;
 }
+
+.header-row th {
+    background-color: #1c4069; /* Color para los encabezados */
+    color: #fff; /* Texto en blanco */
+    padding: 10px;
+  }

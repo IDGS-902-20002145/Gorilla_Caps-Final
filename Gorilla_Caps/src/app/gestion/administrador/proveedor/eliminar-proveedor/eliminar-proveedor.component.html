@@ -1,7 +1,6 @@
-<h3>Eliminar</h3>
-<hr>
 
 <form (ngSubmit)="eliminarProveedor()">
+  <h3 class="titulo">Eliminar</h3>
     <label>Nombre:</label>
     <input type="text" name="nombre" [(ngModel)]="proveedorElim.nombre" placeholder="Nombre" readonly>
     <label>Email:</label>
@@ -13,3 +12,4 @@
     
   <button type="submit" class="btn btn-primary">Eliminar</button>
 </form>
+

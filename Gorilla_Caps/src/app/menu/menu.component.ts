@@ -51,7 +51,7 @@ export class MenuComponent implements OnInit {
           this.nUsuario = data.name;
           this.empleado = data.empleado;
           this.admin = data.admin;
-          console.log(this.admin);
+          //console.log(this.admin);
         }
       );
     }

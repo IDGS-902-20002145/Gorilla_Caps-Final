@@ -170,7 +170,7 @@ app.layout = html.Div(children=[
         ], style={'display': 'flex', 'justify-content': 'space-between', 'border-radius': '5px',
                 'padding': '10px', 'margin-right': '10px'},
         className='divIzquierdo col-12 cards-container'),
-    ], style={'background-color': '#BDBDBD', 'padding': '1px'}),
+    ], style={'background-color': '#CCE4F3', 'padding': '1px'}),
 
 
     # Div Principal
@@ -235,10 +235,10 @@ app.layout = html.Div(children=[
                             'flex': '1',
                             'margin-right': '10px',
                             'padding': '10px',
-                            'border': '1px solid #ccc',
+                            'border': '1px solid black',
                             'border-radius': '5px',
                             'margin-bottom': '20px',
-                            'background-color': '#005f8e',  # Azul oscuro
+                            'background-color': '#CCE4F3',  # Azul oscuro
                         },
                         className='container col-6',
                     ),
@@ -253,13 +253,13 @@ app.layout = html.Div(children=[
                                         id='ventas-por-producto-table',
                                         columns=[
                                             {'name': 'Nombre del Producto', 'id': 'NombreProducto'},
-                                            {'name': 'Cantidad de Compras (#)', 'id': 'TotalCantidad'},
-                                            {'name': 'Total de Ventas ($)', 'id': 'TotalVenta'},
+                                            {'name': 'Cantidad Comprada', 'id': 'TotalCantidad'},
+                                            {'name': 'Total de Ventas', 'id': 'TotalVenta'},
                                         ],
                                         data=[],
                                         style_table={'height': '300px', 'overflowY': 'auto'},
                                         style_header={
-                                            'backgroundColor': '#045FB4',  # Azul medio
+                                            'backgroundColor': '#589CC9',  # Azul medio
                                             'fontWeight': 'bold',
                                             'textAlign': 'center',
                                         },
@@ -267,19 +267,20 @@ app.layout = html.Div(children=[
                                             'textAlign': 'center',
                                             'backgroundColor': '#f9f9f9',
                                             'color': 'black',
+                                            
                                         },
-                                        style_data={'border': '1px solid #ccc'},
+                                        style_data={'border': '1px solid black'},
                                     ),
                                 ],
                                 style={
                                     'flex': '1',
-                                    'margin-right': '10px',
+                                    'margin-right': '1px',
                                     'padding': '10px',
-                                    'border': '1px solid #ccc',
+                                    'border': '1px solid black',
                                     'border-radius': '5px',
                                     'margin-bottom': '20px',
                                     'width': 'calc(100% - 10px)',
-                                    'background-color': '#81BEF7',  # Azul oscuro
+                                    'background-color': '#CCE4F3',  # Azul oscuro
                                 },
                                 className='col-6',
                             ),
@@ -289,9 +290,11 @@ app.layout = html.Div(children=[
                 ],
                 style={
                     'display': 'flex',
+                    'margin-right': '1px',
                     'flex-wrap': 'wrap',                        
                     'justify-content': 'space-between',
                     'margin-bottom': '20px',
+                    'background-color': '#f9f9f9',  # Azul oscuro
                 },
             ),
 
@@ -302,12 +305,13 @@ app.layout = html.Div(children=[
                 ],
                 style={
                     'flex': '1',
-                    'margin-right': '10px',
+                    'margin-left': '1px',
+                    'margin-right': '1px',
                     'padding': '10px',
-                    'border': '1px solid #ccc',
+                    'border': '1px solid black',
                     'border-radius': '5px',
                     'margin-bottom': '20px',
-                    'background-color': '#008e5e',  # Verde oscuro
+                    'background-color': '#CCE4F3',  # Verde oscuro
                 },
                 className='row',
             ),
@@ -326,7 +330,7 @@ app.layout = html.Div(children=[
                             data=[],
                             style_table={'height': '300px', 'overflowY': 'auto'},
                             style_header={
-                                'backgroundColor': '#004370',  # Azul medio
+                                'backgroundColor': '#589CC9',  # Azul medio
                                 'fontWeight': 'bold',
                                 'textAlign': 'center'
                             },
@@ -336,17 +340,17 @@ app.layout = html.Div(children=[
                                 'color': 'black'
                             },
                             style_data={
-                                'border': '1px solid #ccc'
+                                'border': '1px solid black'
                             }
                         ),
-                    ], style={'flex': '1', 'margin-right': '20px', 'padding': '20px', 'border': '1px solid #ccc',
-                            'border-radius': '5px', 'margin-bottom': '20px', 'background-color': '#007bff'},  # Azul claro
+                    ], style={'flex': '1', 'margin-right': '20px', 'padding': '20px', 'border': '1px solid black',
+                            'border-radius': '5px', 'margin-bottom': '20px', 'background-color': '#CCE4F3'},  # Azul claro
                         className='container col-5'),
 
                     html.Div([
                         dcc.Graph(id='utilidad-por-mes-graph'),
-                    ], style={'flex': '1', 'margin-right': '20px', 'padding': '20px', 'border': '1px solid #ccc',
-                            'border-radius': '5px', 'margin-bottom': '20px', 'background-color': '#008e5e'},  # Verde oscuro
+                    ], style={'flex': '1', 'margin-right': '20px', 'padding': '20px', 'border': '1px solid black',
+                            'border-radius': '5px', 'margin-bottom': '20px', 'background-color': '#CCE4F3',  'margin-right': '1px'},  # Verde oscuro
                         className='container col-7'),
                 ],
                 style={'display': 'flex', 'flex-wrap': 'wrap', 'justify-content': 'space-between'},
@@ -354,16 +358,16 @@ app.layout = html.Div(children=[
         ], style={'flex': '1', 'display': 'flex', 'flex-direction': 'column', 'border': '1px solid #ccc',
                 'border-radius': '5px', 'background-color': '#f9f9f9', 'padding': '10px'},
             className='divDerecho col-12'),
-    ], style={'background-color': '#FFFFFF', 'padding': '1px'}),
+    ], style={'background-color': '#CCE4F3', 'padding': '1px'}),
 
         
     # Div Secundario
     html.Div([
         html.H2('Materia Prima'),
         dbc.Row(id='materia-prima-cards'),  # Div para mostrar las cards de materia prima
-    ], style={'margin-top': '20px', 'border': '1px solid #ccc', 'border-radius': '5px', 'background-color': '#007bff',
-            'padding': '10px', 'margin-right': '10px'}, className='divSecundario row'),
-], style={'background-color': '#007bff'})
+    ], style={'margin-top': '20px', 'border': '1px solid black', 'border-radius': '5px', 'background-color': '#CCE4F3',
+            'padding': '10px', 'margin-right': '10px', 'margin-left': '10px',}, className='divSecundario row'),
+], style={'background-color': '#f9f9f9'})
         
         
 
@@ -470,6 +474,10 @@ def update_graphs(selected_meses, selected_anios):
         }
         
         ventas_producto_por_mes_df = pd.read_sql(f"SELECT * from ventas_producto_por_mes", engine)
+        
+        ventas_producto_por_mes_tb = pd.read_sql(f"SELECT * from ventas_producto_por_mes ORDER BY TotalVenta DESC;", engine)
+        
+        ventas_producto_por_mes_tb['TotalVenta']= ventas_producto_por_mes_tb['TotalVenta'].apply(lambda x: f"${x}")
         
         # Aplicar el substring a la columna 'NombreProducto'
         ventas_producto_por_mes_df['NombreProducto'] = ventas_producto_por_mes_df['NombreProducto'].str[14:]
@@ -595,7 +603,7 @@ def update_graphs(selected_meses, selected_anios):
             cards_materia_prima.append(card)
 
         # Devolver el diccionario del gráfico y los datos de la tabla
-        return compras_por_proveedor_graph,top5_clientes_por_mes_df.to_dict('records'), utilidad_por_mes_graph, ventas_producto_graph, cards_materia_prima, ventas_producto_por_mes_df.to_dict('records')
+        return compras_por_proveedor_graph,top5_clientes_por_mes_df.to_dict('records'), utilidad_por_mes_graph, ventas_producto_graph, cards_materia_prima, ventas_producto_por_mes_tb.to_dict('records')
 
 
         
@@ -644,6 +652,12 @@ def update_graphs(selected_meses, selected_anios):
         
         ventas_producto_por_mes_df = pd.read_sql(f"SELECT * from ventas_producto_por_mes WHERE Anio = {selected_anios}\
                                                 AND Mes = {selected_meses}", engine)
+        
+        
+        ventas_producto_por_mes_tb = pd.read_sql(f"SELECT * from ventas_producto_por_mes WHERE Anio = {selected_anios}\
+                                                AND Mes = {selected_meses} ORDER BY TotalVenta DESC;", engine)
+        
+        ventas_producto_por_mes_tb['TotalVenta']= ventas_producto_por_mes_tb['TotalVenta'].apply(lambda x: f"${x}")
         
         # Aplicar el substring a la columna 'NombreProducto'
         ventas_producto_por_mes_df['NombreProducto'] = ventas_producto_por_mes_df['NombreProducto'].str[14:]
@@ -770,7 +784,7 @@ def update_graphs(selected_meses, selected_anios):
             cards_materia_prima.append(card)
 
         # Devolver el diccionario del gráfico y los datos de la tabla
-        return compras_por_proveedor_graph,top5_clientes_por_mes_df.to_dict('records'), utilidad_por_mes_graph, ventas_producto_graph, cards_materia_prima, ventas_producto_por_mes_df.to_dict('records')
+        return compras_por_proveedor_graph,top5_clientes_por_mes_df.to_dict('records'), utilidad_por_mes_graph, ventas_producto_graph, cards_materia_prima, ventas_producto_por_mes_tb.to_dict('records')
 
 
 if __name__ == '__main__':

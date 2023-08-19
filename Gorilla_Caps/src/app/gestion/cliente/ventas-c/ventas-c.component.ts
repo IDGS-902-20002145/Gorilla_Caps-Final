@@ -54,4 +54,13 @@ export class VentasCComponent implements OnInit {
       this.mostrarEnCamino = true;
     }
   }
+
+
+  getImageUrl(base64Image: string): string {
+    if (base64Image) {
+      return 'data:image/jpeg;base64,' + base64Image;
+    }
+    // Puedes establecer una imagen de relleno en caso de que no haya imagen
+    return './assets/default.jpg';
+  }
 }

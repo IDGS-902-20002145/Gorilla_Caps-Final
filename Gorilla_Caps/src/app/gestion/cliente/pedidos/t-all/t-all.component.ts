@@ -31,6 +31,15 @@ export class TAllComponent implements OnInit {
     this.initCreditCardInputs();
   }
 
+  getImageUrl(base64Image: string): string {
+    if (base64Image) {
+      return 'data:image/jpeg;base64,' + base64Image;
+    }
+    // Puedes establecer una imagen de relleno en caso de que no haya imagen
+    return './assets/default.jpg';
+  }
+
+
 
   pagarTTarjeta() {
     this.pagarTT.postpagarTodo(this.idUsuario).subscribe(

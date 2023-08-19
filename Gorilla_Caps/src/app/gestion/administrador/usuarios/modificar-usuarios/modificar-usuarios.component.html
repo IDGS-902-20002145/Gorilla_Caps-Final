@@ -1,7 +1,6 @@
-<h3>Modificar</h3>
-<hr>
 
 <form (ngSubmit)="modificarUsuario()">
+  <h3 class="titulo">Modificar</h3>
   <input type="text" name="nombre" [(ngModel)]="usuarioNuevo.name" placeholder="Nombre">
   <input type="text" name="apellido" [(ngModel)]="usuarioNuevo.email" placeholder="Correo electronico">
   <input type="password" name="email" [(ngModel)]="usuarioNuevo.password" placeholder="Contraseña">

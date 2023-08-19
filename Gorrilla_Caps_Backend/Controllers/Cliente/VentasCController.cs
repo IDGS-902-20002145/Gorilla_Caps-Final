@@ -62,7 +62,8 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
                             productosFechaDict[producto.Nombre] = new MisComprasProductoDto
                             {
                                 Cantidad = detalle.Cantidad,
-                                Precio = Convert.ToDecimal(producto.Precio)
+                                Precio = Convert.ToDecimal(producto.Precio),
+                                Imagen = producto.Imagen
                             };
                         }
                     }
@@ -73,7 +74,8 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
                             { producto.Nombre, new MisComprasProductoDto
                                 {
                                     Cantidad = detalle.Cantidad,
-                                    Precio = Convert.ToDecimal(producto.Precio)
+                                    Precio = Convert.ToDecimal(producto.Precio),
+                                    Imagen = producto.Imagen
                                 }
                             }
                         };
@@ -122,7 +124,9 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
                             productosFechaDict[producto.Nombre] = new MisComprasProductoDto
                             {
                                 Cantidad = detalle.Cantidad,
-                                Precio = Convert.ToDecimal(producto.Precio)
+                                Precio = Convert.ToDecimal(producto.Precio),
+                                Imagen = producto.Imagen
+
                             };
                         }
                     }
@@ -133,7 +137,8 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
                             { producto.Nombre, new MisComprasProductoDto
                                 {
                                     Cantidad = detalle.Cantidad,
-                                    Precio = Convert.ToDecimal(producto.Precio)
+                                    Precio = Convert.ToDecimal(producto.Precio),
+                                    Imagen = producto.Imagen
                                 }
                             }
                         };
@@ -160,5 +165,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
     {
         public int Cantidad { get; set; }
         public decimal Precio { get; set; }
+
+        public string Imagen { get; set;}
     }
 }

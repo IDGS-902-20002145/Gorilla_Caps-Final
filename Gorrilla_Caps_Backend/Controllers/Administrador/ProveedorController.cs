@@ -24,7 +24,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Administrador
         {
             try
             {
-                var proveedores = _context.Proveedor.ToList();
+                var proveedores = _context.Proveedor.Where(p=> p.Active).ToList();
                 return Ok(proveedores);
             }
             catch (Exception)

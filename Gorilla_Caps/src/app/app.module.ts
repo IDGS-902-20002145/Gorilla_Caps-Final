@@ -59,6 +59,7 @@ import { ModificarProveedorComponent } from './gestion/administrador/proveedor/m
 import { AgregarProveedorComponent } from './gestion/administrador/proveedor/agregar-proveedor/agregar-proveedor.component';
 import { ProveedoresFilterPipe } from './gestion/administrador/proveedor/proveedor-filter.pipe';
 import { HomeComponent } from './gestion/home/home.component';
+import { FiltroMateriasPipe } from './gestion/administrador/productos/agregar-productos/filtro-materias.pipe';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,8 @@ import { HomeComponent } from './gestion/home/home.component';
     EliminarProveedorComponent,
     ModificarProveedorComponent,
     ProveedoresFilterPipe,
-    HomeComponent
+    HomeComponent,
+    FiltroMateriasPipe
   ],
   imports: [
     BrowserModule,

@@ -22,11 +22,16 @@ tr {
   
   /* Estilos para el encabezado */
   .card-header {
-    background-color: #007bff;
+    background-color: #24c0eb;
     color: #fff;
     text-align: center;
     padding: 10px;
     border-radius: 8px 8px 0 0;
+  }
+  .header-row th {
+    background-color:#5cceee; /* Color para los encabezados */
+    color: #fff; /* Texto en blanco */
+    padding: 10px;
   }
   
   /* Estilos para el título */

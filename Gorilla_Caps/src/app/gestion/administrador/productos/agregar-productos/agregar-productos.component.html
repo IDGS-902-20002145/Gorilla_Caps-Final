@@ -1,47 +1,97 @@
-<div class="container">
-  <h2 class="form-title">Formulario de Registro de Productos</h2>
 
-  <div class="form-group">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre" required>
-  </div>
-  <div class="form-group">
-    <label for="descripcion">Descripción:</label>
-    <input type="text" id="descripcion" name="descripcion" [(ngModel)]="descripcion" required>
-  </div>
-  <div class="form-group">
-    <label for="color">Color:</label>
-    <input type="text" id="color" name="color" [(ngModel)]="color" required>
-  </div>
-  <div class="form-group">
-    <label for="modelo">Modelo:</label>
-    <input type="text" id="modelo" name="modelo" [(ngModel)]="modelo" required>
-  </div>
-  <div class="form-group">
-    <label for="precio">Precio:</label>
-    <input type="number" id="precio" name="precio" [(ngModel)]="precio" required>
-  </div>
-  <div class="form-group">
-    <label for="imagen">Imagen:</label>
-    <input type="file" id="inputImagen" name="imagen" accept="image/*" [(ngModel)]="imagen" />
-  </div>
-  <div class="form-group">
-    <label for="stock_existencia">Stock Existencia:</label>
-    <input type="number" id="stock_existencia" name="stock_existencia" [(ngModel)]="stock_existencia" required>
-  </div>
-  <div class="form-group" style="display: none;">
-    <label for="estatus">Estatus:</label>
-    <input type="checkbox" id="estatus" name="estatus" [(ngModel)]="estatus" disabled>
-  </div>
-  <div class="form-group" *ngFor="let materiaPrimaItem of materiaPrimaSeleccionada" style="display: flex; align-items: center;">
-    <label class="checkbox">
-      <input type="checkbox" [(ngModel)]="materiaPrimaItem.seleccionado" name="ingredientes" />
-      {{ materiaPrimaItem.materiaPrima.nombre }}
-    </label>
-    <label for="cantidadIndividual" style="margin-left: 10px;">Cantidad Individual:</label>
-    <input type="number" id="cantidadIndividual" name="cantidadIndividual" [(ngModel)]="materiaPrimaItem.cantidadIndividual" required>
-  </div>
-  <div class="form-group">
-    <button type="button" (click)="agregarProducto()">Agregar Producto</button>
-  </div>
+ <div class="container">
+  <h2 class="titulo">Registro de productos</h2>
+  <div class="row">
+    <!-- Columna izquierda: Formulario -->
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" [(ngModel)]="descripcion" required>
+      </div>
+      <div class="form-group">
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="color" [(ngModel)]="color" required>
+      </div>
+      <div class="form-group">
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" name="modelo" [(ngModel)]="modelo" required>
+      </div>
+      <div class="form-group">
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" [(ngModel)]="precio" required>
+      </div>
+      <div class="form-group">
+        <label for="imagen">Imagen:</label>
+        <input type="file" id="inputImagen" name="imagen" accept="image/*" [(ngModel)]="imagen" />
+      </div>
+      <div class="form-group">
+        <label for="stock_existencia">Stock existencia:</label>
+        <input type="number" id="stock_existencia" name="stock_existencia" [(ngModel)]="stock_existencia" required>
+      </div>
+      <div class="form-group" style="display: none;">
+        <label for="estatus">Estatus:</label>
+        <input type="checkbox" id="estatus" name="estatus" [(ngModel)]="estatus" disabled>
+      </div>
+      <!-- ... otros campos del formulario ... -->
+
+
+
+      <!-- Botón para agregar el producto -->
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" (click)="agregarProducto()">Agregar </button>
+      </div>
+    </div>
+    <!-- Columna derecha: Materias Primas y Receta -->
+    <div class="col-md-6">
+      <!-- Receta para fabricar la gorra -->
+      <div class="receta">
+        <h3 class="titulo2">Receta</h3>
+        <p>Para fabricar una gorra se necesita:</p>
+        <ul>
+          <li>*Frente de Tela(Poliester): 0.3 mts</li>
+          <li>*Malla (Nylon): 0.2 mts</li>
+          <li>*Visera Curva(PVC): 1 pza</li>
+          <li>*Cierre de Plastico: 1 pza</li>
+          <li>*Botón de presión: 1 pza</li>
+          <li>*Etiqueta (Poliester): 1 pza</li>
+          <li>*Hilo (Poliester): carrete estandar</li>
+          <li>*Adhesivo textil : pequeña cantidad</li>
+
+          <!-- Agregar más materiales y cantidades necesarias -->
+        </ul>
+        <!-- Botón para mostrar/ocultar materias primas -->
+      <div class="form-group">
+        <button  mat-raised-button color="accent" (click)="toggleMateriasPrimas()"><i class="fa-solid fa-eye"></i>Mostrar/Ocultar</button>
+      </div>
+      </div>
+
+      <!-- Lista de materias primas a elegir -->
+      <div class="materias-primas" *ngIf="mostrarMateriasPrimas">
+
+        <div class="row">
+          <div class="col-md-2">
+            <label class="blue-label">Buscar</label>
+          </div><br>
+          <div class="col-md-8">
+            <div class="search-container">
+              <input class="form-control" [(ngModel)]="listFilter" placeholder="Nombre">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" *ngFor="let materiaPrimaItem of materiaPrimaSeleccionada | filter: listFilter">
+          <label class="checkbox">
+            <input type="checkbox" [(ngModel)]="materiaPrimaItem.seleccionado" name="ingredientes" />
+            {{ materiaPrimaItem.materiaPrima.nombre }}
+          </label>
+          <label for="cantidadIndividual" class="cantidad-label">Cantidad Individual:</label>
+          <input type="number" id="cantidadIndividual" name="cantidadIndividual" [(ngModel)]="materiaPrimaItem.cantidadIndividual" required class="form-control cantidad-input">
+        </div>
+
+    </div>
+  </div>
 </div>

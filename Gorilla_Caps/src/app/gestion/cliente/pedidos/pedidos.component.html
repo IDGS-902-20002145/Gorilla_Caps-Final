@@ -6,17 +6,17 @@
       <div class="row">
         <div class="row">
             <div class="col-md-4">
-              <button mat-raised-button color="primary" style="margin-top: 10px;" [routerLink]="['/Catalogo']">
+              <button mat-raised-button color="accent" style="margin-top: 10px;" [routerLink]="['/Catalogo']">
                 <mat-icon>add</mat-icon>
-                Segur comprando
+                Seguir comprando
               </button>
             </div>
         </div>
       </div>
       <div class="table-responsive">
-        <table class="table">
+        <table class="table table-striped">
           <thead>
-            <tr>
+            <tr class="header-row">
               <th>Imagen</th>
               <th>No. del pedido</th>
               <th>Nombre del producto</th>
@@ -26,6 +26,7 @@
               <th>Precio Unitario</th>
               <th>Fecha</th>
               <th>Acciones</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -39,14 +40,15 @@
               <td>${{ped.producto.precio}}</td>
               <td>{{ped.pedido.fecha}}</td>
               <td>
-              <button class="btn btn-sm btn-danger" (click)="eliminarPedido(ped.pedido.id)">Eliminar</button></td>
-              <td><a [routerLink]="['/Pagar', ped.pedido.id]"  class="btn btn-primary btn-sm"><i
-                class="fas fa-money-bill-wave" style="color: #000000;"></i>Comprar</a></td>
+              <button class="btn btn-sm btn-warning" (click)="eliminarPedido(ped.pedido.id)">Eliminar</button></td>
+              <td><a [routerLink]="['/Pagar', ped.pedido.id]"  class="btn btn-sm btn-success"><i
+                class="fas fa-money-bill-wave" style="color: #ffffff;"></i>Comprar</a></td>
             </tr>
           </tbody>
         </table>
-        <a [routerLink]="['/PagarTodo', this.idUsuario]" type="button" class="btn btn-info float-right my-3"> <i class="fas fa-cash-register"
+        <a [routerLink]="['/PagarTodo', this.idUsuario]" mat-raised-button color="warn"> <i class="fas fa-cash-register"
           ></i> Comprar todo</a>
       </div>
     </div>
   </div>
+

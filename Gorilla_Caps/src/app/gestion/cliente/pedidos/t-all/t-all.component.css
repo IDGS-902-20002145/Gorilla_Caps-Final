@@ -20,8 +20,8 @@ Buttons
 --------------------*/
 .btn {
     display: block;
-    background: hsl(86, 76%, 71%);
-    color: hsl(0, 0, 100);
+    background: #9d2053;
+    color: white; /* Cambio del color del texto a blanco */
     text-decoration: none;
     margin: 20px 0;
     padding: 15px 15px;
@@ -29,6 +29,15 @@ Buttons
     position: relative;
 }
 
+
+.card {
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    background-color:#acc4d3;
+  }
 .btn::after {
     content: '';
     position: absolute;
@@ -218,6 +227,7 @@ Credit Card
     background: linear-gradient(135deg, #bd6772, #53223f);
     position: absolute;
     color: #fff;
+    font-weight: bold;
     font-family: Inconsolata;
     top: 0;
     left: 0;

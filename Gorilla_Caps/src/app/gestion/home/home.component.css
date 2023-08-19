@@ -167,7 +167,7 @@
 }
 
 .u-section-2 .u-image-1 {
-  background-image: url("images/image3.png");
+  background-image: url("../../../assets/image3.png");
   min-height: 710px;
   background-position: 50% 50%;
 }
@@ -449,6 +449,8 @@
 
 .u-section-4 .u-image-3 {
   min-height: 476px;
+  background-image: url("../../../assets/image1.png");
+  background-position: 50% 50%;
 }
 
 .u-section-4 .u-layout-cell-4 {

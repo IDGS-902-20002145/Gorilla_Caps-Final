@@ -1,5 +1,5 @@
 <div class="form-container">
-  <h2>Registrar Compra</h2>
+  <h2 class="titulo">Registrar compra</h2>
   <form (submit)="registrarCompra()">
     <div class="form-group">
       <label for="proveedorId">Proveedor:</label>
@@ -26,6 +26,7 @@
       <label for="precio">Precio:</label>
       <input type="number" id="precio" name="precio" [(ngModel)]="precio" required>
     </div>
+    <br>
     <button type="submit" class="btn-submit">Registrar Compra</button>
   </form>
 </div>

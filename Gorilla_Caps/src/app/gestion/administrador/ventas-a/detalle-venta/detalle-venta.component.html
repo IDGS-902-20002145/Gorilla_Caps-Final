@@ -1,22 +1,15 @@
 <div class="card">
-  <div class="card-header">
-    <h1>Detalle Venta</h1>
+  <div>
+    <h1 class="titulo">Detalle venta</h1>
   </div>
   <div class="card-body">
     <div class="container-fluid" id="detVentas">
-      <div class="row mb-3">
-        <div class="col-md-12 d-flex justify-content-end">
-          <a class="btn btn-primary" id="regresardet" routerLink="/Aprovacion">
-            <i class="fas fa-arrow-left mr-2"></i>Regresar
-          </a>
-        </div>
-      </div>
 
       <div class="row">
         <div class="col-md-12">
-          <table class="table" id="tablaDetVentas">
+          <table  class="table table-striped" id="tablaDetVentas">
             <thead>
-              <tr>
+              <tr class="header-row">
                 <th>Producto</th>
                 <th>Modelo</th>
                 <th>Color</th>
@@ -50,10 +43,17 @@
             </button>
           </form>
           <!-- El mensaje se mostrará solo si estatus es verdadero -->
-          <p id="ventaEnviada" [style.display]="estatus ? 'block' : 'none'">La venta ya ha sido enviada.</p>
+          <p id="ventaEnviada" [style.display]="estatus ? 'block' : 'none'">¡Venta ya enviada!</p>
         </div>
       </div>
-
+      <div class="row mb-3">
+        <div class="col-md-12 d-flex justify-content-end">
+          <a class="btn btn-primary" id="regresardet" routerLink="/Aprovacion">
+            <i class="fas fa-arrow-left mr-2"></i>Regresar
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+

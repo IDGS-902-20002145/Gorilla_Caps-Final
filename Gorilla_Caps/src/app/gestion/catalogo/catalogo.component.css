@@ -303,12 +303,15 @@
 .Cabecera-catalogo {
   text-align: center;
   padding: 50px 0;
-  background-color: #007bff;
+  background-image: url('../../../assets/fondo3.jpg');
+  background-size: 1300px 500px;
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
   color: #fff;
 }
 
+
 .titulo-cabecera {
-  font-size: 48px;
+  font-size: 50px;
   font-weight: bold;
   margin-bottom: 20px;
 }
@@ -460,7 +463,7 @@ input.form-control {
 
 .cartAn:active {
   transform: scale(1.1);
-  background-color: #007bff;
+  background-color: #6f95ff;
 }
 
 /*Más cosas del carrito*/
@@ -475,10 +478,51 @@ input.form-control {
 }
 
 .rotate-button {
-  transition: transform 1s;
+  transition: transform 3s;
   /* Transición para un giro suave */
 }
 
 .rotate-button.clicked {
   animation: rotateButton 1s linear;
 }
+
+/* Extra */
+.heart {
+  background-image: url(../../../assets/web_heart_animation.png);
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: 1450px;
+  cursor: pointer;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+}
+.heart:hover
+{
+  background-position: right;
+}
+
+@-webkit-keyframes heartTransition
+{
+    0% {background-position: left;}
+    100% {background-position: right;}
+}
+
+@keyframes heartTransition
+{
+    0% {background-position: left;}
+    100% {background-position: right;}
+}
+
+.heart_animate
+{
+    animation-duration: .8s;
+    animation-iteration-count: 1;
+    animation-name: heartTransition;
+    animation-timing-function: steps(28);
+    background-position: right;
+}
+
+.body {
+  background-color: #cce4f3;
+  }

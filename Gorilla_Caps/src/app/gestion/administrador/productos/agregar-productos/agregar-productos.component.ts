@@ -23,14 +23,18 @@ export class AgregarProductosComponent implements OnInit {
   materiaPrima: InventariomateriaprimaInterface[] = [];
   materiaPrimaSeleccionada: { materiaPrima: InventariomateriaprimaInterface,cantidadIndividual: number, seleccionado?: boolean }[] = [];
   cantidadIndividual: number = 0;
+  mostrarMateriasPrimas: boolean = false; // Para mostrar/ocultar la lista de materias primas
+  listFilter:string='';
+  materiaPrimaOriginal: InventariomateriaprimaInterface[] = []; // Guardar la lista original para filtrar
+
 
   constructor(private gorilaApiService: GorillaApiService, private router: Router) { }
 
   ngOnInit() {
-    // Obtener la lista de proveedores
     this.gorilaApiService.getMateriasPrimas().subscribe(
       (response) => {
         this.materiaPrima = response;
+        this.materiaPrimaOriginal = response; // Guardar la lista original para filtrar
         // Inicializar la lista de materia prima seleccionada con valores predeterminados
         this.materiaPrimaSeleccionada = this.materiaPrima.map(material => ({
           materiaPrima: material,
@@ -43,6 +47,7 @@ export class AgregarProductosComponent implements OnInit {
       }
     );
   }
+  
 
   convertirImagenABase64(imagen: File): Promise<string> {
     return new Promise((resolve, reject) => {
@@ -137,12 +142,20 @@ this.gorilaApiService.addProducto(producto).subscribe(
     materiaPrimaItem.cantidadUsada = materiaPrimaItem.cantidadIndividual * this.stock_existencia;
   }
 
+  // Función para mostrar u ocultar la lista de materias primas
+  toggleMateriasPrimas() {
+    this.mostrarMateriasPrimas = !this.mostrarMateriasPrimas;
+    if (!this.mostrarMateriasPrimas) {
+      this.materiaPrima = this.materiaPrimaOriginal;
+      this.listFilter = ''; // Limpiar el filtro al ocultar las materias primas
+    }
+  }
   mostrarSweetAlert(title: string, text: string, icon: SweetAlertIcon): void {
     Swal.fire({
       title,
       text,
       icon,
       confirmButtonText: 'Ok'
-    });
-  }
+    });
+  }
 }

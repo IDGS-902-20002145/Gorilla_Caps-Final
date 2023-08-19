@@ -5,9 +5,9 @@
         Regresar
       </a>
     </div>
-    <h2>Editar Materia Prima</h2>
     
     <form class="form" (ngSubmit)="obtenerMaterial(ediMateriaPrima.id)">
+      <h3 class="titulo">Modificar</h3>
       <div class="form-group">
         <label for="nombre">ID:</label>
         <input type="text" id="nombre" name="id" [(ngModel)]="ediMateriaPrima.id" required>

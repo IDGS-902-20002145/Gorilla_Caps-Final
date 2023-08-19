@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css',
                  './nicepage.css',
                  './intlTelInput/intlTelInput.css',
-                 
+
       ]
 })
 export class HomeComponent {
