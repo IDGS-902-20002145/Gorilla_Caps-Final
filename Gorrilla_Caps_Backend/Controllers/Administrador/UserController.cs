@@ -22,7 +22,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Administrador
         {
             try
             {
-                var users = _context.User.ToList();
+                var users = _context.User.Where(u => u.Active).ToList();
                 return Ok(users);
             }
             catch (Exception)

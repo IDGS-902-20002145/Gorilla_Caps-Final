@@ -15,7 +15,7 @@ namespace Gorrilla_Caps_Backend.Models
         public string Password { get; set; } // Hash de la contraseña
         public bool Active { get; set; }
 
-        [Column("confirmedAt")]
+        [Column("confirmedAt", TypeName = "datetime2")]
         public DateTime Confirmed_At { get; set; }
         public bool Admin { get; set; }
         public bool Empleado { get; set; }

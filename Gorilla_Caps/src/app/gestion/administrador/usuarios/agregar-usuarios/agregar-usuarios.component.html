@@ -1,6 +1,7 @@
-<h3>Agregar</h3>
-<hr>
+
+
 <form (ngSubmit)="agregarUsuario()">
+<h3 class="titulo">Agregar</h3>
   <input type="text" name="nombre" [(ngModel)]="usuarioNuevo.name" placeholder="Nombre">
   <input type="text" name="apellido" [(ngModel)]="usuarioNuevo.email" placeholder="Correo electrónico">
   <input type="text" name="email" [(ngModel)]="usuarioNuevo.password" placeholder="Contraseña">

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 import { GorillaApiService } from 'src/app/gorilla-api.service';
+import { ProveedoresFilterPipe } from './proveedor-filter.pipe';
 
 @Component({
   selector: 'app-proveedor',
@@ -8,7 +9,7 @@ import { GorillaApiService } from 'src/app/gorilla-api.service';
   styleUrls: ['./proveedor.component.css']
 })
 export class ProveedorComponent {
-
+  listFilter:string='';
   dataSource: any = [];
   constructor(public proveedor: GorillaApiService, private aService:AuthService) { }
 
@@ -29,3 +30,5 @@ export class ProveedorComponent {
     }    
   }
 }
+
+

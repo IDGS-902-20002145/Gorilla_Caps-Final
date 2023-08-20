@@ -8,13 +8,13 @@ h1 {
 }
 
 #tablaDetVentas th {
-  background-color: #6c757d;
+  background-color:  #1c4069; 
   color: #fff;
   font-weight: 600;
 }
 
 #tablaDetVentas tbody tr:hover {
-  background-color: #f5f5f5;
+  background-color: #cce4f3;
   cursor: pointer;
 }
 
@@ -112,15 +112,51 @@ h1 {
 
 #ventaEnviada {
   font-weight: bold;
-  font-size: 18px;
-  color: rgb(11, 173, 22);
+  font-size: 20px;
+  color: rgb(7, 7, 7);
 }
 
-#ventaEnviada {
-  font-weight: bold;
-  font-size: 18px;
-  color: rgb(11, 173, 22);
-  border: 2px solid rgb(11, 173, 22);
-  padding: 5px;
-  border-radius: 5px;
+
+
+#btn-success {
+  padding: 10px 20px;
+  background-color: #007bff; /* Fondo azul */
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
 }
+
+.header-row th {
+  background-color: #1c4069; /* Color para los encabezados */
+  color: #fff; /* Texto en blanco */
+  padding: 10px;
+}
+
+  /* Estilo de la tarjeta */
+  .card {
+    max-width: 800px;
+    margin: 10px auto;
+    background-color: #cce4f3;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+  .titulo {
+    font-size: 24px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    color: #1c4069; /* Color del texto */
+    text-transform: uppercase; /* Convertir a mayúsculas */
+    border-bottom: 2px solid #1c4069; /* Línea decorativa en la parte inferior */
+    padding-bottom: 10px; /* Espacio debajo de la línea */
+  }
+  .card-header {
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #031546;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .card-body {
+    margin-bottom: 10px;
+  }

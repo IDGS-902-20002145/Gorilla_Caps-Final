@@ -79,7 +79,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Administrador
                 venta.Estatus = true;
                 await _context.SaveChangesAsync();
 
-                return Ok("Se ha confirmado el envío");
+                return Ok();
             }
             catch (Exception ex)
             {

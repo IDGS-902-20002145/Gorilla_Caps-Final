@@ -1,23 +1,27 @@
 <div class="card">
     <div class="card-header">
-      Lista Materias Primas
+      Materias Primas
     </div>
     <div class="card-body">
       <div class="row">
-        <div class="col-md-2">Filtrar por:</div>
+        <div class="col-md-2">
+          <label class="blue-label">Buscar</label></div>
         <div class="col-md-4">
-          <input class="form-control"  class="form-control" name="filter" type="text">
+          <div class="search-container">
+            <input class="form-control" [(ngModel)]="listFilter" name="filter" type="text">
+            <i class="fas fa-search"></i>
+          </div>
         </div>
+      
       </div>
       <div class="row">
-        <div class="col-md-6">
-          <h3>Filtro: {{listFilter}}</h3>
-        </div>
+      
+
       </div>
       <div class="table-responsive">
-        <table class="table">
+        <table class="table table-striped">
           <thead>
-            <tr>
+            <tr class="header-row">
   
               <th>Id</th>
               <th>Nombre</th>
@@ -25,8 +29,9 @@
               <th>Cantidad</th>
               <th>Stock Minimo</th>
               <th>Activo</th>
-              <th>Editar</th>
-              <th>Eliminar</th>
+              <th>Opciones</th>
+              <th></th>
+              <th></th>
               
   
             </tr>
@@ -43,16 +48,21 @@
   
   
               <td><button mat-flat-button color="primary" [routerLink]="['/editarMP',inventario.id]">Editar</button></td>
-              <td><button mat-flat-button class="danger-button" [routerLink]="['/eliminarMP',inventario.id]">Eliminar</button></td>
+              <td><button mat-flat-button color="warn" [routerLink]="['/eliminarMP',inventario.id]">Eliminar</button></td>
               <td>
-                <button mat-flat-button class="button-buy" (click)="comprarMaterial(inventario.id)">Comprar</button>
+                <button mat-raised-button color="accent" (click)="comprarMaterial(inventario.id)">Comprar</button>
               </td>
             </tr>
           </tbody>
         </table>
-        <br>
-        <a mat-flat-button class="success-button" [routerLink]="['/agregarMP']">Agregar Nuevo</a>
-        
+       
+        <div class="row">
+          <div >
+            <button mat-raised-button color="success" [routerLink]="['/agregarMP']">
+              <mat-icon>add</mat-icon>
+              Agregar
+            </button>      
+          </div>
       </div>
     </div>
   </div>

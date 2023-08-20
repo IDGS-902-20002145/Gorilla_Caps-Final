@@ -1,6 +1,6 @@
-<div class="container">
+<div class="form">
     <div *ngIf="producto">
-      <h2>Eliminar Producto</h2>
+      <h3 class="titulo">Eliminar producto</h3>
       <div>
         <label>Nombre:</label>
         <p>{{ producto.nombre }}</p>
@@ -22,7 +22,7 @@
         <p>{{ producto.stock_existencia }}</p>
       </div>
       <div>
-        <button type="button" (click)="eliminarProducto()">Eliminar Producto</button>
+        <button type="button" (click)="eliminarProducto()">Eliminar</button>
       </div>
     </div>
   </div>

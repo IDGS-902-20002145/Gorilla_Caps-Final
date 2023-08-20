@@ -25,10 +25,10 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
             public Dictionary<DateTime, Dictionary<string, MisComprasProductoDto>> Productos { get; set; }
         }
 
-        [HttpGet]
-        public ActionResult GetMisCompras()
+        [HttpGet("MisCompras/{idUsuario}")]
+        public ActionResult GetMisCompras(int idUsuario)
         {
-            int currentUserId = GetCurrentUserId();
+            int currentUserId = idUsuario;
 
             List<Venta> ventasPorAprobar = _context.Venta
                 .Where(v => v.UserId == currentUserId && v.Estatus == false)
@@ -62,7 +62,8 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
                             productosFechaDict[producto.Nombre] = new MisComprasProductoDto
                             {
                                 Cantidad = detalle.Cantidad,
-                                Precio = Convert.ToDecimal(producto.Precio)
+                                Precio = Convert.ToDecimal(producto.Precio),
+                                Imagen = producto.Imagen
                             };
                         }
                     }
@@ -73,7 +74,8 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
                             { producto.Nombre, new MisComprasProductoDto
                                 {
                                     Cantidad = detalle.Cantidad,
-                                    Precio = Convert.ToDecimal(producto.Precio)
+                                    Precio = Convert.ToDecimal(producto.Precio),
+                                    Imagen = producto.Imagen
                                 }
                             }
                         };
@@ -122,7 +124,9 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
                             productosFechaDict[producto.Nombre] = new MisComprasProductoDto
                             {
                                 Cantidad = detalle.Cantidad,
-                                Precio = Convert.ToDecimal(producto.Precio)
+                                Precio = Convert.ToDecimal(producto.Precio),
+                                Imagen = producto.Imagen
+
                             };
                         }
                     }
@@ -133,7 +137,8 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
                             { producto.Nombre, new MisComprasProductoDto
                                 {
                                     Cantidad = detalle.Cantidad,
-                                    Precio = Convert.ToDecimal(producto.Precio)
+                                    Precio = Convert.ToDecimal(producto.Precio),
+                                    Imagen = producto.Imagen
                                 }
                             }
                         };
@@ -153,17 +158,14 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
             return Ok(new { VentasPA = ventasPA, VentasA = ventasA });
         }
 
-        private int GetCurrentUserId()
-        {
-            // Implementa el método para obtener el ID del usuario actual
-            // Puedes usar el HttpContext.User o cualquier otra forma de autenticación
-            return 1; // Ejemplo: retorna un ID de usuario fijo
-        }
+      
     }
 
     public class MisComprasProductoDto
     {
         public int Cantidad { get; set; }
         public decimal Precio { get; set; }
+
+        public string Imagen { get; set;}
     }
 }

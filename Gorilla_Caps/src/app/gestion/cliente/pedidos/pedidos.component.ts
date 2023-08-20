@@ -19,6 +19,7 @@ export class PedidosComponent {
 
     ngOnInit(): void {
       this.idUsuario = Number(localStorage.getItem('id'));
+      console.log(this.idUsuario);
       if (localStorage.getItem('token') == null) {
         window.location.href = "/Catalogo";
       }else{

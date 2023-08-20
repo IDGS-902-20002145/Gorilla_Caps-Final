@@ -1,1 +1,56 @@
-<p>p-all works!</p>
+<div class="card">
+<div >
+<h1 class="card-header"> Confirmación de pago</h1>
+</div>
+<div class="row">
+  <div class="col-md-8">
+    <div class="card mb-3" *ngFor="let producto of detProductos">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img [src]="getImageUrl(producto.imagen)" class="card-img" alt="" style="height: 150px; width: 150px;">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-titulo">{{ producto.nombre }}</h5>
+            <p class="card-text">Modelo: {{producto.modelo}}</p>
+            <p class="card-text">Descripción: {{producto.descripcion}}
+            </p>
+            <p class="card-text">Precio: {{producto.precio}} | Cantidad: {{producto.cantidad}} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <br>
+        <h5 class="card-titulo">Resumen de Pago</h5><br><br>
+        <p class="card-text">El total es ${{total}}</p>
+
+        <form>
+          <div class="form-group">
+            <label class="card-text" for="metodo_pago">Seleccione método de pago:</label>
+            <br>
+            <select class="form-control" id="metodo_pago" name="metodo_pago" [(ngModel)]="metodoPago">
+              <option value="efectivo">Efectivo</option>
+              <option value="tarjeta">Tarjeta</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="hidden" name="id" value="">
+            <br><br><br>
+            <button  mat-raised-button color="accent" (click)="pagarTodo()">Continuar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  h1 {
+    font-family: 'Times New Roman', Times, serif;
+  }
+</style>
+</div>

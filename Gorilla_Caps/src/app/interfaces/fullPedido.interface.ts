@@ -4,7 +4,7 @@ export interface FullPedidoInterface {
     id: number,
     UserId: number,
     fecha: Date,
-    estatus: true,
+    estatus: number,
     cantidad: number,
     producto: ProductoInterface
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GorillaApiService } from 'src/app/gorilla-api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detalle-venta',
@@ -10,14 +11,17 @@ import { GorillaApiService } from 'src/app/gorilla-api.service';
 export class DetalleVentaComponent implements OnInit {
   detalle_ventas: any[] = []; // Add this variable to store the data
   idVenta: number = 0;
-  estatus: any;
+  estatus: boolean =  false; // Cambiar el tipo de dato a boolean
+  st: string = ''; // Add this variable to store the data
+
 
   constructor(private detalleVentasService: GorillaApiService, private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.idVenta = Number(params['idVenta']);
-      this.estatus = params['estatus'];
+      this.st = params['estatus'];
+      this.estatus = this.st == 'true' ? true : false;
       console.log(this.idVenta);
       console.log(this.estatus);
     });
@@ -38,8 +42,16 @@ export class DetalleVentaComponent implements OnInit {
   confirmarEnvio() {
     this.detalleVentasService.confirmarEnvio(this.idVenta).subscribe(
       (response: any) => {
-        this.estatus = true; // Set estatus to true after successful confirmation
-        alert('La venta se ha confirmado como enviada.');
+
+        Swal.fire({
+          title: 'Venta enviada',
+          text: 'La venta se ha enviado correctamente',
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+        });
+        this.estatus = true;
+
+        this.router.navigate(['/Aprovacion']);
       },
       error => console.log(error)
     );

@@ -1,6 +1,6 @@
-<div class="container">
+<div class="form">
   <div *ngIf="producto">
-    <h2>Actualizar Producto</h2>
+    <h3 class="titulo">Actualizar Producto</h3>
     <div>
       <label>Nombre:</label>
       <input type="text" [(ngModel)]="producto.nombre" required>
@@ -16,7 +16,7 @@
     <div>
       <label>Imagen Actual:</label>
       <img [src]="getImageUrl(producto.imagen)" style="width: 150px; height: 150px;">
-    </div>
+    </div><br>
     <div>
       <label for="nuevaImagen">Nueva Imagen:</label>
       <input type="file" id="nuevaImagen" name="nuevaImagen" (change)="cargarImagen($event)" accept="image/*">
@@ -26,7 +26,8 @@
       <input type="number" [(ngModel)]="producto.stock_existencia" required>
     </div>
     <div>
-      <button type="button" class="btn btn-primary" (click)="actualizarProducto()">Actualizar Producto</button>
+      <button type="submit" class="btn btn-primary" (click)="actualizarProducto()">Actualizar</button>
     </div>
   </div>
 </div>
+

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { GorillaApiService } from 'src/app/gorilla-api.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ventas-a',
@@ -14,7 +16,7 @@ export class VentasAComponent implements OnInit {
   ventasPDisplay: string = 'none';
   ventasEDisplay: string = 'none';
 
-  constructor(public ventasService: GorillaApiService) { }
+  constructor(public ventasService: GorillaApiService, private router: Router) { }
 
   ngOnInit(): void {
     this.getVentas();
@@ -35,9 +37,14 @@ export class VentasAComponent implements OnInit {
   confirmarEnvio(idVenta: number) {
     this.ventasService.confirmarEnvio(idVenta).subscribe(
       (response: any) => {
-
-        this.ngOnInit();
-        alert('La venta se ha confirmado como enviada.');
+        Swal.fire({
+          title: 'Venta enviada',
+          text: 'La venta se ha enviado correctamente',
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+        });
+        this.ngOnInit()
+        this.regresarVentas();
       },
       error => console.log(error)
     );

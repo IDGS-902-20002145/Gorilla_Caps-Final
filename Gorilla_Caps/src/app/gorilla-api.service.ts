@@ -25,6 +25,24 @@ export class GorillaApiService {
     return this.http.get<ProveedorInterface[]>('/api/Proveedor', { headers });
   }
 
+  public addProveedor(proveedor: ProveedorInterface): Observable<ProveedorInterface> {
+    const token = this.aService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post<ProveedorInterface>('/api/Proveedor/Add', proveedor, { headers })
+  }
+
+  public updateProveedor(proveedor: ProveedorInterface): Observable<ProveedorInterface> {
+    let url = `/api/Proveedor/${proveedor.id}`;
+    const token = this.aService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<ProveedorInterface>(url, proveedor, { headers })
+  }
+  public findProveedor(id: number): Observable<ProveedorInterface> {
+    const token = this.aService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<ProveedorInterface>(`/api/Proveedor/${id}`, { headers })
+  }
+
   public getUsers(): Observable<UserInterface[]> {
     const token = this.aService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
@@ -182,8 +200,8 @@ export class GorillaApiService {
   }
 
    //Compras segun cada cliente
-   public getMisCompras(): Observable<VentaInterface[]> {
-    return this.http.get<VentaInterface[]>('/api/VentasC')
+   public getMisCompras(id: number): Observable<VentaInterface[]> {
+    return this.http.get<VentaInterface[]>(`/api/VentasC/MisCompras/${id}`)
   }
 
   //Aprovacion de envio de las ventas Administrador
@@ -207,11 +225,27 @@ export class GorillaApiService {
   }
 
   public pagar(id: number): Observable<any> {
-    return this.http.put<any>(`/api/VentasC/Pagar/${id}`, null);
+    const token = this.aService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<any>(`/api/Pedidos/Pagar/${id}`, { headers });
   }
 
-  public pagarTarjeta(id: number): Observable<any> {
-    return this.http.put<any>(`/api/VentasC/PagarTarjeta/${id}`, null);
+  public pagarEfectivo(id: number): Observable<any> {
+    const token = this.aService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put<any>(`/api/Pedidos/PagarAE/${id}`, null, { headers });
+  }
+
+  public getpagarTodo(id: number): Observable<any> {
+    const token = this.aService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<any>(`/api/Pedidos/PagarTodo/${id}`, { headers });
+  }
+
+  public postpagarTodo(id: number): Observable<any> {
+    const token = this.aService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post<any>(`/api/Pedidos/PagarTodoP/${id}`, null, { headers });
   }
 
 

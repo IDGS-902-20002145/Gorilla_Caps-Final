@@ -1,11 +1,11 @@
 <!-- product-list.component.html -->
 
-<div class="view-toggle">
-    <button (click)="toggleView()">Cambiar Vista</button>
-  </div>
-<div>
-    <button class="btn btn-success btn-sm" [routerLink]="'/agregarProductos'">Agregar Producto</button>
+<div class="button-container">
+  <button (click)="toggleView()" class="toggle-button">Cambiar vista</button>
+  <button  mat-raised-button color="success" [routerLink]="'/agregarProductos'"><mat-icon>add</mat-icon>
+    Agregar producto</button>
 </div>
+<br>
   
   <div *ngIf="isCardView; else tableView" class="product-list-cards">
     <div *ngFor="let product of products" class="product-card">
@@ -15,26 +15,28 @@
         <p class="product-description">{{ product.descripcion }}</p>
         <p class="product-price">Precio: ${{ product.precio }}</p>
         <p class="product-stock">Stock: {{ product.stock_existencia }}</p>
-        <div class="product-actions">
-          <button class="btn btn-sm btn-primary " [routerLink]="['/editarProducto',product.id]">Editar</button>
-          <button class="btn btn-sm btn-danger mx-3" [routerLink]="['/eliminarProducto',product.id]">Eliminar</button>
-          <button class="btn btn-sm btn-info mx-3" [routerLink]="['/agregarStock',product.id]">Add Stock</button>
+        <div class="product-actions; button-container">
+          <button mat-flat-button color="primary" [routerLink]="['/editarProducto',product.id]">Editar</button>
+          <button mat-flat-button color="warn" [routerLink]="['/eliminarProducto',product.id]">Eliminar</button>
+          <button mat-flat-button color="accent" [routerLink]="['/agregarStock',product.id]">Add Stock</button>
         </div>
       </div>
     </div>
-  </div>
-  
+  </div>  
+   
   <ng-template #tableView>
     <div class="product-list-table">
-      <table>
+      <table class="table table-striped">
         <thead>
-          <tr>
+          <tr class="header-row th">
             <th>Imagen</th>
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Precio</th>
             <th>Stock</th>
             <th>Acciones</th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -45,9 +47,10 @@
             <td>${{ product.precio }}</td>
             <td>{{ product.stock_existencia }}</td>
             <td>
-              <button class="btn btn-sm btn-primary" [routerLink]="['editarProducto',product.id]">Editar</button>
-              <button class="btn btn-sm btn-danger" [routerLink]="['/eliminarProducto',product.id]">Eliminar</button>
-              <button class="btn btn-sm btn-info" [routerLink]="['/agregarStock',product.id]">Add Stock</button>
+              <button  mat-flat-button color="primary" [routerLink]="['editarProducto',product.id]">Editar</button></td>
+            <td>  <button  mat-flat-button color="warn"  [routerLink]="['/eliminarProducto',product.id]">Eliminar</button></td>
+             <td> <button mat-flat-button color="accent" [routerLink]="['/agregarStock',product.id]">Add Stock</button>
+              
             </td>
           </tr>
         </tbody>

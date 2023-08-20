@@ -50,7 +50,16 @@ import { PagarComponent } from './gestion/cliente/pedidos/pagar/pagar.component'
 import { PTarjetaComponent } from './gestion/cliente/pedidos/p-tarjeta/p-tarjeta.component';
 import { PAllComponent } from './gestion/cliente/pedidos/p-all/p-all.component';
 import { TAllComponent } from './gestion/cliente/pedidos/t-all/t-all.component';
-
+import { DashboardComponent } from './gestion/administrador/dashboard/dashboard.component';
+import { CarritoService } from './carrito.service';
+import { CarritoTemporalComponent } from './gestion/catalogo/carrito-temporal/carrito-temporal.component';
+import { PageNotFoundComponent } from './gestion/page-not-found/page-not-found.component';
+import { EliminarProveedorComponent } from './gestion/administrador/proveedor/eliminar-proveedor/eliminar-proveedor.component';
+import { ModificarProveedorComponent } from './gestion/administrador/proveedor/modificar-proveedor/modificar-proveedor.component';
+import { AgregarProveedorComponent } from './gestion/administrador/proveedor/agregar-proveedor/agregar-proveedor.component';
+import { ProveedoresFilterPipe } from './gestion/administrador/proveedor/proveedor-filter.pipe';
+import { HomeComponent } from './gestion/home/home.component';
+import { FiltroMateriasPipe } from './gestion/administrador/productos/agregar-productos/filtro-materias.pipe';
 
 @NgModule({
   declarations: [
@@ -89,6 +98,15 @@ import { TAllComponent } from './gestion/cliente/pedidos/t-all/t-all.component';
     PTarjetaComponent,
     PAllComponent,
     TAllComponent,
+    DashboardComponent,
+    CarritoTemporalComponent,
+    PageNotFoundComponent,
+    AgregarProveedorComponent,
+    EliminarProveedorComponent,
+    ModificarProveedorComponent,
+    ProveedoresFilterPipe,
+    HomeComponent,
+    FiltroMateriasPipe
   ],
   imports: [
     BrowserModule,
@@ -107,7 +125,8 @@ import { TAllComponent } from './gestion/cliente/pedidos/t-all/t-all.component';
     CommonModule,
     NgxChartsModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService,
+    CarritoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

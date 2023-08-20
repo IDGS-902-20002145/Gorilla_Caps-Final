@@ -1,4 +1,5 @@
 ﻿using Gorrilla_Caps_Backend.Context;
+using Gorrilla_Caps_Backend.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Gorrilla_Caps_Backend.Controllers.Administrador
 {
-    [Authorize]
+    [Authorize(Policy = "Admin")]
     [ApiController]
     [Route("api/[controller]")]
 
@@ -19,11 +20,27 @@ namespace Gorrilla_Caps_Backend.Controllers.Administrador
         }
 
         [HttpGet]
-        public ActionResult Get()
+        public IActionResult Get()
         {
             try
             {
-                return Ok(_context.Proveedor.ToList());
+                var proveedores = _context.Proveedor.Where(p=> p.Active).ToList();
+                return Ok(proveedores);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        // GET api/<ProveedorController>/5
+        [HttpGet("{id}", Name = "GetProveedor")]
+        public IActionResult GetById(int id)
+        {
+            try
+            {
+                var proveedor = _context.Proveedor.FirstOrDefault(p => p.Id == id);
+                return Ok(proveedor);
             }
             catch (Exception ex)
             {
@@ -31,29 +48,76 @@ namespace Gorrilla_Caps_Backend.Controllers.Administrador
             }
         }
 
-        // GET api/<ProveedorController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpPost("Add")]
+        public IActionResult Post([FromBody] Proveedor proveedor)
         {
-            return "value";
+            try
+            {
+
+                _context.Proveedor.Add(proveedor);
+                _context.SaveChanges();
+                return CreatedAtRoute("GetProveedor", new { id = proveedor.Id }, proveedor);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
-        // POST api/<ProveedorController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
 
         // PUT api/<ProveedorController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] Proveedor updateProveedor)
         {
+            try
+            {
+                var proveedor = _context.Proveedor.FirstOrDefault(p => p.Id == id);
+                if (proveedor == null)
+                {
+                    return NotFound();
+                }
+
+                proveedor.Nombre = updateProveedor.Nombre;
+                proveedor.Email = updateProveedor.Email;
+                proveedor.Direccion = updateProveedor.Direccion;
+                proveedor.Telefono = updateProveedor.Telefono;
+                proveedor.Active = updateProveedor.Active;
+
+                _context.SaveChanges();
+                return Ok(proveedor);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
+
+
 
         // DELETE api/<ProveedorController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
+
+            try
+            {
+                var proveedor = _context.Proveedor.FirstOrDefault(p => p.Id == id);
+
+                if (proveedor != null)
+                {
+                    _context.Proveedor.Remove(proveedor);
+                    _context.SaveChanges();
+                    return Ok(id);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

@@ -1,9 +1,25 @@
-<h2 style="text-align: center;">Registro GorillaCaps</h2>
-<hr>
-<form (ngSubmit)="verificarCont()">
-  <input type="text" name="nombre" [(ngModel)]="usuarioNuevo.name" placeholder="Nombre">
-  <input type="text" name="apellido" [(ngModel)]="usuarioNuevo.email" placeholder="Correo electrónico">
-  <input type="password" name="verificar" [(ngModel)]="verificarPassword" placeholder="Contraseña">
-  <input type="password" name="email" [(ngModel)]="usuarioNuevo.password" placeholder="Repita la contraseña">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="registro.component.css">
+</head>
+<body class="fondo">
+<form class="login-form"   (ngSubmit)="verificarCont()">
+  <img src="../../../../assets/logoD.jpg" alt="GorillaCaps" class="imagen-cabecera">
+  <br>
+  <label for="nombre">Nombre</label><br>
+  <input type="text" name="nombre" [(ngModel)]="usuarioNuevo.name" placeholder="Nombre"><br>
+  <label for="apellido">Correo</label><br>
+  <input type="text" name="apellido" [(ngModel)]="usuarioNuevo.email" placeholder="Correo electrónico"><br>
+  <label for="email">Contraseña</label><br>
+  <input type="password" name="verificar" [(ngModel)]="verificarPassword" placeholder="Contraseña"><br>
+  <label for="email">Repita la contraseña</label><br>
+  <input type="password" name="email" [(ngModel)]="usuarioNuevo.password" placeholder="Repita la contraseña"><br>
+  <br>
   <button type="submit" class="btn btn-primary">Agregar</button>
 </form>
+</body>
+
+</html>

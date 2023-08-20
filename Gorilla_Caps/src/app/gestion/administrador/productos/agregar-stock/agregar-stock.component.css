@@ -4,7 +4,7 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #cce4f3;
   }
   
   h2 {
@@ -55,3 +55,11 @@
     background-color: #0056b3;
   }
   
+  .titulo {
+    font-size: 24px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    color: #1c4069; /* Color del texto */
+    text-transform: uppercase; /* Convertir a mayúsculas */
+    border-bottom: 2px solid #1c4069; /* Línea decorativa en la parte inferior */
+    padding-bottom: 10px; /* Espacio debajo de la línea */
+  }
