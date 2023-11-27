@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\zende\Documents\Proyecto Version Yahir\Gorilla_Caps-Yahir\ETL\env"
+VIRTUAL_ENV="C:\Users\zende\Documents\Proyecto Version Yahir\Gorilla_Caps\ETL\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

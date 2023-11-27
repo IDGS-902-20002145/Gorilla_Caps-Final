@@ -265,3 +265,4 @@ C:\Users\zende\Documents\Proyecto Version Yahir\Gorilla_Caps\Gorrilla_Caps_Backe
 C:\Users\zende\Documents\Proyecto Version Yahir\Gorilla_Caps\Gorrilla_Caps_Backend\obj\Debug\net6.0\Gorrilla_Caps_Backend.pdb
 C:\Users\zende\Documents\Proyecto Version Yahir\Gorilla_Caps\Gorrilla_Caps_Backend\obj\Debug\net6.0\Gorrilla_Caps_Backend.genruntimeconfig.cache
 C:\Users\zende\Documents\Proyecto Version Yahir\Gorilla_Caps\Gorrilla_Caps_Backend\obj\Debug\net6.0\ref\Gorrilla_Caps_Backend.dll
+C:\Users\zende\Documents\Proyecto Version Yahir\Gorilla_Caps\Gorrilla_Caps_Backend\obj\Debug\net6.0\Gorrilla_Caps_Backend.sourcelink.json

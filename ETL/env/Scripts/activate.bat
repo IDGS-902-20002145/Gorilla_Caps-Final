@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\zende\Documents\Proyecto Version Yahir\Gorilla_Caps-Yahir\ETL\env
+set VIRTUAL_ENV=C:\Users\zende\Documents\Proyecto Version Yahir\Gorilla_Caps\ETL\env
 
 if not defined PROMPT set PROMPT=$P$G
 
