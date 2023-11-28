@@ -15,13 +15,20 @@ namespace Gorrilla_Caps_Backend
         {
             services.AddCors(options =>
             {
-                var frontendURL = Configuration.GetValue<string>("frontend_url");
+                var frontendURLs = new[]
+                {
+            "http://localhost:4200",
+            "http://localhost:4000" // Agrega el puerto 4000 aquí
+        };
+
                 options.AddDefaultPolicy(builder =>
                 {
-                    //Añadimos la cabecera para que no nos marque error CORS
-                    builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+                    builder.WithOrigins(frontendURLs)
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
                 });
             });
+
             services.AddControllers();
             services.AddDbContext<AppDbContext>(options =>
 
