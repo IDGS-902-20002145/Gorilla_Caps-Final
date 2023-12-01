@@ -1,49 +1,70 @@
-import { useState } from "react";
+import React, { useState } from 'react';
+import './Login.css'; // Agrega el archivo CSS
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   const handleLogin = async () => {
     try {
-      const url = "https://localhost:5000/api/Login/authenticate"; // Reemplaza con la URL correcta de tu backend
-      const response = await fetch(url, {
-        method: "POST",
+      const response = await fetch('https://localhost:5000/api/Login/authenticate', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(formData),
+        credentials: 'include', // Habilitar credenciales
       });
-
-      if (response.ok) {
-        const data = await response.json();
-
-        // Verifica si 'data' tiene la propiedad 'user'
-        if (data.user) {
-          // Aquí puedes manejar el token y redirigir al usuario a la página deseada
-          console.log('Token:', data.token);
-          // Ejemplo de redirección (necesitarás ajustar esto a tu enrutador y estructura)
-          // history.push("/Catalogo");
-        } else {
-          console.error('Usuario o contraseña incorrectos');
-        }
+  
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status} - ${response.statusText}`);
+      }
+  
+      const data = await response.json();
+  
+      if (data.user) {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('id', data.user.id);
+        localStorage.setItem('admin', data.user.admin);
+        localStorage.setItem('empleado', data.user.empleado);
+  
+        // Redirige al usuario después de un inicio de sesión exitoso
+        window.location.href = '/Catalog';
       } else {
-        console.error('Error al iniciar sesión');
+        console.error('Usuario o contraseña incorrectos');
       }
     } catch (error) {
-      console.error('Error en la solicitud:', error);
+      console.error('Error al realizar la solicitud:', error.message);
     }
   };
 
   return (
-    <div>
-      <label>Email:</label>
-      <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+    <div className="login-form">
+      <label>Email</label>
+      <input type="text" name="email" value={formData.email} onChange={handleInputChange} />
 
-      <label>Password:</label>
-      <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <label>Contraseña</label>
+      <input type="password" name="password" value={formData.password} onChange={handleInputChange} />
 
       <button onClick={handleLogin}>Iniciar sesión</button>
+
+      {/* Enlace para navegar a /Catalogo */}
+      <p>
+        ¿No tienes una cuenta? Regístrate{' '}
+        <a href="/Registro" style={{ color: 'blue' }}>
+          aquí
+        </a>
+      </p>
     </div>
   );
 };

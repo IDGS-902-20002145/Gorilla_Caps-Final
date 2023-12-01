@@ -25,7 +25,8 @@ namespace Gorrilla_Caps_Backend
                 {
                     builder.WithOrigins(frontendURLs)
                            .AllowAnyMethod()
-                           .AllowAnyHeader();
+                           .AllowAnyHeader()
+                           .AllowCredentials();
                 });
             });
 
@@ -38,6 +39,7 @@ namespace Gorrilla_Caps_Backend
         public void Configure(IApplicationBuilder app, IHostApplicationLifetime lifetime)
         {
             
+
             app.UseRouting();
 
             app.UseCors();

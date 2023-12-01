@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sp9dOuAD5N1N4JIYEtwwjEW7pz1AkM4ycMluniDJJcePAuVJA72qYAK5o+B1rJ+/bJrxQ+CwtXoxXRob2HS4Gg==",
+  "dgSpecHash": "2x5Tj44bYV2rESSP3f6ySYks97c0BwyLp7DEu8lee7tDt0sTYtssY8SO565RcnBXziQ1CdC5j1YIaR7mksLTHw==",
   "success": true,
-  "projectFilePath": "C:\\IDGS1002\\APLICAICONES WEB PROGRESIVAS\\Gorilla_Caps-Final-master\\Gorilla_Caps-Final-master\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj",
+  "projectFilePath": "C:\\IDGS1002\\APLICAICONES WEB PROGRESIVAS\\Gorilla_Caps_PWA\\Gorilla_Caps-Final\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\danie\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\danie\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.20\\microsoft.aspnetcore.authentication.jwtbearer.6.0.20.nupkg.sha512",
