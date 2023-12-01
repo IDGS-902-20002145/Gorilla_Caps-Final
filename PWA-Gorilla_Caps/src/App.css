@@ -1,0 +1,69 @@
+/* styles.css */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .navbar {
+    background-color: #1c4069;
+  }
+  
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    color: white;
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #495057;
+  }
+  
+  .container-fluid {
+    padding: 0;
+  }
+  
+  .navbar-toggler {
+    border: none;
+  }
+  
+  .navbar-toggler:focus {
+    outline: none;
+  }
+  
+  .navbar-nav {
+    text-align: center;
+  }
+  
+  .nav-item {
+    margin: 0 10px;
+  }
+  
+  /* Estilo para componentes de contenido */
+  .content {
+    padding: 20px;
+  }
+  
+  /* Media queries para hacer el navbar responsivo */
+  @media (max-width: 767px) {
+    .navbar-toggler {
+      display: block;
+    }
+  
+    .navbar-collapse {
+      display: none;
+    }
+  
+    .navbar-nav {
+      text-align: left;
+    }
+  
+    .nav-item {
+      margin: 10px 0;
+    }
+  
+    .navbar-toggler:focus + .navbar-collapse {
+      display: block;
+    }
+  }
+  

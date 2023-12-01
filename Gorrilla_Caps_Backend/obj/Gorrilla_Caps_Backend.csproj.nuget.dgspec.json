@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zende\\Documents\\Proyecto Version Yahir\\Gorilla_Caps\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj": {}
+    "C:\\IDGS1002\\APLICAICONES WEB PROGRESIVAS\\Gorilla_Caps-Final-master\\Gorilla_Caps-Final-master\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zende\\Documents\\Proyecto Version Yahir\\Gorilla_Caps\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj": {
+    "C:\\IDGS1002\\APLICAICONES WEB PROGRESIVAS\\Gorilla_Caps-Final-master\\Gorilla_Caps-Final-master\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zende\\Documents\\Proyecto Version Yahir\\Gorilla_Caps\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj",
+        "projectUniqueName": "C:\\IDGS1002\\APLICAICONES WEB PROGRESIVAS\\Gorilla_Caps-Final-master\\Gorilla_Caps-Final-master\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj",
         "projectName": "Gorrilla_Caps_Backend",
-        "projectPath": "C:\\Users\\zende\\Documents\\Proyecto Version Yahir\\Gorilla_Caps\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj",
-        "packagesPath": "C:\\Users\\zende\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zende\\Documents\\Proyecto Version Yahir\\Gorilla_Caps\\Gorrilla_Caps_Backend\\obj\\",
+        "projectPath": "C:\\IDGS1002\\APLICAICONES WEB PROGRESIVAS\\Gorilla_Caps-Final-master\\Gorilla_Caps-Final-master\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj",
+        "packagesPath": "C:\\Users\\danie\\.nuget\\packages\\",
+        "outputPath": "C:\\IDGS1002\\APLICAICONES WEB PROGRESIVAS\\Gorilla_Caps-Final-master\\Gorilla_Caps-Final-master\\Gorrilla_Caps_Backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\zende\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\danie\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

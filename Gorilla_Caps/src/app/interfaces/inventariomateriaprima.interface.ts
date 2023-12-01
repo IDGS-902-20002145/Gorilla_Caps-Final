@@ -8,5 +8,6 @@ export interface InventariomateriaprimaInterface {
     stock_Minimo: number;
     estatus: boolean;
     explotacionMaterial?: ExplotacionmaterialInterface;
+    unidad_Medida: string;
     
 }

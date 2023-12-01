@@ -17,7 +17,7 @@ export class RegistroComprasComponent implements OnInit {
   materialId: number = 0;
   cantidad: number = 0;
   precio: number  = 0;
-  material: InventariomateriaprimaInterface = { id: 0, nombre: '', descripcion: '', cantidad: 0, stock_Minimo: 0, estatus: false }; // Inicializar con un valor predeterminado
+  material: InventariomateriaprimaInterface = { id: 0, nombre: '', descripcion: '', cantidad: 0, stock_Minimo: 0, estatus: false , unidad_Medida: ''}; // Inicializar con un valor predeterminado
   proveedores: ProveedorInterface[] = []; // Lista de proveedores
 
   constructor(
