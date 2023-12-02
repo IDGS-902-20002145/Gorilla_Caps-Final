@@ -1,8 +1,16 @@
-// eslint-disable-next-line no-unused-vars
-import React from "react";
+import { useState } from "react";
+import CatalogList from "../components/CatalogList/CatalogList";
 
 const CatalogPage = () => {
-  return <div>CatalogPage</div>;
+  const initialCart = JSON.parse(localStorage.getItem("carrito")) || [];
+  const [carrito, setCarrito] = useState(initialCart);
+
+
+  return (
+    <>
+      <CatalogList carrito={carrito} setCarrito={setCarrito} />
+    </>
+  );
 };
 
 export default CatalogPage;

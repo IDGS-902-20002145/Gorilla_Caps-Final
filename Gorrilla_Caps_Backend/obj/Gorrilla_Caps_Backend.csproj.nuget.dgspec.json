@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zende\\Documents\\Proyecto Version Yahir\\Gorilla_Caps\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj": {}
+    "C:\\Users\\quiro\\OneDrive\\Tareas y trabajos UTL\\DecimoCuatrimestre\\ParaCommit\\Gorilla_Caps-Final\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zende\\Documents\\Proyecto Version Yahir\\Gorilla_Caps\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj": {
+    "C:\\Users\\quiro\\OneDrive\\Tareas y trabajos UTL\\DecimoCuatrimestre\\ParaCommit\\Gorilla_Caps-Final\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zende\\Documents\\Proyecto Version Yahir\\Gorilla_Caps\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj",
+        "projectUniqueName": "C:\\Users\\quiro\\OneDrive\\Tareas y trabajos UTL\\DecimoCuatrimestre\\ParaCommit\\Gorilla_Caps-Final\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj",
         "projectName": "Gorrilla_Caps_Backend",
-        "projectPath": "C:\\Users\\zende\\Documents\\Proyecto Version Yahir\\Gorilla_Caps\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj",
-        "packagesPath": "C:\\Users\\zende\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zende\\Documents\\Proyecto Version Yahir\\Gorilla_Caps\\Gorrilla_Caps_Backend\\obj\\",
+        "projectPath": "C:\\Users\\quiro\\OneDrive\\Tareas y trabajos UTL\\DecimoCuatrimestre\\ParaCommit\\Gorilla_Caps-Final\\Gorrilla_Caps_Backend\\Gorrilla_Caps_Backend.csproj",
+        "packagesPath": "C:\\Users\\quiro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\quiro\\OneDrive\\Tareas y trabajos UTL\\DecimoCuatrimestre\\ParaCommit\\Gorilla_Caps-Final\\Gorrilla_Caps_Backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\zende\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\quiro\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
