@@ -6,6 +6,7 @@ import Home from "./pages/HomePage";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import CatalogPage from "./pages/CatalogPage";
+import RegisterUser from "./pages/RegisterUser";
 import { useEffect, useState } from "react";
 
 const App = () => {
@@ -76,9 +77,14 @@ const App = () => {
                 </button>
               ) : (
                 <Link className="nav-link" to="/login">
-                  Iniciar Sesión
+                  Sign In
                 </Link>
               )}
+            </li>
+            <li>
+              <Link className="nav-link" to="/register">
+                Sign Up
+              </Link>
             </li>
               </ul>
             </div>
@@ -93,6 +99,7 @@ const App = () => {
             element={<Login setAuthenticated={setAuthenticated} />}
           />
           <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="/register" element={<RegisterUser />} />
         </Routes>
       </div>
     </Router>

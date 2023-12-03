@@ -1,5 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
+import 'bootstrap/dist/css/bootstrap.min.css'; // Asegúrate de importar el CSS de Bootstrap
 import "./Login.css"; // Asegúrate de importar el archivo CSS
 
 const Login = ({ setAuthenticated }) => {
@@ -73,32 +74,49 @@ const Login = ({ setAuthenticated }) => {
   };
 
   return (
-    <div className="login-form">
-      <label>Email</label>
-      <input
-        type="text"
-        name="email"
-        value={formData.email}
-        onChange={handleInputChange}
-      />
+    <div className="container my-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="card shadow">
+            <div className="card-body">
+              <h2 className="card-title text-center mb-4">Iniciar Sesión</h2>
+              <form onSubmit={(e) => e.preventDefault()}>
+                <div className="form-group">
+                  <label>Email</label>
+                  <input
+                    type="text"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="form-control"
+                  />
+                </div>
 
-      <label>Contraseña</label>
-      <input
-        type="password"
-        name="password"
-        value={formData.password}
-        onChange={handleInputChange}
-      />
+                <div className="form-group">
+                  <label>Contraseña</label>
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    className="form-control"
+                  />
+                </div>
 
-      <button onClick={handleLogin}>Iniciar sesión</button>
+                <button onClick={handleLogin} className="btn btn-primary btn-block">Iniciar sesión</button>
+              </form>
 
-      {/* Enlace para navegar a /Catalogo */}
-      <p>
-        ¿No tienes una cuenta? Regístrate{" "}
-        <a href="/Registro" style={{ color: "blue" }}>
-          aquí
-        </a>
-      </p>
+              {/* Enlace para navegar a /Catalogo */}
+              <p className="mt-3">
+                ¿No tienes una cuenta? Regístrate{" "}
+                <a href="/Register" className="link-primary">
+                  aquí
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
