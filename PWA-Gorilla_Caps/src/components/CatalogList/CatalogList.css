@@ -446,6 +446,7 @@ input.form-control {
     /* Ajusta los estilos de app-carrito-temporal según tus necesidades */
     /* Por ejemplo, podrías ajustar el ancho, altura, colores, etc. */
     width: 350px;
+    transition: all 0.5s ease-in-out;
     max-height: 400px;
     overflow-y: auto;
 }

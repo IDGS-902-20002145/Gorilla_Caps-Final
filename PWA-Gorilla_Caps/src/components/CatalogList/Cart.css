@@ -7,11 +7,17 @@
     min-width: 50px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: -10%;
     background-color: lightblue;
     border: none;
     border-radius: 15px;
     padding: 5px;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.cartToPay {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .cart-items {
@@ -45,4 +51,8 @@
 .marg {
     margin: 10px;
     margin-left: -10px;
+}
+
+.cart-component {
+    transform: scale(0.9);
 }

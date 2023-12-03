@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import "./Cart.css";
+import { Link } from "react-router-dom";
 
 const Cart = ({ carrito, setCarrito }) => {
     //State para contraer o expandir el carrito
@@ -59,7 +60,6 @@ const Cart = ({ carrito, setCarrito }) => {
 
     useEffect(() => {
         localStorage.setItem("carrito", JSON.stringify(carrito));
-        console.log(carrito);
     }, [carrito]);
 
 
@@ -72,7 +72,9 @@ const Cart = ({ carrito, setCarrito }) => {
             </div>
             {cartOpen && (
                 <div className="cart-container">
-                    <p>Carrito de compras</p>
+                    <div className="row">
+                        <Link to="/Carrito" className="cartToPay btn btn-outline-primary">Comprar carrito</Link>
+                    </div>
                     {carrito && carrito.length > 0 ? (
                         <div className="cart-items">
                             <table>
@@ -92,7 +94,7 @@ const Cart = ({ carrito, setCarrito }) => {
                                         <tr key={product.id} className="cart-product">
                                             <td><img src={fromB64(product.imagen)} alt={product.nombre} className="cart-image" /></td>
                                             <td>{product.nombre}</td>
-                                            <td>{product.precio}</td>
+                                            <td>${product.precio}</td>
                                             <td>{product.cantidad}</td>
                                             <td>
                                                 <div className="row marg">

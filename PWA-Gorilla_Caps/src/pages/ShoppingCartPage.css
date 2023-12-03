@@ -1,0 +1,199 @@
+/* Estilos del encabezado */
+.cartPage-containerPrincipal {
+    padding: 1%;
+    width: 100%;
+    overflow-y: hidden;
+}
+
+.cartPage-header {
+    margin-bottom: -2%;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* Estilos de la tabla */
+.cartPage-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.cartPage-th,
+.cartPage-td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.cartPage-th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Estilos de las imágenes */
+.cartPage-images {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 5px;
+}
+
+/* Estilos de los nombres */
+.cartPage-name {
+    color: #333;
+    font-weight: bold;
+}
+
+/* Estilos de los precios */
+.cartPage-price {
+    color: #e44d26;
+}
+
+/* Estilos de las cantidades */
+.cartPage-quantity {
+    font-weight: bold;
+}
+
+/* Estilos de los botones de cantidad */
+.quantity-buttons {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-right: 5px;
+}
+
+.td-wd {
+    width: 10%;
+}
+
+/* Estilos del botón de eliminar */
+.cartPage-delete-item {
+    background-color: #e44d26;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.container-comprar-flotante {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    z-index: 200;
+}
+
+.btn-comprar {
+    background-color: #008c9c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    /*Invocamos a mi keyframe "scale"*/
+    animation: scale 3s infinite;
+}
+
+.btn-comprar:hover {
+    transform: scale(1.2);
+    transition: 0.3s;
+    background-color: #333;
+    animation: none;
+}
+
+.btn-comprar:active {
+    transform: scale(1.2);
+    transition: 0.3s;
+    background-color: #333;
+    animation: none;
+}
+
+/*KeyFrame para que cada 3 segundos que el carrito escale 1.1 veces su tamaño*/
+@keyframes scale {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Hover effect on buttons */
+.quantity-buttons:hover,
+.cart-delete-item:hover {
+    background-color: #333;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+    .cartPage-header {
+        margin: 1px;
+    }
+
+    h1 {
+        margin-bottom: -4%;
+    }
+
+    .cartPage-containerPrincipal {
+        padding: 0;
+    }
+
+    .cartPage-th,
+    .cartPage-td {
+        font-size: 0.9em;
+        padding: 5px;
+    }
+
+    .cartPage-images {
+        max-width: 70%;
+        max-height: 70%;
+    }
+
+    .cartPage-name {
+        font-size: 0.8em;
+    }
+
+    .cartPage-price {
+        font-size: 0.8em;
+    }
+
+    .cartPage-quantity {
+        font-size: 0.8em;
+    }
+
+    .quantity-buttons {
+        padding: 5px 8px;
+        font-size: 0.8em;
+    }
+
+    .cartPage-delete-item {
+        padding: 5px 8px;
+        font-size: 0.8em;
+    }
+
+    .btn-comprar {
+        padding: 5px 8px;
+        font-size: 1em;
+    }
+}
