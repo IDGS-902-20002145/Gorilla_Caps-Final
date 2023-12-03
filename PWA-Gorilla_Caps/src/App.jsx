@@ -6,8 +6,32 @@ import Home from "./pages/HomePage";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import CatalogPage from "./pages/CatalogPage";
+import { useEffect, useState } from "react";
 
 const App = () => {
+
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Verificar si el usuario está autenticado al cargar la aplicación
+    const token = localStorage.getItem("token");
+    setAuthenticated(!!token);
+  }, []);
+
+  const handleLogout = () => {
+    // Borra los datos del Local Storage al cerrar sesión
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
+    localStorage.removeItem("admin");
+    localStorage.removeItem("empleado");
+
+    // Actualiza el estado de autenticación
+    setAuthenticated(false);
+
+    // Redirige al usuario a la página de inicio
+    window.location.href = "/";
+  };
+
   return (
     <Router>
       <div>
@@ -39,16 +63,23 @@ const App = () => {
                     About
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/login">
-                    Login
-                  </Link>
-                </li>
+                
                 <li className="nav-item">
                   <Link className="nav-link" to="/catalog">
                     Catalog
                   </Link>
                 </li>
+                <li className="nav-item">
+              {authenticated ? (
+                <button className="nav-link" onClick={handleLogout}>
+                  Cerrar Sesión
+                </button>
+              ) : (
+                <Link className="nav-link" to="/login">
+                  Iniciar Sesión
+                </Link>
+              )}
+            </li>
               </ul>
             </div>
           </div>
@@ -57,7 +88,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/login" element={<Login />} />
+          <Route
+            path="/login"
+            element={<Login setAuthenticated={setAuthenticated} />}
+          />
           <Route path="/catalog" element={<CatalogPage />} />
         </Routes>
       </div>
