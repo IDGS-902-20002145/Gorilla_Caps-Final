@@ -76,7 +76,8 @@ CREATE TABLE inventarioMateriaPrima (
     descripcion TEXT,
     cantidad FLOAT NOT NULL,
     stock_minimo FLOAT,
-    estatus BIT DEFAULT 1
+    estatus BIT DEFAULT 1,
+    unidad_medida VARCHAR(100) NOT NULL
 );
 
 -- Creaci�n de la tabla 'Venta'
