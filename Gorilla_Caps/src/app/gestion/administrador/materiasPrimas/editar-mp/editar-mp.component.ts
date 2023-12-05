@@ -16,7 +16,8 @@ export class EditarMPComponent {
     descripcion: '',
     cantidad: 0,
     stock_Minimo: 0,
-    estatus: true
+    estatus: true,
+    unidad_Medida: ''
   }
 
   constructor(private gorillaApiService: GorillaApiService, private router: Router, private route: ActivatedRoute) {}

@@ -13,5 +13,7 @@ namespace Gorrilla_Caps_Backend.Models
         public double Cantidad { get; set; }
         public double Stock_Minimo { get; set; }
         public bool Estatus { get; set; }
+
+        public string unidad_Medida { get; set; }
     }
 }
