@@ -46,11 +46,22 @@ const ShoppingCartPage = () => {
         localStorage.setItem("carrito", JSON.stringify(products));
     }, [products]);
 
+    const getTotalQuantity = () => {
+        return products.reduce((total, producto) => total + producto.cantidad, 0);
+    };
+
+    // Función para calcular el subtotal de todos los productos en el carrito
+    const getSubtotal = () => {
+        const subtotal = products.reduce((subtotal, producto) => subtotal + producto.precio * producto.cantidad, 0);
+        return subtotal.toFixed(2);
+    };
+
     return (
         <div className="cartPage-containerPrincipal">
             <div className="row cartPage-header">
                 <div className="col-2">
-                    <Link to="/Catalogo" className="btn btn-primary"><i className="fa-solid fa-arrow-left"></i>Volver</Link>
+                    <Link to="/Catalogo" className="btn btn-primary"><i className="fa-solid fa-arrow-left"></i>
+                        <label className="p-volver">Volver</label></Link>
                 </div>
                 <div className="col-8">
                     <h1>Carrito de compras</h1>
@@ -72,7 +83,7 @@ const ShoppingCartPage = () => {
                         <th className="cartPage-th">Imagen</th>
                         <th className="cartPage-th">Nombre</th>
                         <th className="cartPage-th">Precio</th>
-                        <th className="cartPage-th">Cantidad</th>
+                        <th className="cartPage-th th-cantidad">Cantidad</th>
                         <th className="cartPage-th">Agregar</th>
                         <th className="cartPage-th">Eliminar</th>
                     </tr>
@@ -84,10 +95,11 @@ const ShoppingCartPage = () => {
                                 <td className="cartPage-td">
                                     <img src={fromB64(producto.imagen)} alt={producto.nombre}
                                         className="cartPage-images" />
+                                    <label className="mobile-cantidad">{producto.cantidad}</label>
                                 </td>
                                 <td className="cartPage-td">{producto.nombre}</td>
                                 <td className="cartPage-td">${producto.precio}</td>
-                                <td className="cartPage-td">{producto.cantidad}</td>
+                                <td className="cartPage-td td-cantidad">{producto.cantidad}</td>
                                 <td className="cartPage-td td-wd">
                                     <button className="quantity-buttons"
                                         onClick={() => addQuantity(producto.id)}>+</button>
@@ -105,6 +117,14 @@ const ShoppingCartPage = () => {
                         </tr>
                     )}
                 </tbody>
+                <tfoot>
+                    <tr className="cartPage-tr">
+                        <td className="cartPage-td" colSpan="3"></td>
+                        <td className="cartPage-td"><b>Total:</b> {getTotalQuantity()} productos</td>
+                        <td className="cartPage-td"><b>Subtotal:</b> ${getSubtotal()}</td>
+                        <td className="cartPage-td"></td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     );

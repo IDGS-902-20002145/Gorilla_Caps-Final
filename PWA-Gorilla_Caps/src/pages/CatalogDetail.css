@@ -1,0 +1,96 @@
+/* Añade estilos globales si es necesario */
+
+/* Estilos específicos para tu componente CatalogDetail */
+
+
+
+
+.floating-cart {
+    /* Ajusta los estilos de app-carrito-temporal según tus necesidades */
+    /* Por ejemplo, podrías ajustar el ancho, altura, colores, etc. */
+    width: 350px;
+    transition: all 0.5s ease-in-out;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.input-cantidad {
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
+    text-align: center;
+    border: none;
+    font-size: 20px;
+    color: #555;
+
+}
+
+.img-fluid {
+    width: 90%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.img-fluid-mobile {
+    display: none;
+}
+
+.p-container {
+    margin-top: -1%;
+    padding: 1%;
+}
+
+.bg-grad {
+    /*Degradado de blanco a azul claro*/
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(0, 212, 255, 1) 100%);
+    padding: 1%;
+}
+
+.mg-left {
+    margin-left: -10px;
+}
+
+.br-mobile {
+    display: none;
+}
+
+/*Mediaqueries para moviles*/
+@media (max-width: 768px) {
+    .col-md-6 {
+        width: 100%;
+        float: none;
+    }
+
+    .img-fluid {
+        display: none;
+    }
+
+    .img-fluid-mobile {
+        display: inline;
+        width: 100%;
+        height: auto;
+    }
+
+    .p-container {
+        padding: 0;
+        margin: 0;
+    }
+
+    .mg-left {
+        margin-left: 0px;
+    }
+
+    .br-mobile {
+        display: block;
+        margin-top: 10%;
+        margin-bottom: auto;
+    }
+
+    .btn-row {
+        width: 100%;
+        margin: 0;
+    }
+}
+
+/* Puedes personalizar estos estilos según tus preferencias y diseño */

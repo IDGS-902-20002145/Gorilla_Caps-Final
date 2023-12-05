@@ -62,21 +62,27 @@ const Cart = ({ carrito, setCarrito }) => {
         localStorage.setItem("carrito", JSON.stringify(carrito));
     }, [carrito]);
 
+    const getTotalQuantity = () => {
+        return carrito.reduce((total, producto) => total + producto.cantidad, 0);
+    };
 
     return (
         <div className="cart-component">
             <div className="cart-header">
                 <button className="cart-button"
-                    onClick={() => setCartOpen(!cartOpen)}
-                ><i className="fa-solid fa-cart-shopping"></i></button>
+                    onClick={() => setCartOpen(!cartOpen)}>
+                    {carrito.length > 0 && (
+                        <div className="cart-counter">{getTotalQuantity()}</div>
+                    )}
+                    <i className="fa-solid fa-cart-shopping"></i></button>
             </div>
             {cartOpen && (
                 <div className="cart-container">
-                    <div className="row">
-                        <Link to="/Carrito" className="cartToPay btn btn-outline-primary">Comprar carrito</Link>
-                    </div>
                     {carrito && carrito.length > 0 ? (
                         <div className="cart-items">
+                            <div className="row">
+                                <Link to="/Carrito" className="cartToPay btn btn-outline-primary">Comprar carrito</Link>
+                            </div>
                             <table>
                                 <thead>
                                     <tr>

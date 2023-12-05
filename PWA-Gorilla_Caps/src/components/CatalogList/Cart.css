@@ -7,12 +7,32 @@
     min-width: 50px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: -10%;
+    margin-top: -1%;
     background-color: lightblue;
     border: none;
     border-radius: 15px;
     padding: 5px;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+.cart-counter {
+    /*Hacemos que el numero quede en la esquina superior derecha*/
+    position: absolute;
+    top: 0;
+    right: 0;
+    /*Agregamos un poco de estilo al numero*/
+    background-color: red;
+    color: white;
+    font-size: 0.8em;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    /*Agregamos un poco de margen para que no quede tan pegado al borde*/
+    margin-right: 5px;
+    /*Finalmente agregamos un poco de sombra para que se vea mejor*/
+    box-shadow: 0 0 5px #000;
 }
 
 .cartToPay {

@@ -39,8 +39,8 @@ h1 {
 
 /* Estilos de las imágenes */
 .cartPage-images {
-    max-width: 50px;
-    max-height: 50px;
+    max-width: 55px;
+    max-height: 55px;
     border-radius: 5px;
 }
 
@@ -145,6 +145,10 @@ h1 {
     background-color: #333;
 }
 
+.mobile-cantidad {
+    display: none;
+}
+
 /* Responsive */
 @media screen and (max-width: 600px) {
     .cartPage-header {
@@ -193,7 +197,30 @@ h1 {
     }
 
     .btn-comprar {
-        padding: 5px 8px;
+        padding: 5px 3px;
         font-size: 1em;
     }
+
+    .p-volver {
+        display: none;
+    }
+
+    .th-cantidad,
+    .td-cantidad {
+        display: none;
+    }
+
+    /*Hacemos que la cantidad se ponga abajo de la imagen*/
+    .mobile-cantidad {
+        display: block;
+        text-align: left;
+        width: 15%;
+        margin-left: 1%;
+        background-color: green;
+        color: white;
+        border-radius: 5px;
+        justify-content: center;
+
+    }
+
 }

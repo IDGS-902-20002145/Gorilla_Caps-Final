@@ -396,6 +396,10 @@
         text-shadow: none;
     }
 
+    .btn-secondary {
+        margin-left: 25%;
+    }
+
 }
 
 a {
@@ -454,6 +458,11 @@ input.form-control {
 .cart-button {
     width: 5em;
 }
+
+.btn-secondary {
+    margin-left: 45%;
+}
+
 
 .tr {
     background-color: #f2f2f2;

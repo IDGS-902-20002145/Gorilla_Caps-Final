@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import './CatalogList.css';
 import Cart from './Cart';
+import { Link } from 'react-router-dom';
 
 const CatalogList = ({ carrito, setCarrito }) => {
     const [catalog, setCatalog] = useState([]);
@@ -25,7 +26,7 @@ const CatalogList = ({ carrito, setCarrito }) => {
 
     useEffect(() => {
         const getCatalog = async () => {
-            const response = await fetch('/api/Catalogo?page=1&pageSize=10',
+            const response = await fetch('/api/Catalogo',
                 { method: 'GET', headers: { 'Content-Type': 'application/json' } });
             const data = await response.json();
             setCatalog(data);
@@ -46,6 +47,21 @@ const CatalogList = ({ carrito, setCarrito }) => {
         }
     };
 
+    const handleSearch = async () => {
+        const value = document.querySelector('.filtro-input').value;
+        const filtered = catalog.filter((product) => {
+            return product.nombre.toLowerCase().includes(value.toLowerCase());
+        });
+        if (value !== "") {
+            setCatalog(filtered);
+        }
+    };
+    const handleResetCatalog = async () => {
+        const response = await fetch('/api/Catalogo',
+            { method: 'GET', headers: { 'Content-Type': 'application/json' } });
+        const data = await response.json();
+        setCatalog(data);
+    };
 
     return (
         <div className="body">
@@ -69,10 +85,9 @@ const CatalogList = ({ carrito, setCarrito }) => {
                             {catalog.map((product) => (
                                 <div key={product.id} className="product-card">
                                     <div className="verProdC">
-                                        {/* Add React routing logic for the product link */}
-                                        <a href={`#/${product.id}`}>
+                                        <Link to={`/Catalogo/${product.id}`}>
                                             <img src={fromB64(product.imagen)} className="product-image-first" alt={product.nombre} />
-                                        </a>
+                                        </Link>
                                         <span className="verProd-message">Ver el producto</span>
                                     </div>
                                     <div className="product-details">
@@ -105,6 +120,12 @@ const CatalogList = ({ carrito, setCarrito }) => {
                         <input className="form-control filtro-input" type="text" placeholder="Buscar..." />
                     </div>
                 </div>
+                <div className="row">
+                    <div className='col-md-12'>
+                        <button onClick={handleResetCatalog} className='btn btn-secondary'>Limpiar</button>
+                        <button onClick={handleSearch} className='btn btn-success btn-buscar-prod'>Buscar</button>
+                    </div>
+                </div>
                 <br />
 
                 <div className="product-list-cards-general" style={{ padding: '10px' }}>
@@ -112,9 +133,9 @@ const CatalogList = ({ carrito, setCarrito }) => {
                         <div key={product.id} className="product-card-general">
                             <div className="verProd" title="Click para ver producto">
                                 {/* Add React routing logic for the product link */}
-                                <a href={`#/${product.id}`}>
+                                <Link to={`/Catalogo/${product.id}`}>
                                     <img src={fromB64(product.imagen)} className="product-image-general" alt={product.nombre} />
-                                </a>
+                                </Link>
                                 <span className="verProd-message">Ver el producto</span>
                             </div>
                             <div className="product-details-g">
@@ -125,7 +146,7 @@ const CatalogList = ({ carrito, setCarrito }) => {
                                 {/* Add React logic for the add to cart button */}
                                 <div>
                                     <button className="btn btn-lg btn-primary cartAn"
-                                        onClick={() => handleAddToCart(product)}
+                                        onClick={handleSearch}
                                     >
                                         <i className="fa-solid fa-cart-shopping"></i>
                                         Agregar al carrito
