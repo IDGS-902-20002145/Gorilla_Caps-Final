@@ -14774,7 +14774,7 @@ div.u-video,
 }
 .u-player-progress {
   display: flex;
-  postion: relative;
+  position: relative;
   height: 4px;
   border-radius: 25px;
   margin: 0 5px;

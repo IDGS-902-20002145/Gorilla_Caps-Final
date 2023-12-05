@@ -1,6 +1,6 @@
 {
     "/api/*": {
-        "target": "https://localhost:5000",
+        "target": "https://https://www.gorillacaps.somee.com",
         "secure": false,
         "logLevel": "debug"
 
