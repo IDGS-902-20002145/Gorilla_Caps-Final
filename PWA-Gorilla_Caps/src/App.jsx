@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import CatalogPage from "./pages/CatalogPage";
 import RegisterUser from "./pages/RegisterUser";
 import { useEffect, useState } from "react";
+import VentasC from "./pages/VentasC";
 
 const App = () => {
 
@@ -69,6 +70,12 @@ const App = () => {
                   <Link className="nav-link" to="/catalog">
                     Catalog
                   </Link>
+
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-item" to="/comprasPedidos">
+                  Mis Compras
+                  </Link>
                 </li>
                 <li className="nav-item">
               {authenticated ? (
@@ -98,8 +105,10 @@ const App = () => {
             path="/login"
             element={<Login setAuthenticated={setAuthenticated} />}
           />
+
           <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/register" element={<RegisterUser />} />
+          <Route path="/comprasPedidos" element={<VentasC></VentasC>}></Route>
         </Routes>
       </div>
     </Router>

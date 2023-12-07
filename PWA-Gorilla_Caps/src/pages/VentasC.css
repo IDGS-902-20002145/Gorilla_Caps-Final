@@ -1,0 +1,40 @@
+.card {
+    border: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    background-color: #cce4f3;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    color: #1c4069;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .card-text {
+    color: #000;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 17px;
+    padding-left: 40px;
+  }
+  
+  .btn-primary {
+    background-color: rgb(50, 85, 224);
+    border-color: rgb(105, 156, 193);
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-primary:hover {
+    background-color: rgb(105, 156, 193);
+    border-color: white;
+    color: black;
+    transform: scale(1.1);
+  }
+  
