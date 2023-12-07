@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace Gorrilla_Caps_Backend.Controllers.Cliente
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PedidosController : Controller
@@ -207,7 +207,7 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
 
                 await _context.SaveChangesAsync();
 
-             
+
                 return Ok();
             }
             catch (Exception ex)
@@ -353,40 +353,40 @@ namespace Gorrilla_Caps_Backend.Controllers.Cliente
                  .ToListAsync();
 
                 foreach (var pedido in pedidosDisponibles)
-                    {
-                        pedido.Estatus = 2;
-                    }
+                {
+                    pedido.Estatus = 2;
+                }
 
-                    var venta = new Venta
-                    {
-                        UserId = idUsuario,
-                        Fecha = DateTime.Now.Date
-                    };
-                    _context.Venta.Add(venta);
-                    _context.SaveChanges();
+                var venta = new Venta
+                {
+                    UserId = idUsuario,
+                    Fecha = DateTime.Now.Date
+                };
+                _context.Venta.Add(venta);
+                _context.SaveChanges();
 
                 var detPedidos = _context.DetPedido
                         .Where(d => pedidosDisponibles.Select(p => p.Id).Contains(d.PedidoId))
                         .ToList();
 
-                    foreach (var detallePedido in detPedidos)
+                foreach (var detallePedido in detPedidos)
+                {
+                    var producto = detallePedido.Producto;
+                    producto.stock_existencia -= detallePedido.Cantidad;
+                    var detVenta = new DetVenta
                     {
-                        var producto = detallePedido.Producto;
-                        producto.stock_existencia -= detallePedido.Cantidad;
-                        var detVenta = new DetVenta
-                        {
-                            VentaId = venta.Id,
-                            ProductoId = producto.Id,
-                            Cantidad = detallePedido.Cantidad,
-                            Precio = producto.Precio
-                        };
-                        _context.DetVenta.Add(detVenta);
-                    }
+                        VentaId = venta.Id,
+                        ProductoId = producto.Id,
+                        Cantidad = detallePedido.Cantidad,
+                        Precio = producto.Precio
+                    };
+                    _context.DetVenta.Add(detVenta);
+                }
 
-                    _context.SaveChanges();
+                _context.SaveChanges();
 
-                    return Ok();
-              
+                return Ok();
+
             }
             catch (Exception ex)
             {

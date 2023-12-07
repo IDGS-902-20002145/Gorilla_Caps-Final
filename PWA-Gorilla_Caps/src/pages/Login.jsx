@@ -1,8 +1,10 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import 'bootstrap/dist/css/bootstrap.min.css'; // Asegúrate de importar el CSS de Bootstrap
+import "bootstrap/dist/css/bootstrap.min.css"; // Asegúrate de importar el CSS de Bootstrap
 import "./Login.css"; // Asegúrate de importar el archivo CSS
 
+// eslint-disable-next-line react/prop-types
 const Login = ({ setAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: "",
@@ -39,8 +41,8 @@ const Login = ({ setAuthenticated }) => {
         localStorage.setItem("id", data.user.id);
         localStorage.setItem("admin", data.user.admin);
         localStorage.setItem("empleado", data.user.empleado);
-         // Actualiza el estado de autenticación a true
-         setAuthenticated(true);
+        // Actualiza el estado de autenticación a true
+        setAuthenticated(true);
 
         // Muestra una alerta de éxito
         Swal.fire({
@@ -103,7 +105,12 @@ const Login = ({ setAuthenticated }) => {
                   />
                 </div>
 
-                <button onClick={handleLogin} className="btn btn-primary btn-block">Iniciar sesión</button>
+                <button
+                  onClick={handleLogin}
+                  className="btn btn-primary btn-block"
+                >
+                  Iniciar sesión
+                </button>
               </form>
 
               {/* Enlace para navegar a /Catalogo */}

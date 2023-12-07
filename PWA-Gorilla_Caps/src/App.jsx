@@ -1,116 +1,136 @@
-
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import HomePage from "./pages/HomePage";
 import "./App.css";
-
-import Home from "./pages/HomePage";
-import About from "./pages/About";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./pages/Login";
-import CatalogPage from "./pages/CatalogPage";
 import RegisterUser from "./pages/RegisterUser";
-import { useEffect, useState } from "react";
+import CatalogPage from "./pages/CatalogPage";
+import CatalogDetail from "./pages/CatalogDetail";
+import ShoppingCartPage from "./pages/ShoppingCartPage";
+import Pagar from "./pages/pagar/Pagar";
 import VentasC from "./pages/VentasC";
 
 const App = () => {
-
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    // Verificar si el usuario está autenticado al cargar la aplicación
     const token = localStorage.getItem("token");
     setAuthenticated(!!token);
   }, []);
 
   const handleLogout = () => {
-    // Borra los datos del Local Storage al cerrar sesión
-    localStorage.removeItem("token");
-    localStorage.removeItem("id");
-    localStorage.removeItem("admin");
-    localStorage.removeItem("empleado");
-
-    // Actualiza el estado de autenticación
+    localStorage.clear();
     setAuthenticated(false);
-
-    // Redirige al usuario a la página de inicio
     window.location.href = "/";
   };
 
   return (
     <Router>
-      <div>
-        <nav className="navbar navbar-expand-lg navbar-light">
-          <div className="container-fluid">
-            <Link className="navbar-brand" to="/">
-              Gorilla Caps
-            </Link>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarNav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav">
+      <nav className="navbar navbar-expand-lg" id="navdvar">
+        <div className="container">
+          <div className="navbarMenuHeroA">
+            {authenticated ? (
+              <ul className="navbar-nav ml-auto">
+                <h2 className="titulo">Gorilla Caps</h2>
+                {localStorage.getItem("admin") === "true" ? (
+                  // Opciones para usuarios administradores
+                  <React.Fragment>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="">
+                        <i className="fas fa-person-dress"></i> Proveedor
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="">
+                        <i className="fa-regular fa-circle-user fa-lg"></i>{" "}
+                        Usuarios
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="">
+                        <i className="fa-solid fa-boxes-stacked fa-lg"></i>{" "}
+                        Materias Primas
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="">
+                        <i className="fa-solid fa-money-check-dollar fa-lg"></i>{" "}
+                        Compras
+                      </Link>
+                    </li>
+                  </React.Fragment>
+                ) : localStorage.getItem("empleado") === "true" ? (
+                  // Opciones para empleados
+                  <React.Fragment>{/* ... */}</React.Fragment>
+                ) : (
+                  // Opciones para clientes
+                  <React.Fragment>
+                    <li>
+                      <Link className="nav-link" to="/Catalogo">
+                        <i className="fa-brands fa-redhat"></i> Productos
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="nav-link" to="/Carrito">
+                        <i className="fa-solid fa-shopping-cart"></i> Carrito
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="nav-link" to="/VentasC">
+                        <i className="fa-solid fa-bag-shopping"></i> Mis Compras
+                      </Link>
+                    </li>
+
+                  </React.Fragment>
+                )}
+                <li className="nav-item">
+                  <button className="nav-link" onClick={handleLogout}>
+                    Cerrar Sesión
+                  </button>
+                </li>
+              </ul>
+            ) : (
+              // Usuario no autenticado
+              <ul className="navbar-nav ml-auto">
+                <h2 className="titulo2">Gorilla Caps</h2>
                 <li className="nav-item">
                   <Link className="nav-link" to="/">
-                    Home
+                    <i className="fas fa-home"></i> Página Principal
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="/about">
-                    About
+                <li>
+                  <Link className="nav-link" to="/Catalogo">
+                    <i className="fa-brands fa-redhat"></i> Productos
                   </Link>
                 </li>
                 
                 <li className="nav-item">
-                  <Link className="nav-link" to="/catalog">
-                    Catalog
-                  </Link>
-
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-item" to="/comprasPedidos">
-                  Mis Compras
+                  <Link className="nav-link" to="/login">
+                    <i className="fa-solid fa-lock-open"></i>Iniciar sesión
                   </Link>
                 </li>
-                <li className="nav-item">
-              {authenticated ? (
-                <button className="nav-link" onClick={handleLogout}>
-                  Cerrar Sesión
-                </button>
-              ) : (
-                <Link className="nav-link" to="/login">
-                  Sign In
-                </Link>
-              )}
-            </li>
-            <li>
-              <Link className="nav-link" to="/register">
-                Sign Up
-              </Link>
-            </li>
               </ul>
-            </div>
+            )}
           </div>
-        </nav>
+        </div>
+      </nav>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/login"
+          element={<Login setAuthenticated={setAuthenticated} />}
+        />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route
-            path="/login"
-            element={<Login setAuthenticated={setAuthenticated} />}
-          />
-
-          <Route path="/catalog" element={<CatalogPage />} />
-          <Route path="/register" element={<RegisterUser />} />
-          <Route path="/comprasPedidos" element={<VentasC></VentasC>}></Route>
-        </Routes>
-      </div>
+        <Route path="/register" element={<RegisterUser />} />
+        <Route path="/Catalogo" element={<CatalogPage />} />
+        <Route path="/Catalogo/:id" element={<CatalogDetail />} />
+        <Route path="/Carrito" element={<ShoppingCartPage />} />
+        <Route path="/PagarTodo/:id" element={<Pagar />} />
+        <Route path="/VentasC" element={<VentasC />} />
+        {/* Otras rutas */}
+        {/* ... */}
+      </Routes>
     </Router>
   );
 };

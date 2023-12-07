@@ -1,43 +1,85 @@
 <div class="form-container">
-    <div class="back-button">
-      <a [routerLink]="'/MateriasPrimas'">
-        <mat-icon>arrow_back</mat-icon>
-        Regresar
-      </a>
-    </div>
-    
-    <form class="form" (ngSubmit)="obtenerMaterial(ediMateriaPrima.id)">
-      <h3 class="titulo">Modificar</h3>
-      <div class="form-group">
-        <label for="nombre">ID:</label>
-        <input type="text" id="nombre" name="id" [(ngModel)]="ediMateriaPrima.id" required>
-      </div>
-      <div class="form-group">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" [(ngModel)]="ediMateriaPrima.nombre" required>
-      </div>
-      <div class="form-group">
-        <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" name="descripcion" [(ngModel)]="ediMateriaPrima.descripcion" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="cantidad">Cantidad:</label>
-        <input type="number" id="cantidad" name="cantidad" [(ngModel)]="ediMateriaPrima.cantidad" disabled>
-      </div>
-      <div class="form-group">
-        <label for="stock_minimo">unidad de Medida:</label>
-        <input type="text" id="unidad_Medida"  name="unidad_Medida" [(ngModel)]="ediMateriaPrima.unidad_Medida" required>
-      </div>
-      <div class="form-group">
-        <label for="stock_minimo">Stock Mínimo:</label>
-        <input type="number" id="stock_minimo" name="stock_minimo" [(ngModel)]="ediMateriaPrima.stock_Minimo" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="estatus">Activo:</label>
-        <input type="checkbox" id="estatus" name="estatus" [(ngModel)]="ediMateriaPrima.estatus" disabled>
-      </div>
-      <button type="submit" class="btn-submit" (click)="editar()">Modificar Materia Prima</button>
-    </form>
+  <div class="back-button">
+    <a [routerLink]="'/MateriasPrimas'">
+      <mat-icon>arrow_back</mat-icon>
+      Regresar
+    </a>
   </div>
-  
+
+  <form class="form" (ngSubmit)="obtenerMaterial(ediMateriaPrima.id)">
+    <h3 class="titulo">Modificar</h3>
+    <div class="form-group">
+      <label for="nombre">ID:</label>
+      <input
+        type="text"
+        id="nombre"
+        name="id"
+        [(ngModel)]="ediMateriaPrima.id"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="nombre">Nombre:</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        [(ngModel)]="ediMateriaPrima.nombre"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="descripcion">Descripción:</label>
+      <textarea
+        id="descripcion"
+        name="descripcion"
+        [(ngModel)]="ediMateriaPrima.descripcion"
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="cantidad">Cantidad:</label>
+      <input
+        type="number"
+        id="cantidad"
+        name="cantidad"
+        [(ngModel)]="ediMateriaPrima.cantidad"
+        disabled
+      />
+    </div>
+    <div class="form-group">
+      <label for="stock_minimo">unidad de Medida:</label>
+      <input
+        type="text"
+        id="unidad_Medida"
+        name="unidad_Medida"
+        [(ngModel)]="ediMateriaPrima.unidad_Medida"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="stock_minimo">Stock Mínimo:</label>
+      <input
+        type="number"
+        id="stock_minimo"
+        name="stock_minimo"
+        [(ngModel)]="ediMateriaPrima.stock_Minimo"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="estatus">Activo:</label>
+      <input
+        type="checkbox"
+        id="estatus"
+        name="estatus"
+        [(ngModel)]="ediMateriaPrima.estatus"
+        disabled
+      />
+    </div>
+    <button type="submit" class="btn-submit" (click)="editar()">
+      Modificar Materia Prima
+    </button>
+  </form>
+</div>

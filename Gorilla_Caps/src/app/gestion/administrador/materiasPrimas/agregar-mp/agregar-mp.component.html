@@ -6,32 +6,66 @@
     </a>
   </div>
 
-  
   <form (submit)="agregarMateriaPrima()" class="form">
     <h3 class="titulo">Agregar</h3>
     <div class="form-group">
       <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" [(ngModel)]="regMateriaPrima.nombre" required>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        [(ngModel)]="regMateriaPrima.nombre"
+        required
+      />
     </div>
     <div class="form-group">
       <label for="descripcion">Descripción:</label>
-      <textarea id="descripcion" name="descripcion" [(ngModel)]="regMateriaPrima.descripcion" required></textarea>
+      <textarea
+        id="descripcion"
+        name="descripcion"
+        [(ngModel)]="regMateriaPrima.descripcion"
+        required
+      ></textarea>
     </div>
     <div class="form-group">
       <label for="cantidad">Cantidad:</label>
-      <input type="number" id="cantidad" name="cantidad" [(ngModel)]="regMateriaPrima.cantidad" disabled>
+      <input
+        type="number"
+        id="cantidad"
+        name="cantidad"
+        [(ngModel)]="regMateriaPrima.cantidad"
+        disabled
+      />
     </div>
     <div class="form-group">
       <label for="stock_minimo">Stock Mínimo:</label>
-      <input type="number" id="stock_minimo" name="stock_minimo" [(ngModel)]="regMateriaPrima.stock_Minimo" required>
+      <input
+        type="number"
+        id="stock_minimo"
+        name="stock_minimo"
+        [(ngModel)]="regMateriaPrima.stock_Minimo"
+        required
+      />
     </div>
     <div class="form-group">
       <label for="unidad_Medida">unidad de Medida:</label>
-      <input type="text" id="unidad_Medida" name="unidad_Medida" [(ngModel)]="regMateriaPrima.unidad_Medida" required>
+      <input
+        type="text"
+        id="unidad_Medida"
+        name="unidad_Medida"
+        [(ngModel)]="regMateriaPrima.unidad_Medida"
+        required
+      />
     </div>
     <div class="form-group">
       <label for="estatus">Activo:</label>
-      <input type="checkbox" id="estatus" name="estatus" [(ngModel)]="regMateriaPrima.estatus" disabled>
+      <input
+        type="checkbox"
+        id="estatus"
+        name="estatus"
+        [(ngModel)]="regMateriaPrima.estatus"
+        disabled
+      />
     </div>
     <button type="submit" class="btn-submit">Agregar Materia Prima</button>
   </form>

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Gorrilla_Caps_Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b2d912a6eda4bb50fef2616df9b29d1e70eb1ca")]
 [assembly: System.Reflection.AssemblyProductAttribute("Gorrilla_Caps_Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Gorrilla_Caps_Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

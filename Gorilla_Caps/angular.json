@@ -43,22 +43,12 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "6.5mb"
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
-                  "maximumError": "11mb"
-                },
-                {
-                  "type": "all",
-                  "maximumWarning": "2kb",
-                  "maximumError": "11mb"
-                },
-                {
-                  "type": "all",
-                  "maximumWarning": "4kb",
-                  "maximumError": "11mb"
+                  "maximumError": "4kb"
                 }
               ],
               "outputHashing": "all"
@@ -73,21 +63,19 @@
             }
           },
           "defaultConfiguration": "production"
-          
-          
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "port": 4200,
-            "buildTarget": "Gorilla_Caps:build"
+            "browserTarget": "Gorilla_Caps:build",
+            "port": 4200
           },
           "configurations": {
             "production": {
-              "buildTarget": "Gorilla_Caps:build:production"
+              "browserTarget": "Gorilla_Caps:build:production"
             },
             "development": {
-              "buildTarget": "Gorilla_Caps:build:development"
+              "browserTarget": "Gorilla_Caps:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -95,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "Gorilla_Caps:build"
+            "browserTarget": "Gorilla_Caps:build"
           }
         },
         "test": {

@@ -1,147 +1,265 @@
 <nav class="navbar navbar-expand-lg" id="navdvar">
   <div class="container">
-    <div  id="navbarMenuHeroA">
+    <div id="navbarMenuHeroA">
       <ul class="navbar-nav ml-auto">
         <ng-container *ngIf="ltoken; else notLoggedIn">
-
           <!-- Mostrar opciones cuando el usuario está logueado -->
-            <h2 class="titulo">Gorilla Caps</h2>
-            <ng-container [ngSwitch]="true">
-                  <ng-container *ngSwitchCase="admin">
-                    <!-- Mostrar opciones para usuarios administradores -->
+          <h2 class="titulo">Gorilla Caps</h2>
+          <ng-container [ngSwitch]="true">
+            <ng-container *ngSwitchCase="admin">
+              <!-- Mostrar opciones para usuarios administradores -->
 
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/Proveedor" routerLinkActive="active" id="al" title="Proveedores">
-                        <i class="fa-solid fa-person-dress"></i> Proveedores
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/Usuarios" routerLinkActive="active" id="al" title="Usuarios">
-                        <i class="fa-regular fa-circle-user fa-lg"></i> Usuarios
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/MateriasPrimas" routerLinkActive="active" id="al"
-                        title="Materias Primas">
-                        <i class="fa-solid fa-boxes-stacked fa-lg"></i><br>  Materias Primas
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/ComprasGet" routerLinkActive="active" id="al" title="Compras">
-                        <i class="fa-solid fa-money-check-dollar fa-lg"></i> Compras
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/productosGet" routerLinkActive="active" id="al" title="Productos">
-                        <i class="fa-brands fa-redhat"></i> Productos
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/Aprovacion" routerLinkActive="active" id="al" title="Pedidos">
-                        <i class="fa-solid fa-basket-shopping fa-lg"></i><br> Aprovar Envios
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/Finanzas" routerLinkActive="active" id="al" title="Finanzas">
-                        <i class="fas fa-users"></i> Finanzas
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/dashboard" routerLinkActive="active" id="al" title="Dashboard">
-                        <i class="fas fa-chart-pie"></i> Dashboard
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" (click)="cerrarSesion()" routerLinkActive="active" id="al" >
-                        <i class="fa-solid fa-lock"></i><br> Cerrar Sesión</a>
-                    </li>
-
-                  </ng-container>
-
-                  <ng-container *ngSwitchCase="empleado">
-                    <!-- Mostrar opciones para usuarios con empleado true (empleados) -->
-                    <!-- ... Opciones del menú para empleados ... -->
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/Proveedor" routerLinkActive="active" id="alE" title="Proveedores">
-                        <i class="fa-solid fa-person-dress"></i> Proveedores
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/MateriasPrimas" routerLinkActive="active" id="alE2" title="Materias Primas">
-                        <i class="fa-solid fa-boxes-stacked fa-lg"></i>Materias Primas
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/ComprasGet" routerLinkActive="active" id="alE2" title="Compras">
-                        <i class="fa-solid fa-money-check-dollar fa-lg"></i> Compras
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" (click)="cerrarSesion()" routerLinkActive="active" id="alE2">
-                        <i class="fa-solid fa-lock"></i> Cerrar Sesión</a>
-                    </li>
-                  </ng-container>
-
-                  <ng-container *ngSwitchDefault>
-                    <!-- Mostrar opciones para usuarios con empleado false (clientes) -->
-                    <!-- ... Opciones del menú para clientes ... -->
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/Catalogo" routerLinkActive="active" id="alE" title="Productos">
-                        <i class="fa-brands fa-redhat"></i>Productos
-                      </a>
-                    </li>
-
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/Pedidos/{{ id }}" routerLinkActive="active" id="alE2" title="Mis pedidos">
-                        <i class="fa-solid fa-basket-shopping fa-lg"></i> Mis pedidos
-                      </a>
-                    </li>
-
-                    <li class="nav-item">
-                      <a class="nav-link" routerLink="/MisCompras" routerLinkActive="active" id="alE2" title="Mis Compras">
-                        <i class="fa-solid fa-cart-shopping"></i> Mis Compras
-                      </a>
-
-                    <li class="nav-item">
-                      <a class="nav-link" (click)="cerrarSesion()" routerLinkActive="active" id="alE2">
-                        <i class="fa-solid fa-lock"></i> Cerrar Sesión</a>
-                    </li>
-                  </ng-container>
-
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/Proveedor"
+                  routerLinkActive="active"
+                  id="al"
+                  title="Proveedores"
+                >
+                  <i class="fa-solid fa-person-dress"></i> Proveedores
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/Usuarios"
+                  routerLinkActive="active"
+                  id="al"
+                  title="Usuarios"
+                >
+                  <i class="fa-regular fa-circle-user fa-lg"></i> Usuarios
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/MateriasPrimas"
+                  routerLinkActive="active"
+                  id="al"
+                  title="Materias Primas"
+                >
+                  <i class="fa-solid fa-boxes-stacked fa-lg"></i><br />
+                  Materias Primas
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/ComprasGet"
+                  routerLinkActive="active"
+                  id="al"
+                  title="Compras"
+                >
+                  <i class="fa-solid fa-money-check-dollar fa-lg"></i> Compras
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/productosGet"
+                  routerLinkActive="active"
+                  id="al"
+                  title="Productos"
+                >
+                  <i class="fa-brands fa-redhat"></i> Productos
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/Aprovacion"
+                  routerLinkActive="active"
+                  id="al"
+                  title="Pedidos"
+                >
+                  <i class="fa-solid fa-basket-shopping fa-lg"></i><br />
+                  Aprovar Envios
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/Finanzas"
+                  routerLinkActive="active"
+                  id="al"
+                  title="Finanzas"
+                >
+                  <i class="fas fa-users"></i> Finanzas
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/dashboard"
+                  routerLinkActive="active"
+                  id="al"
+                  title="Dashboard"
+                >
+                  <i class="fas fa-chart-pie"></i> Dashboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  (click)="cerrarSesion()"
+                  routerLinkActive="active"
+                  id="al"
+                >
+                  <i class="fa-solid fa-lock"></i><br />
+                  Cerrar Sesión</a
+                >
+              </li>
             </ng-container>
+
+            <ng-container *ngSwitchCase="empleado">
+              <!-- Mostrar opciones para usuarios con empleado true (empleados) -->
+              <!-- ... Opciones del menú para empleados ... -->
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/Proveedor"
+                  routerLinkActive="active"
+                  id="alE"
+                  title="Proveedores"
+                >
+                  <i class="fa-solid fa-person-dress"></i> Proveedores
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/MateriasPrimas"
+                  routerLinkActive="active"
+                  id="alE2"
+                  title="Materias Primas"
+                >
+                  <i class="fa-solid fa-boxes-stacked fa-lg"></i>Materias Primas
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/ComprasGet"
+                  routerLinkActive="active"
+                  id="alE2"
+                  title="Compras"
+                >
+                  <i class="fa-solid fa-money-check-dollar fa-lg"></i> Compras
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  (click)="cerrarSesion()"
+                  routerLinkActive="active"
+                  id="alE2"
+                >
+                  <i class="fa-solid fa-lock"></i> Cerrar Sesión</a
+                >
+              </li>
+            </ng-container>
+
+            <ng-container *ngSwitchDefault>
+              <!-- Mostrar opciones para usuarios con empleado false (clientes) -->
+              <!-- ... Opciones del menú para clientes ... -->
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/Catalogo"
+                  routerLinkActive="active"
+                  id="alE"
+                  title="Productos"
+                >
+                  <i class="fa-brands fa-redhat"></i>Productos
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/Pedidos/{{ id }}"
+                  routerLinkActive="active"
+                  id="alE2"
+                  title="Mis pedidos"
+                >
+                  <i class="fa-solid fa-basket-shopping fa-lg"></i> Mis pedidos
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  routerLink="/MisCompras"
+                  routerLinkActive="active"
+                  id="alE2"
+                  title="Mis Compras"
+                >
+                  <i class="fa-solid fa-cart-shopping"></i> Mis Compras
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  (click)="cerrarSesion()"
+                  routerLinkActive="active"
+                  id="alE2"
+                >
+                  <i class="fa-solid fa-lock"></i> Cerrar Sesión</a
+                >
+              </li>
+            </ng-container>
+          </ng-container>
         </ng-container>
 
         <ng-template #notLoggedIn>
           <!-- Mostrar opciones cuando el usuario no está logueado -->
-        <h2 class="titulo2">Gorilla Caps</h2>
+          <h2 class="titulo2">Gorilla Caps</h2>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/Home" routerLinkActive="active" id="alE" title="Catalogo Cliente">
+            <a
+              class="nav-link"
+              routerLink="/Home"
+              routerLinkActive="active"
+              id="alE"
+              title="Catalogo Cliente"
+            >
               <i class="fas fa-home"></i> Página principal
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/Catalogo" routerLinkActive="active" id="alE2" title="Catalogo Cliente">
+            <a
+              class="nav-link"
+              routerLink="/Catalogo"
+              routerLinkActive="active"
+              id="alE2"
+              title="Catalogo Cliente"
+            >
               <i class="fa-brands fa-redhat"></i>Productos
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" routerLink="/Login" routerLinkActive="active" id="alE2">
-              <i class="fa-solid fa-lock-open"></i>Iniciar sesión </a>
+            <a
+              class="nav-link"
+              routerLink="/Login"
+              routerLinkActive="active"
+              id="alE2"
+            >
+              <i class="fa-solid fa-lock-open"></i>Iniciar sesión
+            </a>
           </li>
-
         </ng-template>
       </ul>
     </div>
   </div>
 </nav>
 
-
 <div class="container-fluid text-center">
-  <br>
+  <br />
   <div>
     <router-outlet></router-outlet>
   </div>
-  <br>
+  <br />
 </div>

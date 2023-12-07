@@ -17,7 +17,6 @@
   scroll-behavior: smooth;
   /* Desplazamiento suave al hacer clic en los botones */
   overflow-y: hidden;
-
 }
 
 .verProd {
@@ -71,7 +70,6 @@
   filter: brightness(70%);
   /* Reduce el brillo para oscurecer la imagen */
 }
-
 
 /* Establecer el ancho de cada tarjeta de producto */
 .product-card {
@@ -303,12 +301,11 @@
 .Cabecera-catalogo {
   text-align: center;
   padding: 50px 0;
-  background-image: url('../../../assets/fondo3.jpg');
+  background-image: url("../../../assets/fondo3.jpg");
   background-size: 1300px 500px;
   background-repeat: no-repeat; /* Evita que la imagen se repita */
   color: #fff;
 }
-
 
 .titulo-cabecera {
   font-size: 50px;
@@ -399,7 +396,6 @@ input.form-control {
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-
 }
 
 /* Estilos para el botón "Abrir/Cerrar Carrito" dentro del div flotante */
@@ -443,7 +439,6 @@ input.form-control {
 
 /* Definición de la animación */
 @keyframes fadeInOut {
-
   0%,
   100% {
     opacity: 1;
@@ -497,32 +492,36 @@ input.form-control {
   height: 50px;
   width: 50px;
 }
-.heart:hover
-{
+.heart:hover {
   background-position: right;
 }
 
-@-webkit-keyframes heartTransition
-{
-    0% {background-position: left;}
-    100% {background-position: right;}
-}
-
-@keyframes heartTransition
-{
-    0% {background-position: left;}
-    100% {background-position: right;}
-}
-
-.heart_animate
-{
-    animation-duration: .8s;
-    animation-iteration-count: 1;
-    animation-name: heartTransition;
-    animation-timing-function: steps(28);
+@-webkit-keyframes heartTransition {
+  0% {
+    background-position: left;
+  }
+  100% {
     background-position: right;
+  }
+}
+
+@keyframes heartTransition {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
+.heart_animate {
+  animation-duration: 0.8s;
+  animation-iteration-count: 1;
+  animation-name: heartTransition;
+  animation-timing-function: steps(28);
+  background-position: right;
 }
 
 .body {
   background-color: #cce4f3;
-  }
+}

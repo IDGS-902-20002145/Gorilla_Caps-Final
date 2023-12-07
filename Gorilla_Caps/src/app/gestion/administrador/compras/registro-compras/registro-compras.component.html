@@ -3,38 +3,53 @@
   <form (submit)="registrarCompra()">
     <div class="form-group">
       <label for="proveedorId">Proveedor:</label>
-      <select id="proveedorId" name="proveedorId" [(ngModel)]="proveedorId" required>
-        <option *ngFor="let proveedor of proveedores" [value]="proveedor.id">{{ proveedor.nombre }}</option>
+      <select
+        id="proveedorId"
+        name="proveedorId"
+        [(ngModel)]="proveedorId"
+        required
+      >
+        <option *ngFor="let proveedor of proveedores" [value]="proveedor.id">
+          {{ proveedor.nombre }}
+        </option>
       </select>
     </div>
     <div class="form-group">
       <label for="materialId">Material ID:</label>
-      <input type="number" id="materialId" name="materialId" [(ngModel)]="materialId" [value]="materialId" required disabled>
+      <input
+        type="number"
+        id="materialId"
+        name="materialId"
+        [(ngModel)]="materialId"
+        [value]="materialId"
+        required
+        disabled
+      />
       <div *ngIf="material.id !== 0">
         <div class="material-info">
           <div class="material-detail">
             <label>Material:</label>
             <p>{{ material.nombre }}</p>
           </div>
-          
+
           <div class="material-detail">
             <label>Descripción:</label>
             <p>{{ material.descripcion }}</p>
           </div>
-          
+
           <div class="material-detail">
             <label>Cantidad:</label>
             <p>{{ material.cantidad }} {{ material.unidad_Medida }}</p>
           </div>
-          
+
           <div class="material-detail">
             <label>Stock Mínimo:</label>
             <p>{{ material.stock_Minimo }} {{ material.unidad_Medida }}</p>
           </div>
-          
+
           <div class="material-detail">
             <label>Activo:</label>
-            <p>{{ material.estatus ? 'Sí' : 'No' }}</p>
+            <p>{{ material.estatus ? "Sí" : "No" }}</p>
           </div>
         </div>
       </div>
@@ -42,15 +57,28 @@
     <div class="form-group">
       <label for="cantidad" class="col-12">Cantidad:</label>
       <div class="input-group col-12">
-        <input type="number" id="cantidad" name="cantidad" [(ngModel)]="cantidad" class="form-control" required>
+        <input
+          type="number"
+          id="cantidad"
+          name="cantidad"
+          [(ngModel)]="cantidad"
+          class="form-control"
+          required
+        />
         <b class="input-group-text">{{ material.unidad_Medida }}</b>
       </div>
     </div>
     <div class="form-group">
       <label for="precio">Precio:</label>
-      <input type="number" id="precio" name="precio" [(ngModel)]="precio" required>
+      <input
+        type="number"
+        id="precio"
+        name="precio"
+        [(ngModel)]="precio"
+        required
+      />
     </div>
-    <br>
+    <br />
     <button type="submit" class="btn-submit">Registrar Compra</button>
   </form>
 </div>

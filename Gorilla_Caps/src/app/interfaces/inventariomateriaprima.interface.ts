@@ -9,5 +9,5 @@ export interface InventariomateriaprimaInterface {
     estatus: boolean;
     explotacionMaterial?: ExplotacionmaterialInterface;
     unidad_Medida: string;
-    
+
 }
