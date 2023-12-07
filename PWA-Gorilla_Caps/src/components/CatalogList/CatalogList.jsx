@@ -268,7 +268,7 @@ const CatalogList = ({ carrito, setCarrito }) => {
                 <div>
                   <button
                     className="btn btn-lg btn-primary cartAn"
-                    onClick={handleSearch}
+                    onClick={() => handleAddToCart(product)}
                   >
                     <i className="fa-solid fa-cart-shopping"></i>
                     Agregar al carrito

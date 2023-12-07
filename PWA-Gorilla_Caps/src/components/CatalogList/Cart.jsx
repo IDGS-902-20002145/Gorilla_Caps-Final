@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import "./Cart.css";
-import { Link } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import React from "react";
+import Swal from "sweetalert2";
 
 const Cart = ({ carrito, setCarrito }) => {
   //State para contraer o expandir el carrito
@@ -70,6 +70,71 @@ const Cart = ({ carrito, setCarrito }) => {
     return carrito.reduce((total, producto) => total + producto.cantidad, 0);
   };
 
+  const sweetAlert = () => {
+    Swal.fire({
+      title: "Inicia sesión para comprar",
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonText: "Iniciar sesión",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "/login";
+      }
+    });
+  };
+
+  const passToOrders = () => {
+    console.log("Ir a pedidos");
+    //Pasamos el carrito a pedidos si el usuario está autenticado
+    if (localStorage.getItem("token") != null) {
+      carrito.forEach((producto) => {
+        //Construimos el producto para el pedido
+        const product = {
+          id: producto.id,
+          nombre: producto.nombre,
+          descripcion: producto.descripcion,
+          precio: producto.precio,
+          stock_existencia: producto.stock_existencia,
+          imagen: producto.imagen,
+          modelo: producto.modelo,
+          color: producto.color,
+          estatus: producto.estatus,
+        };
+        //Construimos el objeto pedidoProducto por cada producto en el carrito
+
+        const pedidoProducto = {
+          id: 0,
+          UserId: localStorage.getItem("id"),
+          fecha: new Date(),
+          estatus: 1,
+          cantidad: producto.cantidad,
+          producto: product,
+        };
+        console.log(pedidoProducto);
+        //Enviamos el pedidoProducto a la API
+        fetch("/api/Pedidos", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+          body: JSON.stringify(pedidoProducto),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            //Limpiamos el carrito
+            setCarrito([]);
+
+            //LLevamos a /Carrito
+            window.location.href = "/Carrito";
+          });
+      });
+    } else {
+      sweetAlert();
+    }
+  };
+
   return (
     <div className="cart-component">
       <div className="cart-header">
@@ -85,12 +150,9 @@ const Cart = ({ carrito, setCarrito }) => {
           {carrito && carrito.length > 0 ? (
             <div className="cart-items">
               <div className="row">
-                <Link
-                  to="/Carrito"
-                  className="cartToPay btn btn-outline-primary"
-                >
+                <button className="cartToPay" onClick={passToOrders}>
                   Comprar carrito
-                </Link>
+                </button>
               </div>
               <table>
                 <thead>

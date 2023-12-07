@@ -480,4 +480,7 @@ export default defineConfig({
       },
     }),
   ],
+  optimizeDeps: {
+    include: ["pdfmake/build/pdfmake.min.js", "pdfmake/build/vfs_fonts.js"],
+  },
 });

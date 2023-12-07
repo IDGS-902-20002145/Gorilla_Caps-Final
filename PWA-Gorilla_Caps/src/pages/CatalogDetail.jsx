@@ -4,6 +4,7 @@ import "./CatalogDetail.css";
 import Cart from "../components/CatalogList/Cart";
 // eslint-disable-next-line no-unused-vars
 import React from "react";
+import Swal from "sweetalert2";
 
 const CatalogDetail = () => {
   // @ts-ignore
@@ -60,6 +61,71 @@ const CatalogDetail = () => {
 
   const fromB64 = (b64) => {
     return "data:image/jpeg;base64," + b64;
+  };
+
+  const sweetAlert = () => {
+    Swal.fire({
+      title: "Inicia sesión para comprar",
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonText: "Iniciar sesión",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "/login";
+      }
+    });
+  };
+
+  const passToOrders = () => {
+    //Pasamos el carrito a pedidos si el usuario está autenticado
+    console.log("Ir a pedidos");
+    if (localStorage.getItem("token") != null) {
+      carrito.forEach((producto) => {
+        //Construimos el producto para el pedido
+        const product = {
+          id: producto.id,
+          nombre: producto.nombre,
+          descripcion: producto.descripcion,
+          precio: producto.precio,
+          stock_existencia: producto.stock_existencia,
+          imagen: producto.imagen,
+          modelo: producto.modelo,
+          color: producto.color,
+          estatus: producto.estatus,
+        };
+        //Construimos el objeto pedidoProducto por cada producto en el carrito
+
+        const pedidoProducto = {
+          id: 0,
+          UserId: localStorage.getItem("id"),
+          fecha: new Date(),
+          estatus: 1,
+          cantidad: producto.cantidad,
+          producto: product,
+        };
+        console.log(pedidoProducto);
+        //Enviamos el pedidoProducto a la API
+        fetch("/api/Pedidos", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+          body: JSON.stringify(pedidoProducto),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            //Limpiamos el carrito
+            setCarrito([]);
+
+            //LLevamos a /Carrito
+            window.location.href = "/Carrito";
+          });
+      });
+    } else {
+      sweetAlert();
+    }
   };
 
   return (
@@ -172,9 +238,9 @@ const CatalogDetail = () => {
           </button>
           <br />
           <br />
-          <Link to="/Carrito">
-            <button className="btn btn-info btn-row">Ver carrito</button>
-          </Link>
+          <button className="btn btn-info btn-row" onClick={passToOrders}>
+            Comprar carrito
+          </button>
         </div>
       </div>
     </div>

@@ -1,6 +1,10 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
 import "./Pagar.css";
+import Swal from "sweetalert2";
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const Pagar = () => {
   const cardHeaderStyle = {
@@ -34,6 +38,101 @@ const Pagar = () => {
     } catch (error) {
       // Manejar errores
       console.error(error);
+    }
+  };
+
+  const pagarPost = async (e) => {
+    // @ts-ignore
+    e.preventDefault();
+    try {
+      const idUsuario = Number(localStorage.getItem("id"));
+      // @ts-ignore
+      const metodoPago = document.getElementById("metodo_pago").value;
+      if (metodoPago === "efectivo") {
+        console.log("Efectivo");
+        const response = await fetch(`/api/Pedidos/PagarTodoP/${idUsuario}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: null,
+        });
+
+        if (response.ok) {
+          // Genera el PDF con los datos de los productos comprados
+          const detalles = detProductos.map((producto) => [
+            // @ts-ignore
+            producto.nombre,
+            // @ts-ignore
+            producto.precio,
+            // @ts-ignore
+            producto.cantidad,
+          ]);
+
+          const docDefinition = {
+            content: [
+              {
+                text: "Detalles de la compra:",
+                style: "header",
+              },
+              {
+                table: {
+                  headerRows: 1,
+                  widths: ["auto", "auto", "auto"],
+                  body: [
+                    [
+                      { text: "Producto", style: "tableHeader" },
+                      { text: "Precio Unitario", style: "tableHeader" },
+                      { text: "Cantidad", style: "tableHeader" },
+                    ],
+                    ...detalles,
+                  ],
+                },
+              },
+            ],
+            styles: {
+              header: {
+                fontSize: 18,
+                bold: true,
+                margin: [0, 5, 0, 10], // Ajusta los márgenes según tus preferencias
+              },
+              tableHeader: {
+                bold: true,
+                fontSize: 13,
+                color: "black",
+              },
+            },
+          };
+
+          pdfMake
+            // @ts-ignore
+            .createPdf(docDefinition)
+            .download(`Compra_${new Date().toLocaleDateString("es-ES")}.pdf`);
+
+          Swal.fire({
+            icon: "success",
+            title: "Pago realizado con éxito",
+            text: "Se ha realizado el pago con éxito",
+            confirmButtonText: "Aceptar",
+          });
+
+          window.location.href = "/Catalogo";
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "No se pudo realizar el pago",
+            confirmButtonText: "Aceptar",
+          });
+        }
+      }
+    } catch (error) {
+      // Manejar errores
+      console.error(error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "No se pudo realizar el pago",
+        confirmButtonText: "Aceptar",
+      });
     }
   };
 
@@ -120,6 +219,7 @@ const Pagar = () => {
                     id="metodo_pago"
                     name="metodo_pago"
                   >
+                    <option value="">Seleccione</option>
                     <option value="efectivo">Efectivo</option>
                     <option value="tarjeta">Tarjeta</option>
                   </select>
@@ -129,7 +229,9 @@ const Pagar = () => {
                   <br />
                   <br />
                   <br />
-                  <button color="accent">Continuar</button>
+                  <button color="accent" onClick={(e) => pagarPost(e)}>
+                    Continuar
+                  </button>
                 </div>
               </form>
             </div>
