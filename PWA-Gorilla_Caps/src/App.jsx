@@ -4,6 +4,11 @@ import HomePage from "./pages/HomePage";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./pages/Login";
+import RegisterUser from "./pages/RegisterUser";
+import CatalogPage from "./pages/CatalogPage";
+import CatalogDetail from "./pages/CatalogDetail";
+import ShoppingCartPage from "./pages/ShoppingCartPage";
+import Pagar from "./pages/pagar/Pagar";
 
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
@@ -59,7 +64,18 @@ const App = () => {
                   <React.Fragment>{/* ... */}</React.Fragment>
                 ) : (
                   // Opciones para clientes
-                  <React.Fragment>{/* ... */}</React.Fragment>
+                  <React.Fragment>
+                    <li>
+                      <Link className="nav-link" to="/Catalogo">
+                        <i className="fa-brands fa-redhat"></i> Productos
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="nav-link" to="/Carrito">
+                        <i className="fa-solid fa-shopping-cart"></i> Carrito
+                      </Link>
+                    </li>
+                  </React.Fragment>
                 )}
                 <li className="nav-item">
                   <button className="nav-link" onClick={handleLogout}>
@@ -77,7 +93,7 @@ const App = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link className="nav-link" to="">
+                  <Link className="nav-link" to="/Catalogo">
                     <i className="fa-brands fa-redhat"></i> Productos
                   </Link>
                 </li>
@@ -97,6 +113,11 @@ const App = () => {
           path="/login"
           element={<Login setAuthenticated={setAuthenticated} />}
         />
+        <Route path="/register" element={<RegisterUser />} />
+        <Route path="/Catalogo" element={<CatalogPage />} />
+        <Route path="/Catalogo/:id" element={<CatalogDetail />} />
+        <Route path="/Carrito" element={<ShoppingCartPage />} />
+        <Route path="/PagarTodo/:id" element={<Pagar />} />
         {/* Otras rutas */}
         {/* ... */}
       </Routes>
