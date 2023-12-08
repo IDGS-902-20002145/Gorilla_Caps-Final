@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import Swal from "sweetalert2";
+import React, { useState, useEffect } from "react";
+import { BsBox, BsTruck, BsCheckCircle } from "react-icons/bs";
+import { Modal, Button } from "react-bootstrap";
 import "./VentasC.css"; // Asegúrate de importar el archivo CSS
 
 const VentasC = () => {
@@ -7,6 +8,8 @@ const VentasC = () => {
   const [ventasAprobadas, setVentasAprobadas] = useState([]);
   const [mostrarPendientes, setMostrarPendientes] = useState(true);
   const [mostrarEnCamino, setMostrarEnCamino] = useState(false);
+  const [modalInfo, setModalInfo] = useState({});
+  const [showModal, setShowModal] = useState(false);
   const idUsuario = Number(localStorage.getItem("id"));
 
   useEffect(() => {
@@ -17,9 +20,7 @@ const VentasC = () => {
     try {
       const response = await fetch(`/api/VentasC/MisCompras/${idUsuario}`);
       if (!response.ok) {
-        throw new Error(
-          `Error: ${response.status} - ${response.statusText}`
-        );
+        throw new Error(`Error: ${response.status} - ${response.statusText}`);
       }
       const data = await response.json();
       if (data) {
@@ -44,6 +45,49 @@ const VentasC = () => {
     }
   };
 
+  const handleVerDetalles = (info) => {
+    setModalInfo(info);
+    setShowModal(true);
+  };
+
+  
+
+  const handleCloseModal = () => {
+    setModalInfo({});
+    setShowModal(false);
+  };
+
+  const renderProductosModal = () => {
+    return (
+      <Modal show={showModal} onHide={handleCloseModal} size="lg">
+        <Modal.Header closeButton>
+          <Modal.Title>Detalles de la Compra</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>{modalInfo.etapa}</h4>
+          {modalInfo.productos &&
+            Object.keys(modalInfo.productos).map((fecha) =>
+              Object.keys(modalInfo.productos[fecha]).map((productoKey) => (
+                <div key={productoKey} className="producto-modal">
+                  <img
+                    src={getImageUrl(modalInfo.productos[fecha][productoKey].imagen)}
+                    alt=""
+                    style={{ width: "50px", height: "50px", alignItems: "center"}}
+                  />
+                  <p>{productoKey}</p>
+                </div>
+              ))
+            )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  };
+
   const getImageUrl = (base64Image) => {
     if (base64Image) {
       return `data:image/jpeg;base64,${base64Image}`;
@@ -56,40 +100,34 @@ const VentasC = () => {
       <div className="row">
         <div className="col-12 mb-4 text-center">
           {/* Botones de selección */}
-          <div className="card border-primary">
-            <div className="card-body">
-              <h5 className="card-titulo">
-                <i className="fas fa-truck"></i> Compras en camino
-              </h5>
-              <p className="card-text">Revisa el estado de tus compras en camino</p>
-              <button
-                className={`btn btn-primary ${
-                  mostrarEnCamino ? "active" : ""
-                }`}
-                onClick={() => cambiarVista("enCamino")}
-              >
-                Ver compras en camino
-              </button>
+          <div className="d-flex justify-content-center">
+            <div className="card border-primary mx-3">
+              <div className="card-body">
+                <h5 className="card-titulo">
+                  <i className="fas fa-truck"></i> Compras en camino
+                </h5>
+                <p className="card-text">Revisa el estado de tus compras en camino</p>
+                <button
+                  className={`btn btn-primary ${mostrarEnCamino ? "active" : ""}`}
+                  onClick={() => cambiarVista("enCamino")}
+                >
+                  Ver compras en camino
+                </button>
+              </div>
             </div>
-          </div>
-          <br />
-          <br />
-          <div className="card border-primary">
-            <div className="card-body">
-              <h5 className="card-titulo">
-                <i className="fas fa-shopping-bag"></i> Compras pendientes
-              </h5>
-              <p className="card-text">
-                Revisa tus compras pendientes de envío
-              </p>
-              <button
-                className={`btn btn-primary ${
-                  mostrarPendientes ? "active" : ""
-                }`}
-                onClick={() => cambiarVista("pendientes")}
-              >
-                Ver compras pendientes
-              </button>
+            <div className="card border-primary mx-3">
+              <div className="card-body">
+                <h5 className="card-titulo">
+                  <i className="fas fa-shopping-bag"></i> Compras pendientes
+                </h5>
+                <p className="card-text">Revisa tus compras pendientes de envío</p>
+                <button
+                  className={`btn btn-primary ${mostrarPendientes ? "active" : ""}`}
+                  onClick={() => cambiarVista("pendientes")}
+                >
+                  Ver compras pendientes
+                </button>
+              </div>
             </div>
           </div>
           {/* Contenido de compras */}
@@ -97,6 +135,9 @@ const VentasC = () => {
             <div className="row">
               <div className="col-md-11">
                 {/* Ventas pendientes */}
+              
+                
+                
                 {mostrarPendientes && (
                   <div className="card mb-11">
                     <div className="card-header bg-primary text-white">
@@ -115,6 +156,7 @@ const VentasC = () => {
                                 <th scope="col">Cantidad</th>
                                 <th scope="col">Precio unitario</th>
                                 <th scope="col">Total</th>
+                                <th scope="col">Acciones</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -129,34 +171,34 @@ const VentasC = () => {
                                         <td>
                                           <img
                                             src={getImageUrl(
-                                              venta.productos[fecha][
-                                                productoKey
-                                              ].imagen
+                                              venta.productos[fecha][productoKey].imagen
                                             )}
                                             alt=""
-                                            style={{
-                                              width: "50px",
-                                              height: "50px",
-                                            }}
+                                            style={{ width: "50px", height: "50px" }}
                                           />
                                         </td>
                                         <td>
-                                          {venta.productos[fecha][productoKey]
-                                            .cantidad}
+                                          {venta.productos[fecha][productoKey].cantidad}
                                         </td>
                                         <td>
-                                          ${
-                                            venta.productos[fecha][productoKey]
-                                              .precio
-                                          }
+                                          ${venta.productos[fecha][productoKey].precio}
                                         </td>
                                         <td>
-                                          ${
-                                            venta.productos[fecha][productoKey]
-                                              .cantidad *
-                                            venta.productos[fecha][productoKey]
-                                              .precio
-                                          }
+                                          ${venta.productos[fecha][productoKey].cantidad *
+                                            venta.productos[fecha][productoKey].precio}
+                                        </td>
+                                        <td>
+                                          <button
+                                            className="btn btn-info"
+                                            onClick={() =>
+                                              handleVerDetalles({
+                                                etapa: "Pendiente de Envío",
+                                                productos: venta.productos,
+                                              })
+                                            }
+                                          >
+                                            Ver Detalles
+                                          </button>
                                         </td>
                                       </tr>
                                     )
@@ -174,7 +216,10 @@ const VentasC = () => {
                     </div>
                   </div>
                 )}
+                     
+          
                 {/* Ventas en camino */}
+               
                 {mostrarEnCamino && (
                   <div className="card mb-11">
                     <div className="card-header bg-primary text-white">
@@ -193,6 +238,7 @@ const VentasC = () => {
                                 <th scope="col">Cantidad</th>
                                 <th scope="col">Precio unitario</th>
                                 <th scope="col">Total</th>
+                                <th scope="col">Acciones</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -207,34 +253,34 @@ const VentasC = () => {
                                         <td>
                                           <img
                                             src={getImageUrl(
-                                              venta.productos[fecha][
-                                                productoKey
-                                              ].imagen
+                                              venta.productos[fecha][productoKey].imagen
                                             )}
                                             alt=""
-                                            style={{
-                                              width: "50px",
-                                              height: "50px",
-                                            }}
+                                            style={{ width: "50px", height: "50px" }}
                                           />
                                         </td>
                                         <td>
-                                          {venta.productos[fecha][productoKey]
-                                            .cantidad}
+                                          {venta.productos[fecha][productoKey].cantidad}
                                         </td>
                                         <td>
-                                          ${
-                                            venta.productos[fecha][productoKey]
-                                              .precio
-                                          }
+                                          ${venta.productos[fecha][productoKey].precio}
                                         </td>
                                         <td>
-                                          ${
-                                            venta.productos[fecha][productoKey]
-                                              .cantidad *
-                                            venta.productos[fecha][productoKey]
-                                              .precio
-                                          }
+                                          ${venta.productos[fecha][productoKey].cantidad *
+                                            venta.productos[fecha][productoKey].precio}
+                                        </td>
+                                        <td>
+                                          <button
+                                            className="btn btn-info"
+                                            onClick={() =>
+                                              handleVerDetalles({
+                                                etapa: "En Camino",
+                                                productos: venta.productos,
+                                              })
+                                            }
+                                          >
+                                            Ver Detalles
+                                          </button>
                                         </td>
                                       </tr>
                                     )
@@ -246,8 +292,7 @@ const VentasC = () => {
                         </div>
                       ) : (
                         <p className="text-center">
-                          Aún no ha realizado una compra o aún no ha sido
-                          aprobada.
+                          Aún no ha realizado una compra o aún no ha sido aprobada.
                         </p>
                       )}
                     </div>
@@ -258,6 +303,7 @@ const VentasC = () => {
           </div>
         </div>
       </div>
+      {renderProductosModal()}
     </div>
   );
 };

@@ -38,3 +38,9 @@
     transform: scale(1.1);
   }
   
+  /* mediaquerys para ser adaptable a todas las pantallas */
+  @media (max-width: 768px) {
+    .card {
+      margin-top: 50px;
+    }
+  }

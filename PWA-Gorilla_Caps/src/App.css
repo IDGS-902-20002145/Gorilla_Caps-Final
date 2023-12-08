@@ -1268,3 +1268,22 @@ footer {
     min-height: 215px;
   }
 }
+
+/* agrega mediaqueris para ser responsivo a todos los dispositivos  */
+@media (max-width: 575px) {
+  .u-section-5 .u-sheet-1 {
+    min-height: 343px;
+  }
+
+  .u-section-5 .u-container-layout-1 {
+    padding-left: 13px;
+  }
+
+  .u-section-5 .u-text-1 {
+    font-size: 2.25rem;
+  }
+
+  .u-section-5 .u-layout-cell-2 {
+    min-height: 342px;
+  }
+}
