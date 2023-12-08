@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import "./App.css";
+// import "./App.css";
+import "./NavBar.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./pages/Login";
 import RegisterUser from "./pages/RegisterUser";
@@ -9,6 +10,8 @@ import CatalogPage from "./pages/CatalogPage";
 import CatalogDetail from "./pages/CatalogDetail";
 import ShoppingCartPage from "./pages/ShoppingCartPage";
 import Pagar from "./pages/pagar/Pagar";
+import PagarTarjeta from "./pages/pagar/pagarTarjeta/PagarTarjeta";
+import VentasC from "./pages/VentasC";
 
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
@@ -31,38 +34,9 @@ const App = () => {
           <div className="navbarMenuHeroA">
             {authenticated ? (
               <ul className="navbar-nav ml-auto">
-                <h2 className="titulo">Gorilla Caps</h2>
-                {localStorage.getItem("admin") === "true" ? (
-                  // Opciones para usuarios administradores
-                  <React.Fragment>
-                    <li className="nav-item">
-                      <Link className="nav-link" to="">
-                        <i className="fas fa-person-dress"></i> Proveedor
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link className="nav-link" to="">
-                        <i className="fa-regular fa-circle-user fa-lg"></i>{" "}
-                        Usuarios
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link className="nav-link" to="">
-                        <i className="fa-solid fa-boxes-stacked fa-lg"></i>{" "}
-                        Materias Primas
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link className="nav-link" to="">
-                        <i className="fa-solid fa-money-check-dollar fa-lg"></i>{" "}
-                        Compras
-                      </Link>
-                    </li>
-                  </React.Fragment>
-                ) : localStorage.getItem("empleado") === "true" ? (
-                  // Opciones para empleados
-                  <React.Fragment>{/* ... */}</React.Fragment>
-                ) : (
+                <h2 className="tituloIndex">Gorilla Caps</h2>
+                {localStorage.getItem("admin") === "false" &&
+                localStorage.getItem("empleado") === "false" ? (
                   // Opciones para clientes
                   <React.Fragment>
                     <li>
@@ -75,18 +49,44 @@ const App = () => {
                         <i className="fa-solid fa-shopping-cart"></i> Carrito
                       </Link>
                     </li>
+                    <li>
+                      <Link className="nav-link" to="/VentasC">
+                        <i className="fa-solid fa-bag-shopping"></i> Mis Compras
+                      </Link>
+                    </li>
                   </React.Fragment>
+                ) : (
+                  // Usuario no autenticado
+                  <ul className="navbar-nav ml-auto">
+                    <h2 className="titulo2">Gorilla Caps</h2>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/">
+                        <i className="fas fa-home"></i> Página Principal
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="nav-link" to="/Catalogo">
+                        <i className="fa-brands fa-redhat"></i> Productos
+                      </Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/login">
+                        <i className="fa-solid fa-lock-open"></i>Iniciar sesión
+                      </Link>
+                    </li>
+                  </ul>
                 )}
                 <li className="nav-item">
-                  <button className="nav-link" onClick={handleLogout}>
-                    Cerrar Sesión
-                  </button>
+                  <a className="nav-link" onClick={handleLogout}>
+                    <i className="fa-solid fa-right-from-bracket"></i> Cerrar
+                    Sesión
+                  </a>
                 </li>
               </ul>
             ) : (
               // Usuario no autenticado
               <ul className="navbar-nav ml-auto">
-                <h2 className="titulo2">Gorilla Caps</h2>
+                <h2 className="titulo2Index">Gorilla Caps</h2>
                 <li className="nav-item">
                   <Link className="nav-link" to="/">
                     <i className="fas fa-home"></i> Página Principal
@@ -118,8 +118,8 @@ const App = () => {
         <Route path="/Catalogo/:id" element={<CatalogDetail />} />
         <Route path="/Carrito" element={<ShoppingCartPage />} />
         <Route path="/PagarTodo/:id" element={<Pagar />} />
-        {/* Otras rutas */}
-        {/* ... */}
+        <Route path="/PagoTarjeta" element={<PagarTarjeta />} />
+        <Route path="/VentasC" element={<VentasC />} />
       </Routes>
     </Router>
   );

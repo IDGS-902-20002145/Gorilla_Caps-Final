@@ -117,3 +117,57 @@ tbody tr:nth-child(even) {
   border-radius: 4px;
   cursor: pointer;
 }
+
+/* Estilos para la tabla en pantallas más pequeñas */
+@media screen and (max-width: 768px) {
+  .table {
+    font-size: 14px;
+  }
+
+  th,
+  td {
+    padding: 8px;
+  }
+}
+
+/* Estilos para el diseño de la tarjeta en pantallas más pequeñas */
+@media screen and (max-width: 576px) {
+  .row {
+    flex-direction: column-reverse; /* Cambia el orden de la fila */
+  }
+
+  .card {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .col-md-4 {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .col-md-8 {
+    margin-bottom: 10px;
+  }
+
+  .card-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .col-md-8,
+  .col-md-4 {
+    width: 100%; /* Ocupar todo el ancho en pantallas pequeñas */
+  }
+
+  /* Estilos para el formulario en la parte superior */
+  .col-md-4 {
+    order: -1; /* Mover el formulario arriba */
+  }
+}

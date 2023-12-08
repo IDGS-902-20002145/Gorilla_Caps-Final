@@ -1,0 +1,7 @@
+/* mediaquerys para adaptarse a cualer dispositivo movil */
+
+@media (max-width: 768px) { 
+     .card { 
+      margin-top: 50px; 
+    } 
+  }

@@ -1,78 +1,105 @@
 .cart-header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .cart-button {
-    min-width: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -1%;
-    background-color: lightblue;
-    border: none;
-    border-radius: 15px;
-    padding: 5px;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  min-width: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -1%;
+  background-color: lightblue;
+  border: none;
+  border-radius: 15px;
+  padding: 5px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
 }
 
 .cart-counter {
-    /*Hacemos que el numero quede en la esquina superior derecha*/
-    position: absolute;
-    top: 0;
-    right: 0;
-    /*Agregamos un poco de estilo al numero*/
-    background-color: red;
-    color: white;
-    font-size: 0.8em;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    line-height: 20px;
-    /*Agregamos un poco de margen para que no quede tan pegado al borde*/
-    margin-right: 5px;
-    /*Finalmente agregamos un poco de sombra para que se vea mejor*/
-    box-shadow: 0 0 5px #000;
+  /*Hacemos que el numero quede en la esquina superior derecha*/
+  position: absolute;
+  top: 0;
+  right: 0;
+  /*Agregamos un poco de estilo al numero*/
+  background-color: red;
+  color: white;
+  font-size: 0.8em;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  /*Agregamos un poco de margen para que no quede tan pegado al borde*/
+  margin-right: 5px;
+  /*Finalmente agregamos un poco de sombra para que se vea mejor*/
+  box-shadow: 0 0 5px #000;
 }
 
 .cartToPay {
-    margin-left: 0;
-    margin-right: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .cart-items {
-    font-size: small;
-    text-align: center;
-    padding: 3%;
+  font-size: small;
+  text-align: center;
+  padding: 3%;
 }
 
 .cart-image {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 }
 
 .cart-delete-item {
-    width: 100%;
-    background-color: saddlebrown;
-    border: none;
-    border-radius: 15px;
-    color: white;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  width: 100%;
+  background-color: saddlebrown;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+  padding: 1%;
 }
 
 .cart-add {
-    scale: 0.6;
+  scale: 0.6;
 }
 
 .cart-remove {
-    scale: 0.6;
+  scale: 0.6;
 }
 
 .marg {
-    margin: 10px;
-    margin-left: -10px;
+  margin: 10px;
+  margin-left: -10px;
 }
 
 .cart-component {
-    transform: scale(0.9);
+  transform: scale(0.95);
+}
+
+.cartToPay {
+  min-width: 100%;
+}
+
+th {
+  margin-left: -5px;
+  margin-right: -10px;
+  font-size: smaller;
+  max-width: 10px;
+}
+
+td {
+  font-size: smaller;
+  max-width: 80px;
+}
+
+.th-cantidad {
+  margin-left: -15px;
+  display: flex;
+}
+
+table {
+  margin-left: -15px;
+  margin-right: 0px;
 }

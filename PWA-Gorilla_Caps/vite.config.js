@@ -21,7 +21,12 @@ export default defineConfig({
       devOptions: {
         enabled: true,
       },
-      includeAssets: ["/public/android", "/public/ios", "/public/windows11"],
+      includeAssets: [
+        "/public/android",
+        "/public/ios",
+        "/public/windows11",
+        "/public/images",
+      ],
       manifest: {
         name: "Gorilla Caps",
         short_name: "Gorilla Caps",

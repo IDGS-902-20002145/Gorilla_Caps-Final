@@ -160,7 +160,7 @@ const Cart = ({ carrito, setCarrito }) => {
                     <th>Imagen</th>
                     <th>Nombre</th>
                     <th>Precio</th>
-                    <th>Cantidad</th>
+                    <th className="th-cantidad">Cantidad</th>
                     <th>Agregar</th>
                     <th>Eliminar</th>
                   </tr>
@@ -208,7 +208,7 @@ const Cart = ({ carrito, setCarrito }) => {
                           className="cart-delete-item"
                           onClick={() => eliminarProducto(product.id)}
                         >
-                          Eliminar
+                          <i className="fa-solid fa-trash"></i>
                         </button>
                       </td>
                     </tr>

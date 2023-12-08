@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css"; // Asegúrate de importar el CSS de Bootstrap
+import "./Registro.css"; // Asegúrate de importar el archivo CSS
 
 const RegisterUser = () => {
   const [verificarPassword, setVerificarPassword] = useState("");
@@ -105,61 +106,68 @@ const RegisterUser = () => {
     <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
-          <div className="card">
+          <div className="card login-form">
             <div className="card-body">
-              <h2 className="card-title text-center mb-4">Create Account</h2>
-              <form onSubmit={(e) => e.preventDefault()}>
-                <div className="form-group">
-                  <label>Nombre</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={usuarioNuevo.name}
-                    onChange={handleInputChange}
-                    className="form-control"
-                  />
-                </div>
+              <img
+                src="../../public/logoD.jpg"
+                alt="GorillaCaps"
+                className="imagen-cabecera"
+              />
+              <br />
+              <div className="form-group">
+                <label>Nombre</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={usuarioNuevo.name}
+                  onChange={handleInputChange}
+                  className="form-control"
+                  placeholder="Nombre"
+                />
+              </div>
 
-                <div className="form-group">
-                  <label>Correo electrónico</label>
-                  <input
-                    type="text"
-                    name="email"
-                    value={usuarioNuevo.email}
-                    onChange={handleInputChange}
-                    className="form-control"
-                  />
-                </div>
+              <div className="form-group">
+                <label>Correo electrónico</label>
+                <input
+                  type="text"
+                  name="email"
+                  value={usuarioNuevo.email}
+                  onChange={handleInputChange}
+                  className="form-control"
+                  placeholder="Correo electrónico"
+                />
+              </div>
 
-                <div className="form-group">
-                  <label>Contraseña</label>
-                  <input
-                    type="password"
-                    name="password"
-                    value={usuarioNuevo.password}
-                    onChange={handleInputChange}
-                    className="form-control"
-                  />
-                </div>
+              <div className="form-group">
+                <label>Contraseña</label>
+                <input
+                  type="password"
+                  name="password"
+                  value={usuarioNuevo.password}
+                  onChange={handleInputChange}
+                  className="form-control"
+                  placeholder="Contraseña"
+                />
+              </div>
 
-                <div className="form-group">
-                  <label>Repita la contraseña</label>
-                  <input
-                    type="password"
-                    name="verificar"
-                    value={verificarPassword}
-                    onChange={(e) => setVerificarPassword(e.target.value)}
-                    className="form-control"
-                  />
-                </div>
+              <div className="form-group">
+                <label>Repita la contraseña</label>
+                <input
+                  type="password"
+                  name="verificar"
+                  value={verificarPassword}
+                  onChange={(e) => setVerificarPassword(e.target.value)}
+                  className="form-control"
+                  placeholder="Repita la contraseña"
+                />
+              </div>
 
-                <button
-                  onClick={verificarCont}
-                  className="btn btn-primary btn-block"
-                >
-                  Agregar
-                </button>
-              </form>
+              <button
+                onClick={verificarCont}
+                className="btn btn-primary btn-block"
+              >
+                Agregar
+              </button>
             </div>
           </div>
         </div>
