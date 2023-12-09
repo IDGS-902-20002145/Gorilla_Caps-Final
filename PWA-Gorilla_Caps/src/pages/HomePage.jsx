@@ -13,6 +13,7 @@ import "./home/jquery.js";
 import "./home/nicepage.css";
 import "./home/nicepage.js";
 import "./home/Post-Template.css";
+import "./home/Responsive.css";
 
 const HomePage = () => {
   return (
@@ -269,7 +270,7 @@ const HomePage = () => {
                   <div className="u-size-30">
                     <div className="u-layout-col">
                       <div className="u-container-style u-layout-cell u-left-cell u-right-cell u-similar-fill u-size-60 u-layout-cell-4">
-                        <div className="u-container-layout u-container-layout-4">
+                        <div>
                           <blockquote className="u-custom-font u-text u-text-font u-text-1">
                             "El gran impacto de Gorillas Caps en México se
                             atribuye a varios factores clave. En primer lugar,

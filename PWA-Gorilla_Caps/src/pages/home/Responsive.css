@@ -1,0 +1,23 @@
+/* Estilos base */
+
+/* Para dispositivos pequeños */
+@media only screen and (max-width: 767px) {
+  /* Aplicar estilos específicos para pantallas pequeñas */
+  html {
+    font-size: 12px; /* Reducir el tamaño de fuente */
+  }
+
+  /* Ejemplo de ajuste en la imagen */
+  .u-image-1 {
+    width: 100%; /* Haz que la imagen ocupe el ancho completo */
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+  }
+
+  /* Otros ajustes necesarios para pantallas pequeñas */
+  .u-text-2 {
+    font-size: 12px; /* Reducir el tamaño del texto */
+    line-height: 1.5; /* Ajustar el interlineado */
+    text-align: left; /* Alinear el texto a la izquierda */
+    margin-bottom: 20px; /* Agregar margen inferior para separación */
+  }
+}

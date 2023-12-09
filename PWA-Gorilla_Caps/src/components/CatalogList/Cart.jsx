@@ -160,7 +160,7 @@ const Cart = ({ carrito, setCarrito }) => {
                     <th>Imagen</th>
                     <th>Nombre</th>
                     <th>Precio</th>
-                    <th className="th-cantidad">Cantidad</th>
+                    <th className="th-cart-cantidad">Cantidad</th>
                     <th>Agregar</th>
                     <th>Eliminar</th>
                   </tr>
