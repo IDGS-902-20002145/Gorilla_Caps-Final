@@ -1,0 +1,53 @@
+/* Estilos generales para la barra de navegación */
+.navbar {
+  background-color: #f8f9fa; /* Color de fondo */
+  padding: 15px 0; /* Espaciado interno superior e inferior */
+}
+
+/* Estilos para los títulos */
+.tituloIndex,
+.titulo2Index {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: bold;
+  color: #1c4069;
+  text-align: center;
+}
+
+
+.tituloIndex {
+  font-size: 50px;
+} 
+
+.titulo2Index {
+  font-size: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos para los enlaces */
+.navbar-nav {
+  text-align: right; /* Alinea los enlaces a la derecha */
+}
+
+.navbar-nav .nav-link {
+  color: #bd8e42; /* Color del texto del enlace */
+  font-weight: bold;
+  margin-left: 20px; /* Espaciado entre enlaces */
+}
+
+.navbar-nav .nav-link:hover {
+  color: #1c4069; /* Color del texto del enlace al pasar el mouse */
+}
+
+/* Media Queries para hacerlo responsivo */
+@media screen and (max-width: 768px) {
+  .navbar-nav {
+    text-align: center; /* Alinea los enlaces al centro en dispositivos más pequeños */
+  }
+
+  .navbar-nav .nav-link {
+    display: block;
+    margin: 10px 0; /* Espaciado entre enlaces en dispositivos más pequeños */
+  }
+}
